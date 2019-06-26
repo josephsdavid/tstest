@@ -3,7 +3,7 @@ let
   pkgs = import <nixpkgs> {};
 in
   pkgs.mkShell {
-    name = "timeseRies";
+    name = "tstest";
     buildInputs = with pkgs; [
        R
        python37
@@ -21,6 +21,7 @@ in
       rPackages.prophet
       rPackages.drake
       rPackages.future
+      rPackages.tint
       rPackages.microbenchmark
       rPackages.bookdown
       openblas
