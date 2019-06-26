@@ -1,0 +1,8 @@
+---
+title: "Time Series Midterm Review"
+author: "David Josephs"
+date: "2019-6-26"
+site: bookdown::bookdown_site
+documentclass: book
+description: "A hopefully helpful guide"
+---

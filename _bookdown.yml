@@ -1,0 +1,4 @@
+book_filename: "Time Series Review"
+chapter_name: "Unit"
+output_dir: res
+rmd_files: ["notes/index.Rmd"]
