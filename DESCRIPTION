@@ -1,5 +1,12 @@
 Package: tstest
 Title: tstest
 Version: 0.0.1
-Imports: bookdown
-Remotes: rstudio/bookdown
+Imports: 
+	bookdown,
+	stats,
+	utils,
+	tidyverse,
+	tswge,
+	magrittr,
+	tint
+	
