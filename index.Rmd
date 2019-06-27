@@ -3,7 +3,8 @@ title: "Time Series Midterm Review"
 author: "David Josephs"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: tint:tintBook
+documentclass: book
+output: bookdown::gitbook
 description: "A hopefully helpful guide"
 ---
 

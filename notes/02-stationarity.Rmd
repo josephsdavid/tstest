@@ -1,0 +1,3 @@
+# A Brief Discussion of Stationarity {#Stationarity}
+
+Here we discuss stationarity

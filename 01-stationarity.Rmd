@@ -1,8 +1,0 @@
-# A Brief Discussion of Stationarity {#stationarity}
-
-```{r setup, include = F}
-library(tint)
-library(tidyverse)
-library(magrittr)
-knitr::opts_chunk$set(fig.margin = T)
-```

@@ -1,0 +1,159 @@
+# Expected Values, Variance, et. al {#Expectation}
+
+```{r setup, include = F}
+library(tint)
+library(tidyverse)
+library(magrittr)
+#knitr::opts_chunk$set(fig.margin = T)
+```
+
+## Notation and Some Definitions 
+
+In time series, we denote the response variable as $X_t$, and clearly the explanatory variable as $t$. 
+To denote a specific point in time, let us say $t = 9$, we would say $X_9$.
+
+The collection of all $X_n$ is a stochastic process known as a time series.
+
+### Realizations and Ensembles 
+
+A **realization** is a particular instance of a time series. It is one of the infinitely many possible time series that could have been observed. As a time series is a stochastic process, each one could be entirely different. The **realization** Is the one that was *actually* observed.
+
+Sometimes a realization is the only realization possible. We can theorize what an infinite population of those realizations, but it is often the case that there is only one.
+
+An **ensemble** is the theoretical totality of all possible realizations. It is the *ensemble* of *realizations*. We can think of that as the *population* of realizations. When we are thinking of means and variances, we think of them in terms of the ensemble, even though we may only be able to look at a single realization.
+
+## Population Means and Variances 
+
+It is important to note that when dealing with an ensemble of realizations, each time point is allowed to have its own mean and variance.
+
+### The Mean of $X_t$ 
+
+$\mu_t$ is the mean of all possible realizations of $X_t$ ***for a fixed t***.
+
+
+### Variance of $X_t$ 
+
+${\sigma_t}^{2}$ is the variance of all possible realizations of $X_t$ ***for a fixed t***
+
+## Estimating Mean and Variance for Multiple Realizations 
+
+
+Let us say we have $n$ realizations of $X_t$ at time $t$. The average can be then written as
+
+$\hat{\mu_t}=\frac{1}{n}\sum_{i=1}^{n}X_{t_n}$
+
+Variance is calculated the same way. We are making sample means and sample variances. 
+If we assume the population is normally distributed, this allows us to take confidence intervals on the mean of our set of realizations.
+
+However, We have a problem: What to do when we only have one realization?
+
+## Expected Value
+
+In short, the expected value **$(E[X])$** of a random variable (RV) denoted by $X$ is the **mean** or more intuitively the ***long run average*** of the event that variable represents.
+
+### Discrete RVs
+
+A discrete RV is an RV in which $X$ cannot take on any value, it has specific values it can exist at and that is it.
+
+The formula for EV of a discrete RV is as follows:
+$$E\left[X\right] = \sum X P\left(X\right) = \mu$$
+
+### Continuous RVs
+
+A continuous RV has instead of discrete values a ***probability distribution/density function, $f(x)$***.
+
+The formula for EV of a continuous RV is as follows:
+$$E\left[X\right] = \int_{a}^{b} xf\left(x\right)dx = \mu$$
+
+Note that is directly analagous to the discrete RV, and that a and b can span to $\pm\infty$
+
+
+***Important Note***
+**$$E\left[X\right] = \mu$$**
+That is the expected value of a RV is equivalent to the population mean
+
+### Some Rules
+
+*Let a and b be constants*
+
+$$E\left[a\right] = a$$ 
+$$E[aX] = aE[X] = a\mu$$
+$$E[aX + b] = aE[X] + E[b] = aE[x] + b = a\mu+b$$
+
+Knowing these rules, lets try out a challenge:
+
+
+### A challenge in Expected Values
+
+Find $E[\bar{x}]$ where $\bar{x} = \frac{1}{n}\sum_{i=1}^{n}{x_i}$
+
+E.G find the expected value of an average
+
+### A solution
+
+First, we can factor out the 1/n, so we have
+
+$$\frac{1}{n}E\left[\sum_{i=1}^{n}{x_i}\right]$$
+
+then we can say that the sum is just $x_1+x_2+x_3+ ... + x_n$. This would lead us to the conclusion that
+$$ E[\bar{x}] =\frac{1}{n}\sum_{i=1}^{n}E\left[x_i\right]$$
+
+If we let each $x_i$ be a constant then we have:
+
+$$ E[\bar{x}] =\frac{1}{n}\sum_{i=1}^{n}x_i = \bar{x}$$
+
+This makes sense as $\bar{x}$ is the average value of x, and so the expected value of x for a very high n is the average value of x
+
+
+## Variance and Covariance
+
+### Variance
+
+The variance is the *dispersion*. Variance is defined as
+$$\mathrm{Var}\left(X\right) = E \left[\left(X-\mu\right)^2\right] = \int_{-\infty}^{\infty} \left(x - \mu\right)^{2}f\left(x\right)dx = \sigma^2$$
+
+$$\widehat{\mathrm{Var}\left(X\right) }= \sum\left(x_i - \bar{x}\right)^2$$
+
+### Covariance
+
+Assume we have two RVs, $X$ and $Y$:
+
+$$\mathrm{Cov}(X,Y) = E\left[\left(X - \mu_x\right)\left(Y - \mu_y\right)\right]$$
+
+
+$$\widehat{\mathrm{Cov}\left(X,Y\right) }= \sum\left(x_i - \bar{x}\right)\left(y_i - \bar{y}\right)$$
+
+The variance is, in essence, the sum of cross products.
+
+### Some generalizations on covariance:
+
+If y tends to increase with x, then $\mathrm{Cov}(X,Y)>0$
+
+
+If Y tends to decrease with X, then $\mathrm{Cov}(X,Y)$ is ***Less than 0***
+
+If it appears as a random cloud, then $\mathrm{Cov}(X,Y)$ is approximately 0
+
+### A challenge
+
+Let $X$ be a RV. What is $\mathrm{Cov}(X,X)$?
+
+### A solution
+
+$$\mathrm{Cov}(X,X) = E\left[\left(X - \mu_x\right)\left(X - \mu_X\right)\right]$$
+
+We see that the arguments in the left and right parens are exactly the same. Thus, we can rewrite the equation as:
+
+$$\mathrm{Cov}(X,X) = E \left[\left(X - \mu_x\right)^2\right] = \mathrm{Var}(X) $$
+
+
+### A note on covariance and correlation
+
+Correlation is covariance but standardized.
+
+$$\mathrm{Corr}(X,Y) = \frac{\mathrm{Cov}(X,Y)}{\mathrm{SD}(X)\mathrm{SD}(Y)}$$
+
+$$ =\frac{E[X - \mu_x)(Y-\mu_y)]}{\sigma_x \sigma_y}$$
+
+$$ \widehat{\mathrm{Corr}(X,Y)} = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{ns_x s_y}$$
+

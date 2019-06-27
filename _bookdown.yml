@@ -1,3 +1,8 @@
 book_filename: "Time Series Review"
-chapter_name: "Unit"
-output_dir: res
+chapter_name: "Unit "
+output_dir: doc
+rmd_files: [
+        "index.Rmd", 
+        "notes/01-expect.Rmd", 
+        "notes/02-stationarity.Rmd"
+        ]

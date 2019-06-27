@@ -6,12 +6,12 @@ in
     name = "tstest";
     buildInputs = with pkgs; [
        R
-       python37
        rPackages.tidyverse
        rstudio
        rPackages.rmarkdown
        rPackages.pander
-      rPackages.ggplot2
+       rPackages.ggplot2
+       rPackages.glue
       rPackages.knitr
       rPackages.tswge
       rPackages.dplyr
