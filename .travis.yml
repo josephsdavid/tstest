@@ -2,4 +2,4 @@ language: r
 cache: packages
 
 script:
-  - Rscript -e 'Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS = "true"); bookdown::render_book("notes/index.rmd")'
+  - Rscript -e 'bookdown::render_book("index.rmd")'
