@@ -8,5 +8,4 @@ Imports:
 	tidyverse,
 	tswge,
 	magrittr,
-	tint
-	
+	tint	
