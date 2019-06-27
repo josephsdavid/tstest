@@ -1,4 +1,4 @@
-# Expected Values, Variance, et. al {#Expectation}
+# Expected Values, Variance, etc.
 
 ```{r setup, include = F}
 library(tint)

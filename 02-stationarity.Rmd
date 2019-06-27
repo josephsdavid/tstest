@@ -1,0 +1,130 @@
+# A Brief Discussion of Stationarity 
+
+In order for a time series to be considered stationary, it must satisfy ***three*** conditions:
+
+* Constant Mean with Time
+
+* Constant Variance with Time
+
+* Constant Autocorellation with Time
+
+## Condition One: Constant Mean 
+
+
+Mean is constant with time. That is $E[X_t] = \mu$. Note the lack of a little tiny t in mu! It is indepoent of tine! That is stationarity condition number 1!
+
+Important result: 
+**If we assume constant mean, we can use** ***all*** **of the data to estimate the mean**
+
+Here we can see after 5 realizations that the mean is clearly not constant with time
+
+```{r, eval = F}
+library(tswge)
+a1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+b1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+c1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+d1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+e1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+```
+
+```{r, results = 'hide', fig.show = 'hide', echo = F}
+library(tswge)
+a1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+b1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+c1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+d1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+e1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
+```
+
+
+```{r, echo = F, fig.align = 'center'}
+plot(a1,type = 'l')
+lines(b1,col = 'blue', type = 'l')
+lines(c1,col = 'red', type = 'l')
+lines(d1,col = 'green', type = 'l')
+lines(e1, col ='purple', type = 'l')
+
+```
+
+Now lets look at 5 realizations which come from the same realization, which might not have a constant mean:
+
+
+```{r, eval = F}
+a2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+b2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+c2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+d2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+e2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+
+```
+
+
+```{r, echo = F, results = 'hide', fig.show = 'hide',}
+a2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+b2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+c2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+d2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+e2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
+```
+
+```{r, echo = F, fig.align = 'center'}
+plot(a2,type = 'l')
+lines(b2,col = 'blue', type = 'l')
+lines(c2,col = 'red', type = 'l')
+lines(d2,col = 'green', type = 'l')
+lines(e2, col ='purple', type = 'l')
+
+```
+
+
+We cannot say for sure whether the mean is constant or not in this case!
+
+
+Let us compare both of them on the same plot:
+
+```{r plotboth}
+par(mfrow = c(2,1))
+
+plot(a1,type = 'l')
+lines(b1,col = 'blue', type = 'l')
+lines(c1,col = 'red', type = 'l')
+lines(d1,col = 'green', type = 'l')
+lines(e1, col ='purple', type = 'l')
+plot(a2,type = 'l')
+lines(b2,col = 'blue', type = 'l')
+lines(c2,col = 'red', type = 'l')
+lines(d2,col = 'green', type = 'l')
+lines(e2, col ='purple', type = 'l')
+par(mfrow = c(1,1))
+```
+
+
+## Condition Two: Constant Variance
+
+
+***Variance does not depend on time***
+
+Variance is *constant* and finite*
+
+That is :
+
+$$Var[X_t] = \sigma^2 < \infty$$ >
+
+If we can make this assumption, then we can use all of the data to make the variance. 
+This is typically the hardest one to tell, and it will take some practice to see.
+
+## Condition 3: Constant autocorrelation
+
+***Correlation of $X_{t_1} and X_{t_2}$ only depends on $t_2 - t_1$***
+
+That is, the correlation between points depends only on how far apart they are in time, not where they are in time.
+
+To describe this mathematically:
+
+Let $$h = t_2 - t_1$$
+
+then
+$$\mathrm{Cor}\left(X_t,X_{t+h}\right) = \rho_h$$
+
+$\rho$ represents the population correlation coefficient.
+

@@ -17,6 +17,7 @@ in
       rPackages.dplyr
       rPackages.purrr
       rPackages.quantmod
+      rPackages.rsconnect
       rPackages.magrittr
       rPackages.prophet
       rPackages.drake

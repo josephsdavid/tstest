@@ -1,0 +1,25 @@
+# Autocorrelation Concepts and Notation
+
+## Theoretical concept of $\rho$
+
+$$\rho = \frac{E\left[\left(X-\mu_X\right)\left(Y-\mu_Y\right)\right]}{\sigma_X \sigma_Y} = \frac{\mathrm{covariance between X+y}}{\sigma_X \sigma_Y}$$
+
+In a stationary time series, we have autocorrelation and autocovariance
+
+## autocovariance
+
+$$\gamma_k = E\left[\left(X_t - \mu\right)\left(X_{t+k} - \mu\right)\right]$$
+
+## autocorrelation 
+
+$$\rho_k =\frac{E\left[\left(X_t - \mu\right)\left(X_{t+k} - \mu\right)\right]}{\sigma_{X_t} \sigma_{X_{t+k}}} = \frac{E\left[\left(X_t - \mu\right)\left(X_{t+k} - \mu\right)\right]}{\sigma^2_X} = \frac{\gamma_k}{\sigma_X^2}$$
+
+This works because of constant variance and constant mean!
+
+Note that in a stationary time series:
+
+$$\sigma_X^2 = 1E[(X_t - \mu)^2] = E[(X_t -\mu )(X_t - \mu)] = \gamma_0$$
+
+Therefore:
+
+$$\rho_k = \frac{\gamma_k}{\gamma_0}$$

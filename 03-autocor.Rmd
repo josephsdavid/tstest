@@ -1,0 +1,83 @@
+# Autocorrelation 
+
+```{r}
+library(ggplot2)
+acfdf <- function(vec){
+	vacf <- acf(vec, plot = F)
+	with(vacf, data.frame(lag,acf))
+}
+ggacf <- function(vec){
+	ac <- acfdf(vec)
+	ggplot(data = ac, aes(x = lag, y = acf))+
+		geom_hline(aes(yintercept = 0)) +
+		geom_segment(mapping = aes(xend = lag, yend = 0))
+}
+
+tplot <- function(vec){
+	df <- data.frame("X" = vec, "t" = seq_along(vec))
+	ggplot(data = df, aes(x = t, y = X)) +
+		geom_point() +
+		geom_line()
+}
+```
+
+
+## Independence
+
+Two events are independent in a time series if the probability that an event at time t occurs in no way depends on the ocurrence of any event in the past or affects any event in the future. Mathematically, this is written as:
+
+**$$\mathrm{Independence: }P \left(x_{t+1}|X_t\right) = P\left(X_{t+1}\right)$$**
+
+## Serial Dependence /  Autocorrelation
+
+### A definition
+
+**If two events are independent, their corellation is 0**
+That is **if $X_t$ and $X_{t+k}$ are independent, $\rho_{x_{t},x_{t+k}}=0$**
+
+*Corollary: If the correlation between two variables is not zero, then they are not* ***independent***
+
+In other words if $\rho_{x_{t},x_{t+k}} \neq 0$, they are ***not*** independent.
+
+
+### Autocorrelation Plots
+
+#### Dependent(ish) data
+In time series we look at the **autocorrelation** between $X_t$ and $X_{t+1}$ etc (with t and t+1 it is lag 1 autocorrelation)
+
+For example, visually, let us define a vector, $Y5$ and take its autocorrelation:
+
+```{r, fig.show = 'hold'}
+Y5 <- c(5.1,5.2,5.5,5.3,5.1,4.8,4.5,4.4,4.6,4.6,4.8,5.2,5.4,5.6,5.4,5.3,5.1,5.1,4.8,4.7,4.5,4.3,4.6,4.8,4.9,5.2,5.4,5.6,5.5,5.5)
+knitr::kable(acfdf(Y5))
+tplot(Y5)
+ggacf(Y5)
+```
+
+#### Independent(ish) data!
+
+
+Now let us look at autocorrelation of ***independent*** data
+
+```{r, results = "hide", fig.show = "hide"}
+Realization1 = gen.arma.wge(n = 250)
+```
+
+
+```{r, fig.show = "hold"}
+tplot(Realization1)
+ggacf(Realization1)
+```
+
+Now lets look at the actual value of the autocorrelation
+
+```{r}
+knitr::kable(acfdf(Realization1))
+```
+
+
+We see that $$ \hat{\rho}\left(t,t+1\right) = \hat{\rho}_1 = r_1 = `r mean(acfdf(Realization1)$acf)` $$
+Which is more or less zero
+
+
+
