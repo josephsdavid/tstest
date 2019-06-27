@@ -1,6 +1,6 @@
 book_filename: "Time Series Review"
 chapter_name: "Unit "
-output_dir: doc
+output_dir: docs
 rmd_files: [
         "index.Rmd", 
         "notes/01-expect.Rmd", 
