@@ -82,7 +82,6 @@ $$E[aX + b] = aE[X] + E[b] = aE[x] + b = a\mu+b$$
 
 Knowing these rules, lets try out a challenge:
 
-
 ### A challenge in Expected Values
 
 Find $E[\bar{x}]$ where $\bar{x} = \frac{1}{n}\sum_{i=1}^{n}{x_i}$

@@ -5,5 +5,15 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 output: bookdown::gitbook
+github-repo: josephsdavid/tstest
 description: "A hopefully helpful guide"
 ---
+
+```{r, include = F}
+if (knitr::is_latex_output()) {
+	knitr::opts_chunk$set(dev = "tikz")
+	knitr::opts_knit$set(cache =T, autodep = T)
+}
+knitr::opts_chunk$set(tidy = T)
+knitr::opts_chunk$set(fig.align = "center")
+```

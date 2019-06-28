@@ -36,8 +36,7 @@ d1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 
 e1 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(3,0), vara = 3, plot =F)
 ```
 
-
-```{r, echo = F, fig.align = 'center'}
+```{r, echo = F, fig.align = 'center', fig.fullwidth = T}
 plot(a1,type = 'l')
 lines(b1,col = 'blue', type = 'l')
 lines(c1,col = 'red', type = 'l')
@@ -48,16 +47,13 @@ lines(e1, col ='purple', type = 'l')
 
 Now lets look at 5 realizations which come from the same realization, which might not have a constant mean:
 
-
 ```{r, eval = F}
 a2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
 b2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
 c2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
 d2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
 e2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
-
 ```
-
 
 ```{r, echo = F, results = 'hide', fig.show = 'hide',}
 a2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
@@ -67,40 +63,17 @@ d2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*p
 e2 = gen.sigplusnoise.wge(100,coef=c(5,0), freq = c(.1,0), psi = c(runif(1,0,2*pi),0), vara = 3, plot =F)
 ```
 
-```{r, echo = F, fig.align = 'center'}
+```{r, echo = F, fig.align = 'center', fig.fullwidth = T}
 plot(a2,type = 'l')
 lines(b2,col = 'blue', type = 'l')
 lines(c2,col = 'red', type = 'l')
 lines(d2,col = 'green', type = 'l')
 lines(e2, col ='purple', type = 'l')
-
 ```
-
 
 We cannot say for sure whether the mean is constant or not in this case!
 
-
-Let us compare both of them on the same plot:
-
-```{r plotboth}
-par(mfrow = c(2,1))
-
-plot(a1,type = 'l')
-lines(b1,col = 'blue', type = 'l')
-lines(c1,col = 'red', type = 'l')
-lines(d1,col = 'green', type = 'l')
-lines(e1, col ='purple', type = 'l')
-plot(a2,type = 'l')
-lines(b2,col = 'blue', type = 'l')
-lines(c2,col = 'red', type = 'l')
-lines(d2,col = 'green', type = 'l')
-lines(e2, col ='purple', type = 'l')
-par(mfrow = c(1,1))
-```
-
-
 ## Condition Two: Constant Variance
-
 
 ***Variance does not depend on time***
 
@@ -108,7 +81,7 @@ Variance is *constant* and finite*
 
 That is :
 
-$$Var[X_t] = \sigma^2 < \infty$$ >
+$$Var[X_t] = \sigma^2 \neq \infty$$ 
 
 If we can make this assumption, then we can use all of the data to make the variance. 
 This is typically the hardest one to tell, and it will take some practice to see.

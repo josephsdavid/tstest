@@ -1,0 +1,81 @@
+# The Frequency Domain
+
+```{r, include = F}
+library(tswge)
+library(tidyverse)
+library(magrittr)
+library(ggthemes)
+```
+
+## Review of sine and cosine
+
+
+### Phase shifts
+This is what a sine wave looks like
+
+$$\delta = 0; y = \mathrm(sin)(t)$$
+```{r, echo = F}
+curve(sin, 0, 2*pi, xname = "t")
+```
+
+We can phase shift the sin wave by adding
+
+RED:
+$$\delta = \pi; y = \mathrm{sin}(t+\pi)$$
+
+BLUE:
+$$\delta = \frac{\pi}{2}; y = \mathrm{sin}(t+\frac{\pi}{2})$$
+```{r, echo = F}
+curve(sin(t + pi), 0, 2*pi, xname = "t",col = "red")
+curve(sin(t + pi/2),0,2*pi,xname = "t", add = T,col="blue")
+```
+
+Now cosine
+
+```{r, echo = F}
+curve(cos, 0, 2*pi, xname = "t")
+curve(cos(t + pi), 0, 2*pi, xname = "t",col = "red",add = T)
+curve(cos(t + pi/2),0,2*pi,xname = "t", add = T,col="blue")
+```
+
+## Frequency and Period
+
+Let us say $f(x)$ is a periodic function. If $f(x)$ has period $p$, then $p$ is the smallest value S.T.
+$$f(x) = f(x + kp) $$
+
+Cool
+
+## psueudo-periodicity
+
+Data are *psuedo-periodic* with period $p$ if $p$ is the smallest value such that a cycle appears to repeat itself.
+
+## Aperiodicity
+Aperiodic data is data in which no $p$ exists.
+
+## Frequency
+
+**Frequency** is calculated as : $\frac{1}{p}$
+
+It symbolizes the number of cycles per unit(number of periods per unit)
+
+## Frequency Terminology
+Frequency of a trigonometruc function:
+
+Let $f(x)=\sin\left( 2\pi f t \right)$
+
+Then we have that :
+
+$$p = 1/f$$ $$\nu = f$$
+
+Consider:
+$$\sin(Bt + C)$$
+Then 
+$$p = \frac{2 \pi}{B}$$
+$$\nu = \frac{B} {2 \pi}$$
+
+## Composite sine function
+
+```{r, code = readLines('R/compositesine.R')}
+```
+
+this is a signal with three frequencies!

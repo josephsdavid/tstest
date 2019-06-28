@@ -12,8 +12,12 @@ in
        rPackages.pander
        rPackages.ggplot2
        rPackages.glue
+       rPackages.tikzDevice
       rPackages.knitr
       rPackages.tswge
+      rPackages.ggthemes
+      rPackages.cowplot
+      rPackages.tufte
       rPackages.dplyr
       rPackages.purrr
       rPackages.quantmod

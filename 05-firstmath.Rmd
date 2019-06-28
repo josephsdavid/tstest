@@ -1,0 +1,54 @@
+# Practical Autocorrelation
+
+## Estimation!
+
+### $\rho_k \rightarrow 0$
+For a stationary time series, if the autocorrelation approaches zero, then :
+
+A Single realization lets us estimate mean, variance, and autovvariance!
+
+Remember that $\rho_k = \frac{\gamma_k}{\gamma_0}$, and we use n-k pairs to calculate it (the summation)
+
+#### Mean
+
+Just calculate the mean normally for this case.
+
+#### Variance
+
+$$\mathrm{Var}\left(\bar{X}\right) = \frac{\sigma^2}{n} \sum^{n-1}_{k = -(n-1)} \left( 1 - \frac{\mid{k}\mid}{n} \right)\rho_k$$
+
+$\sigma^2$ is calculated as normal, we will see rhok next!
+
+remember !
+
+Now it is time for some code!
+
+```{r}
+library(glue)
+xbar <- function(xs){
+	mean(xs)
+}
+
+ghat_zero <- function(xs){
+	summand <- (xs - xbar(xs))^2
+	mean(summand)
+}
+
+ghat_one <- function(xs) {
+	lhs <- xs[1:(length(xs) - 1)] - xbar(xs)
+	rhs <- xs[2:length(xs)] - xbar(xs)
+	summand <- lhs * rhs
+	summate <- sum(summand)
+	summate/length(xs)
+
+}
+rhohat_zero <- 1
+rhohat_one <- function(xs) {
+	ghat_one(xs) / ghat_zero(xs)
+}
+v <- c(76,70,66,60,70,72,76,80)
+xbar(v)
+ghat_zero(v)
+ghat_one(v)
+rhohat_one(v)
+```

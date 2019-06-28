@@ -1,6 +1,7 @@
 # Autocorrelation 
 
 ```{r}
+library(tswge)
 library(ggplot2)
 acfdf <- function(vec){
 	vacf <- acf(vec, plot = F)
@@ -10,7 +11,8 @@ ggacf <- function(vec){
 	ac <- acfdf(vec)
 	ggplot(data = ac, aes(x = lag, y = acf))+
 		geom_hline(aes(yintercept = 0)) +
-		geom_segment(mapping = aes(xend = lag, yend = 0))
+		geom_segment(mapping = aes(xend = lag
+					   , yend = 0))
 }
 
 tplot <- function(vec){
@@ -20,7 +22,6 @@ tplot <- function(vec){
 		geom_line()
 }
 ```
-
 
 ## Independence
 
@@ -39,45 +40,39 @@ That is **if $X_t$ and $X_{t+k}$ are independent, $\rho_{x_{t},x_{t+k}}=0$**
 
 In other words if $\rho_{x_{t},x_{t+k}} \neq 0$, they are ***not*** independent.
 
-
 ### Autocorrelation Plots
 
-#### Dependent(ish) data
+### Dependent(ish) data
 In time series we look at the **autocorrelation** between $X_t$ and $X_{t+1}$ etc (with t and t+1 it is lag 1 autocorrelation)
 
 For example, visually, let us define a vector, $Y5$ and take its autocorrelation:
 
-```{r, fig.show = 'hold'}
+```{r, fig.margin = T}
 Y5 <- c(5.1,5.2,5.5,5.3,5.1,4.8,4.5,4.4,4.6,4.6,4.8,5.2,5.4,5.6,5.4,5.3,5.1,5.1,4.8,4.7,4.5,4.3,4.6,4.8,4.9,5.2,5.4,5.6,5.5,5.5)
 knitr::kable(acfdf(Y5))
-tplot(Y5)
-ggacf(Y5)
+tplot(Y5) + ggthemes::theme_few()
+ggacf(Y5) + ggthemes::theme_few()
 ```
 
-#### Independent(ish) data!
+### Independent(ish) data!
 
 
 Now let us look at autocorrelation of ***independent*** data
 
-```{r, results = "hide", fig.show = "hide"}
-Realization1 = gen.arma.wge(n = 250)
+```{r, echo = F, results = "hide", fig.show = "hide", include = FALSE}
+xs = gen.arma.wge(n = 250)
 ```
 
 
-```{r, fig.show = "hold"}
-tplot(Realization1)
-ggacf(Realization1)
+```{r, eval = F}
+xs = gen.arma.wge(n = 250)
 ```
 
-Now lets look at the actual value of the autocorrelation
+Let's check it out
 
 ```{r}
-knitr::kable(acfdf(Realization1))
+tplot(xs) + ggthemes::theme_few()
+ggacf(xs) + ggthemes::theme_few()
 ```
 
-
-We see that $$ \hat{\rho}\left(t,t+1\right) = \hat{\rho}_1 = r_1 = `r mean(acfdf(Realization1)$acf)` $$
-Which is more or less zero
-
-
-
+We see that the autocorrelation is more or less zero

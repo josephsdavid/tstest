@@ -1,5 +1,10 @@
 # Autocorrelation Concepts and Notation
 
+```{r, include = F}
+library(tswge)
+library(ggplot2)
+```
+
 ## Theoretical concept of $\rho$
 
 $$\rho = \frac{E\left[\left(X-\mu_X\right)\left(Y-\mu_Y\right)\right]}{\sigma_X \sigma_Y} = \frac{\mathrm{covariance between X+y}}{\sigma_X \sigma_Y}$$
@@ -23,3 +28,72 @@ $$\sigma_X^2 = 1E[(X_t - \mu)^2] = E[(X_t -\mu )(X_t - \mu)] = \gamma_0$$
 Therefore:
 
 $$\rho_k = \frac{\gamma_k}{\gamma_0}$$
+
+## Stationary Covariance
+
+Correlation is not affected by where, only by how far apart, that is:
+$$ \rho_h = \mathrm{Cor} \left(X_t, X_{t+h}\right)$$
+
+Let us try it out with this little snippet:
+
+```{r}
+ggsplitacf <-function(vec) {
+  h1 <- vec[1:(length(vec)/2)]
+  h2 <- vec[(length(vec)/2):length(vec)]
+  first <- ggacf(vec)+ggthemes::theme_few()
+  second <- ggacf(h1)+ggthemes::theme_few()
+  third <- ggacf(h2)+ggthemes::theme_few()
+  cowplot::plot_grid(first, second, third,
+                     labels = c("original", 
+                                "first half",
+                                "second half"),
+                     nrow = 2, align = "v")
+}
+
+```
+
+```{r, include=F, fig.show = "hide", results='hide', echo =F}
+Realize = gen.arma.wge(500,0.95,0,plot = T, sn = 784)
+```
+
+
+
+```{r, eval =F}
+Realize = gen.arma.wge(500,0.95,0,plot = T, sn = 784)
+```
+
+
+```{r}
+ggsplitacf(Realize)
+```
+
+This looks pretty stationary to me!
+Let's try with some sample data:
+
+```{r}
+data("noctula")
+tplot(noctula)+ggthemes::theme_few()
+ggsplitacf(noctula)
+```
+
+So in this case our mean probably looks constant, our variance could be constant as well, however the ACFs are clearly different. Let's look at a different dataset:
+
+```{r}
+data(lavon)
+tplot(lavon)+ggthemes::theme_few()
+ggsplitacf(lavon)
+```
+
+In this case, our mean looks maybe to be constant around 495, our variance does not appear to be constant, and our ACF looks pretty good, however I would say overall this probably is not stationary, due to the variance and slightly off ACF.
+
+## Stationary Time Series: Putting it Together
+
+### Workflow:
+
+* Step 1: Check condition 1
+	* see if the assumption is more or less met
+* Step 2: Check condition two
+	* same thing
+* Step 3: Check for condition three
+ 
+If one of the things is iffy, and the other two arent, we are going to be just fine.
