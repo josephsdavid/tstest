@@ -1,0 +1,10 @@
+# AR(p)
+
+This is basically the same thing, with the same conclusion, except instead of having clearly defined behavior based on the sine of the roots, the closer the absolute value of the roots is to one the more dominant that behavior is in the realization. To solve these, we will use this brilliant `factor.wge` function:
+
+```{r}
+library(tswge)
+factor.wge(phi = c(0.7,0.4,0.3,-.4,-.7,.1,-.1))
+```
+
+We can use the absolute reciporacal (speling) of the root to tell if it is stationary easily. If it is less than one, we have stationarity. It has the same property in that if it is closer to one, that is a stronger characteristic in the realization.

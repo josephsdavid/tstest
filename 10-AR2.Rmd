@@ -1,0 +1,102 @@
+# AR(2) models
+
+$$X_t = \beta + \phi_1 X_{t-1} +\phi_2 X_{t-2} +a_t$$
+where $\beta = \left(  1 - \phi_1 - \phi_2 \right) \mu$ is the moving average constant.
+
+## Notes
+It looks like MLR, however the independetn variables are values of the dependent variable at two previous time periods
+
+
+
+## Stationarity in AR(2)
+
+$$E[X_t] = \mu $$
+
+$$\sigma_X^2 = \frac {\sigma^2_a}{1-\phi_1 \rho_1 - \phi_2 \rho_2 } $$
+
+
+Instead of depending on positive or negative roots, like AR(1), the behavior of the autocorrelations and spectral density depends on whether or not the roots of the characteristic equation are complex. This means it is already hard to tell from the equation whether or not it is stationary just by looking at the equation.
+
+
+## AR(2) zero mean form
+
+If $\mu = 0$, then the AR(2) model takes the form :
+
+$$X_t =  \phi_1 X_{t-1} +\phi_2 X_{t-2} +a_t$$
+
+We can study this much easier and then add the mean back later. A more common way of writing this, and more useful to us is the form:
+$$X_t- \phi_1 X_{t-1} -\phi_2 X_{t-2}=   a_t$$
+
+## More on backshift operator notation
+
+Remember, we defined the backshift operator as $B$ such that $BX_t = X_{t-1}$
+
+We can extend this and say:
+$$B^k X_t = X_{t-k}$$
+
+This means we can rewrite:
+
+
+$$X_t- \phi_1 BX_t -\phi_2 B^2 X_t=   a_t$$
+
+$$X_t\left[ 1 - \phi_1 B - \phi_2 B^2  \right] = a_t$$
+
+or, more tersely:
+
+$$\phi(B)X_t = a_t$$
+
+Where $\phi (B) =  1 - \phi_1 B - \phi_2 B^2$
+
+We can rewrite this $\phi(B)$ as a characteristic equation now:
+$$1 - \phi_1 Z - \phi_2 Z^2 = 0$$
+
+Lets quickly expand on our quadratic solver to get the roots of an AR(2) model:
+
+```{r}
+ar2solver <- function(p1,p2) {
+	res <- as.complex(quad_form(p2,p1,1))
+	mag <- Mod(res)
+	absrecip <- 1/mag
+	data.frame("roots" = res, "magnitude" = mag, "abs.recip" = absrecip)
+}
+ar2solver(.4,.8)
+```
+
+## Characteristic equation
+
+$$ x = \frac{ - b \pm \sqrt {b^2 - 4ac} }{2a}   $$
+$$1- \phi_1 Z - \phi_2 Z^2 = 0$$
+
+Just solve the quadratic equation using the quadratic formula:
+
+$$ x = \frac{ - b \pm \sqrt {b^2 - 4ac} }{2a}   $$
+
+
+Two  cases:
+* Two real roots
+* Two complex roots
+
+## Key result
+
+An AR(2) is stationary ***iff*** all roots are outside the unit circle
+
+### Two real roots
+
+We can factor the AR(2) into two AR(1)s
+
+* one part positive one part negative
+  * Wandering but oscillating
+  * Damping ACF but slightly oscillatory
+  * S(f) has a peak at 0 and at 0.5
+* Two Positive roots
+  * Super wandering
+  * Super Damped
+  * S(f) peak at 0
+* Two Negative
+  * super oscillating
+
+### Complex conjugate roots
+
+Stationary AR(2)'s with complex conjugate roots have an autocorrelation function which looks more like a damped sinusoid instead of a damped exponential, and a system frequency, $f_0$ defined as+
+$$f_0 = \frac{1}{2\pi}\mathrm{cos}^{-1} \left( \frac{\phi_1}{2 \sqrt{-\phi_2}} \right )$$. Pretty easy stuff.
+

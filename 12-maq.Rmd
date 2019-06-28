@@ -1,0 +1,14 @@
+# MA(q) Models
+
+## Properties and Characteristics
+
+We use MA models to model stationary data. They are not quite as useful as AR models, but in conjunction with them, we can create ARMA(p,q) models and so forth.
+
+### A quote for your thoughts:
+
+"All models are wrong... but some are useful" - George Box
+
+## MA(q)
+
+First of all, we need to define the equation for a Moving Average Model of order q:
+$$X_t = \mu + a_t - \theta_1 a_{t-1} - ... - \theta_q a_{t-q}$$
