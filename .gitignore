@@ -3,8 +3,10 @@ libs/
 rsconnect/
 .Rdata
 .Rhistory
-_bookdown_files
+_bookdown_files/
 docs/fig/
 docs/libs/
 docs/tsReview_files/
 docs/*.html
+*.log
+*.tikzDictionary
