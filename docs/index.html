@@ -1,45 +1,55 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html >
 
 <head>
 
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="Time Series Midterm Review" />
-<meta property="og:type" content="book" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Time Series Midterm Review</title>
+  <meta name="description" content="A hopefully helpful guide">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Time Series Midterm Review" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A hopefully helpful guide" />
+  <meta name="github-repo" content="josephsdavid/tstest" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Time Series Midterm Review" />
+  
+  <meta name="twitter:description" content="A hopefully helpful guide" />
+  
+
+<meta name="author" content="David Josephs">
 
 
-<meta property="og:description" content="A hopefully helpful guide" />
-<meta name="github-repo" content="josephsdavid/tstest" />
+<meta name="date" content="2019-06-28">
 
-<meta name="author" content="David Josephs" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
 
-<meta name="date" content="2019-06-28" />
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-
-<meta name="description" content="A hopefully helpful guide">
-
-<title>Time Series Midterm Review</title>
-
-<script src="libs/jquery-1.11.3/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="libs/navigation-1.1/tabsets.js"></script>
+<link rel="next" href="expected-values-variance-etc-.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+
+
+
+
+
+
 <style type="text/css">
 code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -105,184 +115,227 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-</style>
 </head>
 
 <body>
 
-<div class="container-fluid main-container">
 
 
-<div class="row">
-<div class="col-sm-12">
-<div id="TOC">
-<ul>
-<li><a href="index.html#time-series-o-clock"><span class="toc-section-number">1</span> Time series o clock</a></li>
-<li class="has-sub"><a href="2-expected-values-variance-etc-.html#expected-values-variance-etc."><span class="toc-section-number">2</span> Expected Values, Variance, etc.</a><ul>
-<li class="has-sub"><a href="2-1-notation-and-some-definitions.html#notation-and-some-definitions"><span class="toc-section-number">2.1</span> Notation and Some Definitions</a><ul>
-<li><a href="2-1-notation-and-some-definitions.html#realizations-and-ensembles"><span class="toc-section-number">2.1.1</span> Realizations and Ensembles</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Time Series Midterm Review</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Time series o clock</a></li>
+<li class="chapter" data-level="2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html"><i class="fa fa-check"></i><b>2</b> Expected Values, Variance, etc.</a><ul>
+<li class="chapter" data-level="2.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#notation-and-some-definitions"><i class="fa fa-check"></i><b>2.1</b> Notation and Some Definitions</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#realizations-and-ensembles"><i class="fa fa-check"></i><b>2.1.1</b> Realizations and Ensembles</a></li>
 </ul></li>
-<li class="has-sub"><a href="2-2-population-means-and-variances.html#population-means-and-variances"><span class="toc-section-number">2.2</span> Population Means and Variances</a><ul>
-<li><a href="2-2-population-means-and-variances.html#the-mean-of-x_t"><span class="toc-section-number">2.2.1</span> The Mean of <span class="math inline">\(X_t\)</span></a></li>
-<li><a href="2-2-population-means-and-variances.html#variance-of-x_t"><span class="toc-section-number">2.2.2</span> Variance of <span class="math inline">\(X_t\)</span></a></li>
+<li class="chapter" data-level="2.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#population-means-and-variances"><i class="fa fa-check"></i><b>2.2</b> Population Means and Variances</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#the-mean-of-x_t"><i class="fa fa-check"></i><b>2.2.1</b> The Mean of <span class="math inline">\(X_t\)</span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance-of-x_t"><i class="fa fa-check"></i><b>2.2.2</b> Variance of <span class="math inline">\(X_t\)</span></a></li>
 </ul></li>
-<li><a href="2-3-estimating-mean-and-variance-for-multiple-realizations.html#estimating-mean-and-variance-for-multiple-realizations"><span class="toc-section-number">2.3</span> Estimating Mean and Variance for Multiple Realizations</a></li>
-<li class="has-sub"><a href="2-4-expected-value.html#expected-value"><span class="toc-section-number">2.4</span> Expected Value</a><ul>
-<li><a href="2-4-expected-value.html#discrete-rvs"><span class="toc-section-number">2.4.1</span> Discrete RVs</a></li>
-<li><a href="2-4-expected-value.html#continuous-rvs"><span class="toc-section-number">2.4.2</span> Continuous RVs</a></li>
-<li><a href="2-4-expected-value.html#some-rules"><span class="toc-section-number">2.4.3</span> Some Rules</a></li>
-<li><a href="2-4-expected-value.html#a-challenge-in-expected-values"><span class="toc-section-number">2.4.4</span> A challenge in Expected Values</a></li>
-<li><a href="2-4-expected-value.html#a-solution"><span class="toc-section-number">2.4.5</span> A solution</a></li>
+<li class="chapter" data-level="2.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#estimating-mean-and-variance-for-multiple-realizations"><i class="fa fa-check"></i><b>2.3</b> Estimating Mean and Variance for Multiple Realizations</a></li>
+<li class="chapter" data-level="2.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#expected-value"><i class="fa fa-check"></i><b>2.4</b> Expected Value</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#discrete-rvs"><i class="fa fa-check"></i><b>2.4.1</b> Discrete RVs</a></li>
+<li class="chapter" data-level="2.4.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#continuous-rvs"><i class="fa fa-check"></i><b>2.4.2</b> Continuous RVs</a></li>
+<li class="chapter" data-level="2.4.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#some-rules"><i class="fa fa-check"></i><b>2.4.3</b> Some Rules</a></li>
+<li class="chapter" data-level="2.4.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-challenge-in-expected-values"><i class="fa fa-check"></i><b>2.4.4</b> A challenge in Expected Values</a></li>
+<li class="chapter" data-level="2.4.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-solution"><i class="fa fa-check"></i><b>2.4.5</b> A solution</a></li>
 </ul></li>
-<li class="has-sub"><a href="2-5-variance-and-covariance.html#variance-and-covariance"><span class="toc-section-number">2.5</span> Variance and Covariance</a><ul>
-<li><a href="2-5-variance-and-covariance.html#variance"><span class="toc-section-number">2.5.1</span> Variance</a></li>
-<li><a href="2-5-variance-and-covariance.html#covariance"><span class="toc-section-number">2.5.2</span> Covariance</a></li>
-<li><a href="2-5-variance-and-covariance.html#some-generalizations-on-covariance"><span class="toc-section-number">2.5.3</span> Some generalizations on covariance:</a></li>
-<li><a href="2-5-variance-and-covariance.html#a-challenge"><span class="toc-section-number">2.5.4</span> A challenge</a></li>
-<li><a href="2-5-variance-and-covariance.html#a-solution-1"><span class="toc-section-number">2.5.5</span> A solution</a></li>
-<li><a href="2-5-variance-and-covariance.html#a-note-on-covariance-and-correlation"><span class="toc-section-number">2.5.6</span> A note on covariance and correlation</a></li>
-</ul></li>
-</ul></li>
-<li class="has-sub"><a href="3-a-brief-discussion-of-stationarity.html#a-brief-discussion-of-stationarity"><span class="toc-section-number">3</span> A Brief Discussion of Stationarity</a><ul>
-<li><a href="3-1-condition-one-constant-mean.html#condition-one-constant-mean"><span class="toc-section-number">3.1</span> Condition One: Constant Mean</a></li>
-<li><a href="3-2-condition-two-constant-variance.html#condition-two-constant-variance"><span class="toc-section-number">3.2</span> Condition Two: Constant Variance</a></li>
-<li><a href="3-3-condition-3-constant-autocorrelation.html#condition-3-constant-autocorrelation"><span class="toc-section-number">3.3</span> Condition 3: Constant autocorrelation</a></li>
-</ul></li>
-<li class="has-sub"><a href="4-autocorrelation.html#autocorrelation"><span class="toc-section-number">4</span> Autocorrelation</a><ul>
-<li><a href="4-1-independence.html#independence"><span class="toc-section-number">4.1</span> Independence</a></li>
-<li class="has-sub"><a href="4-2-serial-dependence-autocorrelation.html#serial-dependence-autocorrelation"><span class="toc-section-number">4.2</span> Serial Dependence / Autocorrelation</a><ul>
-<li><a href="4-2-serial-dependence-autocorrelation.html#a-definition"><span class="toc-section-number">4.2.1</span> A definition</a></li>
-<li><a href="4-2-serial-dependence-autocorrelation.html#autocorrelation-plots"><span class="toc-section-number">4.2.2</span> Autocorrelation Plots</a></li>
-<li><a href="4-2-serial-dependence-autocorrelation.html#dependentish-data"><span class="toc-section-number">4.2.3</span> Dependent(ish) data</a></li>
-<li><a href="4-2-serial-dependence-autocorrelation.html#independentish-data"><span class="toc-section-number">4.2.4</span> Independent(ish) data!</a></li>
+<li class="chapter" data-level="2.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance-and-covariance"><i class="fa fa-check"></i><b>2.5</b> Variance and Covariance</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance"><i class="fa fa-check"></i><b>2.5.1</b> Variance</a></li>
+<li class="chapter" data-level="2.5.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#covariance"><i class="fa fa-check"></i><b>2.5.2</b> Covariance</a></li>
+<li class="chapter" data-level="2.5.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#some-generalizations-on-covariance"><i class="fa fa-check"></i><b>2.5.3</b> Some generalizations on covariance:</a></li>
+<li class="chapter" data-level="2.5.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-challenge"><i class="fa fa-check"></i><b>2.5.4</b> A challenge</a></li>
+<li class="chapter" data-level="2.5.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-solution-1"><i class="fa fa-check"></i><b>2.5.5</b> A solution</a></li>
+<li class="chapter" data-level="2.5.6" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-note-on-covariance-and-correlation"><i class="fa fa-check"></i><b>2.5.6</b> A note on covariance and correlation</a></li>
 </ul></li>
 </ul></li>
-<li class="has-sub"><a href="5-autocorrelation-concepts-and-notation.html#autocorrelation-concepts-and-notation"><span class="toc-section-number">5</span> Autocorrelation Concepts and Notation</a><ul>
-<li><a href="5-1-theoretical-concept-of-rho.html#theoretical-concept-of-rho"><span class="toc-section-number">5.1</span> Theoretical concept of <span class="math inline">\(\rho\)</span></a></li>
-<li><a href="5-2-autocovariance.html#autocovariance"><span class="toc-section-number">5.2</span> autocovariance</a></li>
-<li><a href="5-3-autocorrelation-1.html#autocorrelation-1"><span class="toc-section-number">5.3</span> autocorrelation</a></li>
-<li><a href="5-4-stationary-covariance.html#stationary-covariance"><span class="toc-section-number">5.4</span> Stationary Covariance</a></li>
-<li class="has-sub"><a href="5-5-stationary-time-series-putting-it-together.html#stationary-time-series-putting-it-together"><span class="toc-section-number">5.5</span> Stationary Time Series: Putting it Together</a><ul>
-<li><a href="5-5-stationary-time-series-putting-it-together.html#workflow"><span class="toc-section-number">5.5.1</span> Workflow:</a></li>
+<li class="chapter" data-level="3" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html"><i class="fa fa-check"></i><b>3</b> A Brief Discussion of Stationarity</a><ul>
+<li class="chapter" data-level="3.1" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-one-constant-mean"><i class="fa fa-check"></i><b>3.1</b> Condition One: Constant Mean</a></li>
+<li class="chapter" data-level="3.2" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-two-constant-variance"><i class="fa fa-check"></i><b>3.2</b> Condition Two: Constant Variance</a></li>
+<li class="chapter" data-level="3.3" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-3-constant-autocorrelation"><i class="fa fa-check"></i><b>3.3</b> Condition 3: Constant autocorrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="autocorrelation.html"><a href="autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Autocorrelation</a><ul>
+<li class="chapter" data-level="4.1" data-path="autocorrelation.html"><a href="autocorrelation.html#independence"><i class="fa fa-check"></i><b>4.1</b> Independence</a></li>
+<li class="chapter" data-level="4.2" data-path="autocorrelation.html"><a href="autocorrelation.html#serial-dependence-autocorrelation"><i class="fa fa-check"></i><b>4.2</b> Serial Dependence / Autocorrelation</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="autocorrelation.html"><a href="autocorrelation.html#a-definition"><i class="fa fa-check"></i><b>4.2.1</b> A definition</a></li>
+<li class="chapter" data-level="4.2.2" data-path="autocorrelation.html"><a href="autocorrelation.html#autocorrelation-plots"><i class="fa fa-check"></i><b>4.2.2</b> Autocorrelation Plots</a></li>
+<li class="chapter" data-level="4.2.3" data-path="autocorrelation.html"><a href="autocorrelation.html#dependentish-data"><i class="fa fa-check"></i><b>4.2.3</b> Dependent(ish) data</a></li>
+<li class="chapter" data-level="4.2.4" data-path="autocorrelation.html"><a href="autocorrelation.html#independentish-data"><i class="fa fa-check"></i><b>4.2.4</b> Independent(ish) data!</a></li>
 </ul></li>
 </ul></li>
-<li class="has-sub"><a href="6-practical-autocorrelation.html#practical-autocorrelation"><span class="toc-section-number">6</span> Practical Autocorrelation</a><ul>
-<li class="has-sub"><a href="6-1-estimation.html#estimation"><span class="toc-section-number">6.1</span> Estimation!</a><ul>
-<li><a href="6-1-estimation.html#rho_k-rightarrow-0"><span class="toc-section-number">6.1.1</span> <span class="math inline">\(\rho_k \rightarrow 0\)</span></a></li>
+<li class="chapter" data-level="5" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html"><i class="fa fa-check"></i><b>5</b> Autocorrelation Concepts and Notation</a><ul>
+<li class="chapter" data-level="5.1" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#theoretical-concept-of-rho"><i class="fa fa-check"></i><b>5.1</b> Theoretical concept of <span class="math inline">\(\rho\)</span></a></li>
+<li class="chapter" data-level="5.2" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#autocovariance"><i class="fa fa-check"></i><b>5.2</b> autocovariance</a></li>
+<li class="chapter" data-level="5.3" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#autocorrelation-1"><i class="fa fa-check"></i><b>5.3</b> autocorrelation</a></li>
+<li class="chapter" data-level="5.4" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#stationary-covariance"><i class="fa fa-check"></i><b>5.4</b> Stationary Covariance</a></li>
+<li class="chapter" data-level="5.5" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#stationary-time-series-putting-it-together"><i class="fa fa-check"></i><b>5.5</b> Stationary Time Series: Putting it Together</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#workflow"><i class="fa fa-check"></i><b>5.5.1</b> Workflow:</a></li>
 </ul></li>
 </ul></li>
-<li class="has-sub"><a href="7-the-frequency-domain.html#the-frequency-domain"><span class="toc-section-number">7</span> The Frequency Domain</a><ul>
-<li class="has-sub"><a href="7-1-review-of-sine-and-cosine.html#review-of-sine-and-cosine"><span class="toc-section-number">7.1</span> Review of sine and cosine</a><ul>
-<li><a href="7-1-review-of-sine-and-cosine.html#phase-shifts"><span class="toc-section-number">7.1.1</span> Phase shifts</a></li>
-</ul></li>
-<li><a href="7-2-frequency-and-period.html#frequency-and-period"><span class="toc-section-number">7.2</span> Frequency and Period</a></li>
-<li><a href="7-3-psueudo-periodicity.html#psueudo-periodicity"><span class="toc-section-number">7.3</span> psueudo-periodicity</a></li>
-<li><a href="7-4-aperiodicity.html#aperiodicity"><span class="toc-section-number">7.4</span> Aperiodicity</a></li>
-<li><a href="7-5-frequency.html#frequency"><span class="toc-section-number">7.5</span> Frequency</a></li>
-<li><a href="7-6-frequency-terminology.html#frequency-terminology"><span class="toc-section-number">7.6</span> Frequency Terminology</a></li>
-<li><a href="7-7-composite-sine-function.html#composite-sine-function"><span class="toc-section-number">7.7</span> Composite sine function</a></li>
-<li class="has-sub"><a href="7-8-fundamental-idea.html#fundamental-idea"><span class="toc-section-number">7.8</span> Fundamental idea</a><ul>
-<li><a href="7-8-fundamental-idea.html#a-brief-look-at-fourier-series"><span class="toc-section-number">7.8.1</span> A Brief Look at Fourier Series</a></li>
+<li class="chapter" data-level="6" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html"><i class="fa fa-check"></i><b>6</b> Practical Autocorrelation</a><ul>
+<li class="chapter" data-level="6.1" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html#estimation"><i class="fa fa-check"></i><b>6.1</b> Estimation!</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html#rho_k-rightarrow-0"><i class="fa fa-check"></i><b>6.1.1</b> <span class="math inline">\(\rho_k \rightarrow 0\)</span></a></li>
 </ul></li>
 </ul></li>
-<li class="has-sub"><a href="8-spectral-density.html#spectral-density"><span class="toc-section-number">8</span> Spectral Density</a><ul>
-<li><a href="8-1-derivation-of-spectral-density-of-white-noise.html#derivation-of-spectral-density-of-white-noise"><span class="toc-section-number">8.1</span> Derivation of spectral density of white noise</a></li>
-<li><a href="8-2-estimating-spectral-density-from-real-data.html#estimating-spectral-density-from-real-data"><span class="toc-section-number">8.2</span> Estimating Spectral Density from Real Data</a></li>
-<li><a href="8-3-spectral-density-in-the-wild.html#spectral-density-in-the-wild"><span class="toc-section-number">8.3</span> Spectral Density in the Wild</a></li>
-<li><a href="8-4-why-do-we-do-spectral-density-from-0-5-to-0-5.html#why-do-we-do-spectral-density-from--0.5-to-0.5"><span class="toc-section-number">8.4</span> Why do we do spectral density from -0.5 to 0.5?</a></li>
+<li class="chapter" data-level="7" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html"><i class="fa fa-check"></i><b>7</b> The Frequency Domain</a><ul>
+<li class="chapter" data-level="7.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#review-of-sine-and-cosine"><i class="fa fa-check"></i><b>7.1</b> Review of sine and cosine</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#phase-shifts"><i class="fa fa-check"></i><b>7.1.1</b> Phase shifts</a></li>
 </ul></li>
-<li class="has-sub"><a href="9-ar1-models-and-filtering.html#ar1-models-and-filtering"><span class="toc-section-number">9</span> AR(1) Models and Filtering</a><ul>
-<li><a href="9-1-algebra-review.html#algebra-review"><span class="toc-section-number">9.1</span> Algebra review</a></li>
-<li class="has-sub"><a href="9-2-linear-filters.html#linear-filters"><span class="toc-section-number">9.2</span> Linear filters</a><ul>
-<li><a href="9-2-linear-filters.html#example"><span class="toc-section-number">9.2.1</span> Example</a></li>
-<li><a href="9-2-linear-filters.html#point-moving-average"><span class="toc-section-number">9.2.2</span> 5 point moving average</a></li>
-</ul></li>
-<li class="has-sub"><a href="9-3-types-of-filters.html#types-of-filters"><span class="toc-section-number">9.3</span> Types of filters:</a><ul>
-<li><a href="9-3-types-of-filters.html#an-example-in-r"><span class="toc-section-number">9.3.1</span> An example in R</a></li>
-<li><a href="9-3-types-of-filters.html#an-another-example"><span class="toc-section-number">9.3.2</span> An another example</a></li>
-</ul></li>
-<li><a href="9-4-glps.html#glps"><span class="toc-section-number">9.4</span> GLPs</a></li>
-<li class="has-sub"><a href="9-5-ar1-intro.html#ar1-intro"><span class="toc-section-number">9.5</span> AR(1) Intro</a><ul>
-<li><a href="9-5-ar1-intro.html#ar1-math-zone"><span class="toc-section-number">9.5.1</span> AR(1) math zone</a></li>
-<li><a href="9-5-ar1-intro.html#the-zero-mean-form-of-ar1"><span class="toc-section-number">9.5.2</span> the zero mean form of AR1</a></li>
-<li><a href="9-5-ar1-intro.html#ar1-with-positive-phi"><span class="toc-section-number">9.5.3</span> AR1 with positive phi</a></li>
-<li><a href="9-5-ar1-intro.html#ar1-with-negative-phi"><span class="toc-section-number">9.5.4</span> AR1 with negative phi</a></li>
-<li><a href="9-5-ar1-intro.html#nonstationary"><span class="toc-section-number">9.5.5</span> Nonstationary</a></li>
+<li class="chapter" data-level="7.2" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency-and-period"><i class="fa fa-check"></i><b>7.2</b> Frequency and Period</a></li>
+<li class="chapter" data-level="7.3" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#psueudo-periodicity"><i class="fa fa-check"></i><b>7.3</b> psueudo-periodicity</a></li>
+<li class="chapter" data-level="7.4" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#aperiodicity"><i class="fa fa-check"></i><b>7.4</b> Aperiodicity</a></li>
+<li class="chapter" data-level="7.5" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency"><i class="fa fa-check"></i><b>7.5</b> Frequency</a></li>
+<li class="chapter" data-level="7.6" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency-terminology"><i class="fa fa-check"></i><b>7.6</b> Frequency Terminology</a></li>
+<li class="chapter" data-level="7.7" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#composite-sine-function"><i class="fa fa-check"></i><b>7.7</b> Composite sine function</a></li>
+<li class="chapter" data-level="7.8" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#fundamental-idea"><i class="fa fa-check"></i><b>7.8</b> Fundamental idea</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#a-brief-look-at-fourier-series"><i class="fa fa-check"></i><b>7.8.1</b> A Brief Look at Fourier Series</a></li>
 </ul></li>
 </ul></li>
-<li><a href="10-characteristic-equations-for-ar1-models.html#characteristic-equations-for-ar1-models"><span class="toc-section-number">10</span> Characteristic Equations for AR(1) Models</a></li>
-<li class="has-sub"><a href="11-ar2-models.html#ar2-models"><span class="toc-section-number">11</span> AR(2) models</a><ul>
-<li><a href="11-1-notes.html#notes"><span class="toc-section-number">11.1</span> Notes</a></li>
-<li><a href="11-2-stationarity-in-ar2.html#stationarity-in-ar2"><span class="toc-section-number">11.2</span> Stationarity in AR(2)</a></li>
-<li><a href="11-3-ar2-zero-mean-form.html#ar2-zero-mean-form"><span class="toc-section-number">11.3</span> AR(2) zero mean form</a></li>
-<li><a href="11-4-more-on-backshift-operator-notation.html#more-on-backshift-operator-notation"><span class="toc-section-number">11.4</span> More on backshift operator notation</a></li>
-<li><a href="11-5-characteristic-equation.html#characteristic-equation"><span class="toc-section-number">11.5</span> Characteristic equation</a></li>
-<li class="has-sub"><a href="11-6-key-result.html#key-result"><span class="toc-section-number">11.6</span> Key result</a><ul>
-<li><a href="11-6-key-result.html#two-real-roots"><span class="toc-section-number">11.6.1</span> Two real roots</a></li>
-<li><a href="11-6-key-result.html#complex-conjugate-roots"><span class="toc-section-number">11.6.2</span> Complex conjugate roots</a></li>
+<li class="chapter" data-level="8" data-path="spectral-density.html"><a href="spectral-density.html"><i class="fa fa-check"></i><b>8</b> Spectral Density</a><ul>
+<li class="chapter" data-level="8.1" data-path="spectral-density.html"><a href="spectral-density.html#derivation-of-spectral-density-of-white-noise"><i class="fa fa-check"></i><b>8.1</b> Derivation of spectral density of white noise</a></li>
+<li class="chapter" data-level="8.2" data-path="spectral-density.html"><a href="spectral-density.html#estimating-spectral-density-from-real-data"><i class="fa fa-check"></i><b>8.2</b> Estimating Spectral Density from Real Data</a></li>
+<li class="chapter" data-level="8.3" data-path="spectral-density.html"><a href="spectral-density.html#spectral-density-in-the-wild"><i class="fa fa-check"></i><b>8.3</b> Spectral Density in the Wild</a></li>
+<li class="chapter" data-level="8.4" data-path="spectral-density.html"><a href="spectral-density.html#why-do-we-do-spectral-density-from--0.5-to-0.5"><i class="fa fa-check"></i><b>8.4</b> Why do we do spectral density from -0.5 to 0.5?</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html"><i class="fa fa-check"></i><b>9</b> AR(1) Models and Filtering</a><ul>
+<li class="chapter" data-level="9.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#algebra-review"><i class="fa fa-check"></i><b>9.1</b> Algebra review</a></li>
+<li class="chapter" data-level="9.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#linear-filters"><i class="fa fa-check"></i><b>9.2</b> Linear filters</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#example"><i class="fa fa-check"></i><b>9.2.1</b> Example</a></li>
+<li class="chapter" data-level="9.2.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#point-moving-average"><i class="fa fa-check"></i><b>9.2.2</b> 5 point moving average</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#types-of-filters"><i class="fa fa-check"></i><b>9.3</b> Types of filters:</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#an-example-in-r"><i class="fa fa-check"></i><b>9.3.1</b> An example in R</a></li>
+<li class="chapter" data-level="9.3.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#an-another-example"><i class="fa fa-check"></i><b>9.3.2</b> An another example</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#glps"><i class="fa fa-check"></i><b>9.4</b> GLPs</a></li>
+<li class="chapter" data-level="9.5" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-intro"><i class="fa fa-check"></i><b>9.5</b> AR(1) Intro</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-math-zone"><i class="fa fa-check"></i><b>9.5.1</b> AR(1) math zone</a></li>
+<li class="chapter" data-level="9.5.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#the-zero-mean-form-of-ar1"><i class="fa fa-check"></i><b>9.5.2</b> the zero mean form of AR1</a></li>
+<li class="chapter" data-level="9.5.3" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-with-positive-phi"><i class="fa fa-check"></i><b>9.5.3</b> AR1 with positive phi</a></li>
+<li class="chapter" data-level="9.5.4" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-with-negative-phi"><i class="fa fa-check"></i><b>9.5.4</b> AR1 with negative phi</a></li>
+<li class="chapter" data-level="9.5.5" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#nonstationary"><i class="fa fa-check"></i><b>9.5.5</b> Nonstationary</a></li>
 </ul></li>
 </ul></li>
-<li><a href="12-arp.html#arp"><span class="toc-section-number">12</span> AR(p)</a></li>
-<li class="has-sub"><a href="13-maq-models.html#maq-models"><span class="toc-section-number">13</span> MA(q) Models</a><ul>
-<li class="has-sub"><a href="13-1-properties-and-characteristics.html#properties-and-characteristics"><span class="toc-section-number">13.1</span> Properties and Characteristics</a><ul>
-<li><a href="13-1-properties-and-characteristics.html#a-quote-for-your-thoughts"><span class="toc-section-number">13.1.1</span> A quote for your thoughts:</a></li>
+<li class="chapter" data-level="10" data-path="characteristic-equations-for-ar1-models.html"><a href="characteristic-equations-for-ar1-models.html"><i class="fa fa-check"></i><b>10</b> Characteristic Equations for AR(1) Models</a></li>
+<li class="chapter" data-level="11" data-path="ar2-models.html"><a href="ar2-models.html"><i class="fa fa-check"></i><b>11</b> AR(2) models</a><ul>
+<li class="chapter" data-level="11.1" data-path="ar2-models.html"><a href="ar2-models.html#notes"><i class="fa fa-check"></i><b>11.1</b> Notes</a></li>
+<li class="chapter" data-level="11.2" data-path="ar2-models.html"><a href="ar2-models.html#stationarity-in-ar2"><i class="fa fa-check"></i><b>11.2</b> Stationarity in AR(2)</a></li>
+<li class="chapter" data-level="11.3" data-path="ar2-models.html"><a href="ar2-models.html#ar2-zero-mean-form"><i class="fa fa-check"></i><b>11.3</b> AR(2) zero mean form</a></li>
+<li class="chapter" data-level="11.4" data-path="ar2-models.html"><a href="ar2-models.html#more-on-backshift-operator-notation"><i class="fa fa-check"></i><b>11.4</b> More on backshift operator notation</a></li>
+<li class="chapter" data-level="11.5" data-path="ar2-models.html"><a href="ar2-models.html#characteristic-equation"><i class="fa fa-check"></i><b>11.5</b> Characteristic equation</a></li>
+<li class="chapter" data-level="11.6" data-path="ar2-models.html"><a href="ar2-models.html#key-result"><i class="fa fa-check"></i><b>11.6</b> Key result</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="ar2-models.html"><a href="ar2-models.html#two-real-roots"><i class="fa fa-check"></i><b>11.6.1</b> Two real roots</a></li>
+<li class="chapter" data-level="11.6.2" data-path="ar2-models.html"><a href="ar2-models.html#complex-conjugate-roots"><i class="fa fa-check"></i><b>11.6.2</b> Complex conjugate roots</a></li>
 </ul></li>
-<li><a href="13-2-maq.html#maq"><span class="toc-section-number">13.2</span> MA(q)</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="arp.html"><a href="arp.html"><i class="fa fa-check"></i><b>12</b> AR(p)</a></li>
+<li class="chapter" data-level="13" data-path="maq-models.html"><a href="maq-models.html"><i class="fa fa-check"></i><b>13</b> MA(q) Models</a><ul>
+<li class="chapter" data-level="13.1" data-path="maq-models.html"><a href="maq-models.html#properties-and-characteristics"><i class="fa fa-check"></i><b>13.1</b> Properties and Characteristics</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="maq-models.html"><a href="maq-models.html#a-quote-for-your-thoughts"><i class="fa fa-check"></i><b>13.1.1</b> A quote for your thoughts:</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="maq-models.html"><a href="maq-models.html#maq"><i class="fa fa-check"></i><b>13.2</b> MA(q)</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-sm-12">
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Time Series Midterm Review</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">Time Series Midterm Review</h1>
-<h4 class="author"><em>David Josephs</em></h4>
-<h4 class="date"><em>2019-06-28</em></h4>
+<p class="author"><em>David Josephs</em></p>
+<p class="date"><em>2019-06-28</em></p>
 </div>
 <div id="time-series-o-clock" class="section level1">
 <h1><span class="header-section-number">Unit 1</span> Time series o clock</h1>
 
 </div>
-<p style="text-align: center;">
-<a href="2-expected-values-variance-etc-.html"><button class="btn btn-default">Next</button></a>
-</p>
-</div>
-</div>
+            </section>
 
+          </div>
+        </div>
+      </div>
 
-</div>
-
+<a href="expected-values-variance-etc-.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-
-// add bootstrap table styles to pandoc tables
-$(document).ready(function () {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["tsReview.pdf"],
+"toc": {
+"collapse": "subsection"
+}
 });
-
+});
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
+
 </html>
