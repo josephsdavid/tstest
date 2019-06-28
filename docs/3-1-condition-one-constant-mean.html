@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="3.1 Condition One: Constant Mean | Time Series Midterm Review" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="A hopefully helpful guide" />
+<meta name="github-repo" content="josephsdavid/tstest" />
+
+<meta name="author" content="David Josephs" />
+
+<meta name="date" content="2019-06-28" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="A hopefully helpful guide">
+
+<title>3.1 Condition One: Constant Mean | Time Series Midterm Review</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#time-series-o-clock"><span class="toc-section-number">1</span> Time series o clock</a></li>
+<li class="has-sub"><a href="2-expected-values-variance-etc-.html#expected-values-variance-etc."><span class="toc-section-number">2</span> Expected Values, Variance, etc.</a><ul>
+<li class="has-sub"><a href="2-1-notation-and-some-definitions.html#notation-and-some-definitions"><span class="toc-section-number">2.1</span> Notation and Some Definitions</a><ul>
+<li><a href="2-1-notation-and-some-definitions.html#realizations-and-ensembles"><span class="toc-section-number">2.1.1</span> Realizations and Ensembles</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-2-population-means-and-variances.html#population-means-and-variances"><span class="toc-section-number">2.2</span> Population Means and Variances</a><ul>
+<li><a href="2-2-population-means-and-variances.html#the-mean-of-x_t"><span class="toc-section-number">2.2.1</span> The Mean of <span class="math inline">\(X_t\)</span></a></li>
+<li><a href="2-2-population-means-and-variances.html#variance-of-x_t"><span class="toc-section-number">2.2.2</span> Variance of <span class="math inline">\(X_t\)</span></a></li>
+</ul></li>
+<li><a href="2-3-estimating-mean-and-variance-for-multiple-realizations.html#estimating-mean-and-variance-for-multiple-realizations"><span class="toc-section-number">2.3</span> Estimating Mean and Variance for Multiple Realizations</a></li>
+<li class="has-sub"><a href="2-4-expected-value.html#expected-value"><span class="toc-section-number">2.4</span> Expected Value</a><ul>
+<li><a href="2-4-expected-value.html#discrete-rvs"><span class="toc-section-number">2.4.1</span> Discrete RVs</a></li>
+<li><a href="2-4-expected-value.html#continuous-rvs"><span class="toc-section-number">2.4.2</span> Continuous RVs</a></li>
+<li><a href="2-4-expected-value.html#some-rules"><span class="toc-section-number">2.4.3</span> Some Rules</a></li>
+<li><a href="2-4-expected-value.html#a-challenge-in-expected-values"><span class="toc-section-number">2.4.4</span> A challenge in Expected Values</a></li>
+<li><a href="2-4-expected-value.html#a-solution"><span class="toc-section-number">2.4.5</span> A solution</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-5-variance-and-covariance.html#variance-and-covariance"><span class="toc-section-number">2.5</span> Variance and Covariance</a><ul>
+<li><a href="2-5-variance-and-covariance.html#variance"><span class="toc-section-number">2.5.1</span> Variance</a></li>
+<li><a href="2-5-variance-and-covariance.html#covariance"><span class="toc-section-number">2.5.2</span> Covariance</a></li>
+<li><a href="2-5-variance-and-covariance.html#some-generalizations-on-covariance"><span class="toc-section-number">2.5.3</span> Some generalizations on covariance:</a></li>
+<li><a href="2-5-variance-and-covariance.html#a-challenge"><span class="toc-section-number">2.5.4</span> A challenge</a></li>
+<li><a href="2-5-variance-and-covariance.html#a-solution-1"><span class="toc-section-number">2.5.5</span> A solution</a></li>
+<li><a href="2-5-variance-and-covariance.html#a-note-on-covariance-and-correlation"><span class="toc-section-number">2.5.6</span> A note on covariance and correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="3-a-brief-discussion-of-stationarity.html#a-brief-discussion-of-stationarity"><span class="toc-section-number">3</span> A Brief Discussion of Stationarity</a><ul>
+<li><a href="3-1-condition-one-constant-mean.html#condition-one-constant-mean"><span class="toc-section-number">3.1</span> Condition One: Constant Mean</a></li>
+<li><a href="3-2-condition-two-constant-variance.html#condition-two-constant-variance"><span class="toc-section-number">3.2</span> Condition Two: Constant Variance</a></li>
+<li><a href="3-3-condition-3-constant-autocorrelation.html#condition-3-constant-autocorrelation"><span class="toc-section-number">3.3</span> Condition 3: Constant autocorrelation</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-autocorrelation.html#autocorrelation"><span class="toc-section-number">4</span> Autocorrelation</a><ul>
+<li><a href="4-1-independence.html#independence"><span class="toc-section-number">4.1</span> Independence</a></li>
+<li class="has-sub"><a href="4-2-serial-dependence-autocorrelation.html#serial-dependence-autocorrelation"><span class="toc-section-number">4.2</span> Serial Dependence / Autocorrelation</a><ul>
+<li><a href="4-2-serial-dependence-autocorrelation.html#a-definition"><span class="toc-section-number">4.2.1</span> A definition</a></li>
+<li><a href="4-2-serial-dependence-autocorrelation.html#autocorrelation-plots"><span class="toc-section-number">4.2.2</span> Autocorrelation Plots</a></li>
+<li><a href="4-2-serial-dependence-autocorrelation.html#dependentish-data"><span class="toc-section-number">4.2.3</span> Dependent(ish) data</a></li>
+<li><a href="4-2-serial-dependence-autocorrelation.html#independentish-data"><span class="toc-section-number">4.2.4</span> Independent(ish) data!</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="5-autocorrelation-concepts-and-notation.html#autocorrelation-concepts-and-notation"><span class="toc-section-number">5</span> Autocorrelation Concepts and Notation</a><ul>
+<li><a href="5-1-theoretical-concept-of-rho.html#theoretical-concept-of-rho"><span class="toc-section-number">5.1</span> Theoretical concept of <span class="math inline">\(\rho\)</span></a></li>
+<li><a href="5-2-autocovariance.html#autocovariance"><span class="toc-section-number">5.2</span> autocovariance</a></li>
+<li><a href="5-3-autocorrelation-1.html#autocorrelation-1"><span class="toc-section-number">5.3</span> autocorrelation</a></li>
+<li><a href="5-4-stationary-covariance.html#stationary-covariance"><span class="toc-section-number">5.4</span> Stationary Covariance</a></li>
+<li class="has-sub"><a href="5-5-stationary-time-series-putting-it-together.html#stationary-time-series-putting-it-together"><span class="toc-section-number">5.5</span> Stationary Time Series: Putting it Together</a><ul>
+<li><a href="5-5-stationary-time-series-putting-it-together.html#workflow"><span class="toc-section-number">5.5.1</span> Workflow:</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="6-practical-autocorrelation.html#practical-autocorrelation"><span class="toc-section-number">6</span> Practical Autocorrelation</a><ul>
+<li class="has-sub"><a href="6-1-estimation.html#estimation"><span class="toc-section-number">6.1</span> Estimation!</a><ul>
+<li><a href="6-1-estimation.html#rho_k-rightarrow-0"><span class="toc-section-number">6.1.1</span> <span class="math inline">\(\rho_k \rightarrow 0\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="7-the-frequency-domain.html#the-frequency-domain"><span class="toc-section-number">7</span> The Frequency Domain</a><ul>
+<li class="has-sub"><a href="7-1-review-of-sine-and-cosine.html#review-of-sine-and-cosine"><span class="toc-section-number">7.1</span> Review of sine and cosine</a><ul>
+<li><a href="7-1-review-of-sine-and-cosine.html#phase-shifts"><span class="toc-section-number">7.1.1</span> Phase shifts</a></li>
+</ul></li>
+<li><a href="7-2-frequency-and-period.html#frequency-and-period"><span class="toc-section-number">7.2</span> Frequency and Period</a></li>
+<li><a href="7-3-psueudo-periodicity.html#psueudo-periodicity"><span class="toc-section-number">7.3</span> psueudo-periodicity</a></li>
+<li><a href="7-4-aperiodicity.html#aperiodicity"><span class="toc-section-number">7.4</span> Aperiodicity</a></li>
+<li><a href="7-5-frequency.html#frequency"><span class="toc-section-number">7.5</span> Frequency</a></li>
+<li><a href="7-6-frequency-terminology.html#frequency-terminology"><span class="toc-section-number">7.6</span> Frequency Terminology</a></li>
+<li><a href="7-7-composite-sine-function.html#composite-sine-function"><span class="toc-section-number">7.7</span> Composite sine function</a></li>
+<li class="has-sub"><a href="7-8-fundamental-idea.html#fundamental-idea"><span class="toc-section-number">7.8</span> Fundamental idea</a><ul>
+<li><a href="7-8-fundamental-idea.html#a-brief-look-at-fourier-series"><span class="toc-section-number">7.8.1</span> A Brief Look at Fourier Series</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="8-spectral-density.html#spectral-density"><span class="toc-section-number">8</span> Spectral Density</a><ul>
+<li><a href="8-1-derivation-of-spectral-density-of-white-noise.html#derivation-of-spectral-density-of-white-noise"><span class="toc-section-number">8.1</span> Derivation of spectral density of white noise</a></li>
+<li><a href="8-2-estimating-spectral-density-from-real-data.html#estimating-spectral-density-from-real-data"><span class="toc-section-number">8.2</span> Estimating Spectral Density from Real Data</a></li>
+<li><a href="8-3-spectral-density-in-the-wild.html#spectral-density-in-the-wild"><span class="toc-section-number">8.3</span> Spectral Density in the Wild</a></li>
+<li><a href="8-4-why-do-we-do-spectral-density-from-0-5-to-0-5.html#why-do-we-do-spectral-density-from--0.5-to-0.5"><span class="toc-section-number">8.4</span> Why do we do spectral density from -0.5 to 0.5?</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-ar1-models-and-filtering.html#ar1-models-and-filtering"><span class="toc-section-number">9</span> AR(1) Models and Filtering</a><ul>
+<li><a href="9-1-algebra-review.html#algebra-review"><span class="toc-section-number">9.1</span> Algebra review</a></li>
+<li class="has-sub"><a href="9-2-linear-filters.html#linear-filters"><span class="toc-section-number">9.2</span> Linear filters</a><ul>
+<li><a href="9-2-linear-filters.html#example"><span class="toc-section-number">9.2.1</span> Example</a></li>
+<li><a href="9-2-linear-filters.html#point-moving-average"><span class="toc-section-number">9.2.2</span> 5 point moving average</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-3-types-of-filters.html#types-of-filters"><span class="toc-section-number">9.3</span> Types of filters:</a><ul>
+<li><a href="9-3-types-of-filters.html#an-example-in-r"><span class="toc-section-number">9.3.1</span> An example in R</a></li>
+<li><a href="9-3-types-of-filters.html#an-another-example"><span class="toc-section-number">9.3.2</span> An another example</a></li>
+</ul></li>
+<li><a href="9-4-glps.html#glps"><span class="toc-section-number">9.4</span> GLPs</a></li>
+<li class="has-sub"><a href="9-5-ar1-intro.html#ar1-intro"><span class="toc-section-number">9.5</span> AR(1) Intro</a><ul>
+<li><a href="9-5-ar1-intro.html#ar1-math-zone"><span class="toc-section-number">9.5.1</span> AR(1) math zone</a></li>
+<li><a href="9-5-ar1-intro.html#the-zero-mean-form-of-ar1"><span class="toc-section-number">9.5.2</span> the zero mean form of AR1</a></li>
+<li><a href="9-5-ar1-intro.html#ar1-with-positive-phi"><span class="toc-section-number">9.5.3</span> AR1 with positive phi</a></li>
+<li><a href="9-5-ar1-intro.html#ar1-with-negative-phi"><span class="toc-section-number">9.5.4</span> AR1 with negative phi</a></li>
+<li><a href="9-5-ar1-intro.html#nonstationary"><span class="toc-section-number">9.5.5</span> Nonstationary</a></li>
+</ul></li>
+</ul></li>
+<li><a href="10-characteristic-equations-for-ar1-models.html#characteristic-equations-for-ar1-models"><span class="toc-section-number">10</span> Characteristic Equations for AR(1) Models</a></li>
+<li class="has-sub"><a href="11-ar2-models.html#ar2-models"><span class="toc-section-number">11</span> AR(2) models</a><ul>
+<li><a href="11-1-notes.html#notes"><span class="toc-section-number">11.1</span> Notes</a></li>
+<li><a href="11-2-stationarity-in-ar2.html#stationarity-in-ar2"><span class="toc-section-number">11.2</span> Stationarity in AR(2)</a></li>
+<li><a href="11-3-ar2-zero-mean-form.html#ar2-zero-mean-form"><span class="toc-section-number">11.3</span> AR(2) zero mean form</a></li>
+<li><a href="11-4-more-on-backshift-operator-notation.html#more-on-backshift-operator-notation"><span class="toc-section-number">11.4</span> More on backshift operator notation</a></li>
+<li><a href="11-5-characteristic-equation.html#characteristic-equation"><span class="toc-section-number">11.5</span> Characteristic equation</a></li>
+<li class="has-sub"><a href="11-6-key-result.html#key-result"><span class="toc-section-number">11.6</span> Key result</a><ul>
+<li><a href="11-6-key-result.html#two-real-roots"><span class="toc-section-number">11.6.1</span> Two real roots</a></li>
+<li><a href="11-6-key-result.html#complex-conjugate-roots"><span class="toc-section-number">11.6.2</span> Complex conjugate roots</a></li>
+</ul></li>
+</ul></li>
+<li><a href="12-arp.html#arp"><span class="toc-section-number">12</span> AR(p)</a></li>
+<li class="has-sub"><a href="13-maq-models.html#maq-models"><span class="toc-section-number">13</span> MA(q) Models</a><ul>
+<li class="has-sub"><a href="13-1-properties-and-characteristics.html#properties-and-characteristics"><span class="toc-section-number">13.1</span> Properties and Characteristics</a><ul>
+<li><a href="13-1-properties-and-characteristics.html#a-quote-for-your-thoughts"><span class="toc-section-number">13.1.1</span> A quote for your thoughts:</a></li>
+</ul></li>
+<li><a href="13-2-maq.html#maq"><span class="toc-section-number">13.2</span> MA(q)</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="condition-one-constant-mean" class="section level2">
+<h2><span class="header-section-number">3.1</span> Condition One: Constant Mean</h2>
+<p>Mean is constant with time. That is <span class="math inline">\(E[X_t] = \mu\)</span>. Note the lack of a little tiny t in mu! It is indepoent of tine! That is stationarity condition number 1!</p>
+<p>Important result:
+<strong>If we assume constant mean, we can use</strong> <strong><em>all</em></strong> <strong>of the data to estimate the mean</strong></p>
+<p>Here we can see after 5 realizations that the mean is clearly not constant with time</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="3-1-condition-one-constant-mean.html#cb1-1"></a><span class="kw">library</span>(tswge)</span>
+<span id="cb1-2"><a href="3-1-condition-one-constant-mean.html#cb1-2"></a>a1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
+<span id="cb1-3"><a href="3-1-condition-one-constant-mean.html#cb1-3"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
+<span id="cb1-4"><a href="3-1-condition-one-constant-mean.html#cb1-4"></a>b1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
+<span id="cb1-5"><a href="3-1-condition-one-constant-mean.html#cb1-5"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
+<span id="cb1-6"><a href="3-1-condition-one-constant-mean.html#cb1-6"></a>c1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
+<span id="cb1-7"><a href="3-1-condition-one-constant-mean.html#cb1-7"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
+<span id="cb1-8"><a href="3-1-condition-one-constant-mean.html#cb1-8"></a>d1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
+<span id="cb1-9"><a href="3-1-condition-one-constant-mean.html#cb1-9"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
+<span id="cb1-10"><a href="3-1-condition-one-constant-mean.html#cb1-10"></a>e1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
+<span id="cb1-11"><a href="3-1-condition-one-constant-mean.html#cb1-11"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Now lets look at 5 realizations which come from the same realization, which might not have a constant mean:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="3-1-condition-one-constant-mean.html#cb2-1"></a>a2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
+<span id="cb2-2"><a href="3-1-condition-one-constant-mean.html#cb2-2"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
+<span id="cb2-3"><a href="3-1-condition-one-constant-mean.html#cb2-3"></a>b2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
+<span id="cb2-4"><a href="3-1-condition-one-constant-mean.html#cb2-4"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
+<span id="cb2-5"><a href="3-1-condition-one-constant-mean.html#cb2-5"></a>c2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
+<span id="cb2-6"><a href="3-1-condition-one-constant-mean.html#cb2-6"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
+<span id="cb2-7"><a href="3-1-condition-one-constant-mean.html#cb2-7"></a>d2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
+<span id="cb2-8"><a href="3-1-condition-one-constant-mean.html#cb2-8"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
+<span id="cb2-9"><a href="3-1-condition-one-constant-mean.html#cb2-9"></a>e2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
+<span id="cb2-10"><a href="3-1-condition-one-constant-mean.html#cb2-10"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>We cannot say for sure whether the mean is constant or not in this case!</p>
+</div>
+<p style="text-align: center;">
+<a href="3-a-brief-discussion-of-stationarity.html"><button class="btn btn-default">Previous</button></a>
+<a href="3-2-condition-two-constant-variance.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

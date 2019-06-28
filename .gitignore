@@ -6,6 +6,5 @@ rsconnect/
 _bookdown_files/
 docs/fig/
 docs/tsReview_files/
-docs/*.html
 *.log
 *.tikzDictionary
