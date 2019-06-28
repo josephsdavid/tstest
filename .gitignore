@@ -1,9 +1,5 @@
-fig/
 rsconnect/
 .Rdata
 .Rhistory
-_bookdown_files/
-docs/fig/
-docs/tsReview_files/
 *.log
 *.tikzDictionary
