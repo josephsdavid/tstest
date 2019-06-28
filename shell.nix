@@ -29,6 +29,7 @@ in
       rPackages.tint
       rPackages.microbenchmark
       rPackages.bookdown
+      rPackages.servr
       openblas
       evince
       xsv
