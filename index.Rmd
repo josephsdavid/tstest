@@ -18,4 +18,3 @@ knitr::opts_knit$set(cache =T, autodep = T)
 knitr::opts_chunk$set(tidy = T)
 knitr::opts_chunk$set(fig.align = "center")
 ```
-# Time series o clock
