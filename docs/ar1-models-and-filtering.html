@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Unit 8 AR(1) Models and Filtering | Time Series Midterm Review</title>
+  <meta name="description" content="A hopefully helpful guide">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Unit 8 AR(1) Models and Filtering | Time Series Midterm Review" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A hopefully helpful guide" />
+  <meta name="github-repo" content="josephsdavid/tstest" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unit 8 AR(1) Models and Filtering | Time Series Midterm Review" />
+  
+  <meta name="twitter:description" content="A hopefully helpful guide" />
+  
+
+<meta name="author" content="David Josephs">
+
+
+<meta name="date" content="2019-06-28">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="spectral-density.html">
+<link rel="next" href="characteristic-equations.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Time Series Midterm Review</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html"><i class="fa fa-check"></i><b>1</b> Expected Values, Variance, etc.</a><ul>
+<li class="chapter" data-level="1.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#notation-and-some-definitions"><i class="fa fa-check"></i><b>1.1</b> Notation and Some Definitions</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#realizations-and-ensembles"><i class="fa fa-check"></i><b>1.1.1</b> Realizations and Ensembles</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#population-means-and-variances"><i class="fa fa-check"></i><b>1.2</b> Population Means and Variances</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#the-mean-of-x_t"><i class="fa fa-check"></i><b>1.2.1</b> The Mean of <span class="math inline">\(X_t\)</span></a></li>
+<li class="chapter" data-level="1.2.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance-of-x_t"><i class="fa fa-check"></i><b>1.2.2</b> Variance of <span class="math inline">\(X_t\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#estimating-mean-and-variance-for-multiple-realizations"><i class="fa fa-check"></i><b>1.3</b> Estimating Mean and Variance for Multiple Realizations</a></li>
+<li class="chapter" data-level="1.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#expected-value"><i class="fa fa-check"></i><b>1.4</b> Expected Value</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#discrete-rvs"><i class="fa fa-check"></i><b>1.4.1</b> Discrete RVs</a></li>
+<li class="chapter" data-level="1.4.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#continuous-rvs"><i class="fa fa-check"></i><b>1.4.2</b> Continuous RVs</a></li>
+<li class="chapter" data-level="1.4.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#some-rules"><i class="fa fa-check"></i><b>1.4.3</b> Some Rules</a></li>
+<li class="chapter" data-level="1.4.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-challenge-in-expected-values"><i class="fa fa-check"></i><b>1.4.4</b> A challenge in Expected Values</a></li>
+<li class="chapter" data-level="1.4.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-solution"><i class="fa fa-check"></i><b>1.4.5</b> A solution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance-and-covariance"><i class="fa fa-check"></i><b>1.5</b> Variance and Covariance</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance"><i class="fa fa-check"></i><b>1.5.1</b> Variance</a></li>
+<li class="chapter" data-level="1.5.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#covariance"><i class="fa fa-check"></i><b>1.5.2</b> Covariance</a></li>
+<li class="chapter" data-level="1.5.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#some-generalizations-on-covariance"><i class="fa fa-check"></i><b>1.5.3</b> Some generalizations on covariance:</a></li>
+<li class="chapter" data-level="1.5.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-challenge"><i class="fa fa-check"></i><b>1.5.4</b> A challenge</a></li>
+<li class="chapter" data-level="1.5.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-solution-1"><i class="fa fa-check"></i><b>1.5.5</b> A solution</a></li>
+<li class="chapter" data-level="1.5.6" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-note-on-covariance-and-correlation"><i class="fa fa-check"></i><b>1.5.6</b> A note on covariance and correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html"><i class="fa fa-check"></i><b>2</b> A Brief Discussion of Stationarity</a><ul>
+<li class="chapter" data-level="2.1" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-one-constant-mean"><i class="fa fa-check"></i><b>2.1</b> Condition One: Constant Mean</a></li>
+<li class="chapter" data-level="2.2" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-two-constant-variance"><i class="fa fa-check"></i><b>2.2</b> Condition Two: Constant Variance</a></li>
+<li class="chapter" data-level="2.3" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-3-constant-autocorrelation"><i class="fa fa-check"></i><b>2.3</b> Condition 3: Constant autocorrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="autocorrelation.html"><a href="autocorrelation.html"><i class="fa fa-check"></i><b>3</b> Autocorrelation</a><ul>
+<li class="chapter" data-level="3.1" data-path="autocorrelation.html"><a href="autocorrelation.html#independence"><i class="fa fa-check"></i><b>3.1</b> Independence</a></li>
+<li class="chapter" data-level="3.2" data-path="autocorrelation.html"><a href="autocorrelation.html#serial-dependence-autocorrelation"><i class="fa fa-check"></i><b>3.2</b> Serial Dependence / Autocorrelation</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="autocorrelation.html"><a href="autocorrelation.html#a-definition"><i class="fa fa-check"></i><b>3.2.1</b> A definition</a></li>
+<li class="chapter" data-level="3.2.2" data-path="autocorrelation.html"><a href="autocorrelation.html#autocorrelation-plots"><i class="fa fa-check"></i><b>3.2.2</b> Autocorrelation Plots</a></li>
+<li class="chapter" data-level="3.2.3" data-path="autocorrelation.html"><a href="autocorrelation.html#dependentish-data"><i class="fa fa-check"></i><b>3.2.3</b> Dependent(ish) data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="autocorrelation.html"><a href="autocorrelation.html#independentish-data"><i class="fa fa-check"></i><b>3.2.4</b> Independent(ish) data!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html"><i class="fa fa-check"></i><b>4</b> Autocorrelation Concepts and Notation</a><ul>
+<li class="chapter" data-level="4.1" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#theoretical-concept-of-rho"><i class="fa fa-check"></i><b>4.1</b> Theoretical concept of <span class="math inline">\(\rho\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#autocovariance"><i class="fa fa-check"></i><b>4.2</b> autocovariance</a></li>
+<li class="chapter" data-level="4.3" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#autocorrelation-1"><i class="fa fa-check"></i><b>4.3</b> autocorrelation</a></li>
+<li class="chapter" data-level="4.4" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#stationary-covariance"><i class="fa fa-check"></i><b>4.4</b> Stationary Covariance</a></li>
+<li class="chapter" data-level="4.5" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#stationary-time-series-putting-it-together"><i class="fa fa-check"></i><b>4.5</b> Stationary Time Series: Putting it Together</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#workflow"><i class="fa fa-check"></i><b>4.5.1</b> Workflow:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html"><i class="fa fa-check"></i><b>5</b> Practical Autocorrelation</a><ul>
+<li class="chapter" data-level="5.1" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html#estimation"><i class="fa fa-check"></i><b>5.1</b> Estimation!</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html#rho_k-rightarrow-0"><i class="fa fa-check"></i><b>5.1.1</b> <span class="math inline">\(\rho_k \rightarrow 0\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html"><i class="fa fa-check"></i><b>6</b> The Frequency Domain</a><ul>
+<li class="chapter" data-level="6.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#review-of-sine-and-cosine"><i class="fa fa-check"></i><b>6.1</b> Review of sine and cosine</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#phase-shifts"><i class="fa fa-check"></i><b>6.1.1</b> Phase shifts</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency-and-period"><i class="fa fa-check"></i><b>6.2</b> Frequency and Period</a></li>
+<li class="chapter" data-level="6.3" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#psueudo-periodicity"><i class="fa fa-check"></i><b>6.3</b> psueudo-periodicity</a></li>
+<li class="chapter" data-level="6.4" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#aperiodicity"><i class="fa fa-check"></i><b>6.4</b> Aperiodicity</a></li>
+<li class="chapter" data-level="6.5" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency"><i class="fa fa-check"></i><b>6.5</b> Frequency</a></li>
+<li class="chapter" data-level="6.6" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency-terminology"><i class="fa fa-check"></i><b>6.6</b> Frequency Terminology</a></li>
+<li class="chapter" data-level="6.7" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#composite-sine-function"><i class="fa fa-check"></i><b>6.7</b> Composite sine function</a></li>
+<li class="chapter" data-level="6.8" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#fundamental-idea"><i class="fa fa-check"></i><b>6.8</b> Fundamental idea</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#a-brief-look-at-fourier-series"><i class="fa fa-check"></i><b>6.8.1</b> A Brief Look at Fourier Series</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="spectral-density.html"><a href="spectral-density.html"><i class="fa fa-check"></i><b>7</b> Spectral Density</a><ul>
+<li class="chapter" data-level="7.1" data-path="spectral-density.html"><a href="spectral-density.html#derivation-of-spectral-density-of-white-noise"><i class="fa fa-check"></i><b>7.1</b> Derivation of spectral density of white noise</a></li>
+<li class="chapter" data-level="7.2" data-path="spectral-density.html"><a href="spectral-density.html#estimating-spectral-density-from-real-data"><i class="fa fa-check"></i><b>7.2</b> Estimating Spectral Density from Real Data</a></li>
+<li class="chapter" data-level="7.3" data-path="spectral-density.html"><a href="spectral-density.html#spectral-density-in-the-wild"><i class="fa fa-check"></i><b>7.3</b> Spectral Density in the Wild</a></li>
+<li class="chapter" data-level="7.4" data-path="spectral-density.html"><a href="spectral-density.html#why-do-we-do-spectral-density-from--0.5-to-0.5"><i class="fa fa-check"></i><b>7.4</b> Why do we do spectral density from -0.5 to 0.5?</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html"><i class="fa fa-check"></i><b>8</b> AR(1) Models and Filtering</a><ul>
+<li class="chapter" data-level="8.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#algebra-review"><i class="fa fa-check"></i><b>8.1</b> Algebra review</a></li>
+<li class="chapter" data-level="8.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#linear-filters"><i class="fa fa-check"></i><b>8.2</b> Linear filters</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#example"><i class="fa fa-check"></i><b>8.2.1</b> Example</a></li>
+<li class="chapter" data-level="8.2.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#point-moving-average"><i class="fa fa-check"></i><b>8.2.2</b> 5 point moving average</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#types-of-filters"><i class="fa fa-check"></i><b>8.3</b> Types of filters:</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#an-example-in-r"><i class="fa fa-check"></i><b>8.3.1</b> An example in R</a></li>
+<li class="chapter" data-level="8.3.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#an-another-example"><i class="fa fa-check"></i><b>8.3.2</b> An another example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#glps"><i class="fa fa-check"></i><b>8.4</b> GLPs</a></li>
+<li class="chapter" data-level="8.5" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-intro"><i class="fa fa-check"></i><b>8.5</b> AR(1) Intro</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-math-zone"><i class="fa fa-check"></i><b>8.5.1</b> AR(1) math zone</a></li>
+<li class="chapter" data-level="8.5.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#the-zero-mean-form-of-ar1"><i class="fa fa-check"></i><b>8.5.2</b> the zero mean form of AR1</a></li>
+<li class="chapter" data-level="8.5.3" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-with-positive-phi"><i class="fa fa-check"></i><b>8.5.3</b> AR1 with positive phi</a></li>
+<li class="chapter" data-level="8.5.4" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-with-negative-phi"><i class="fa fa-check"></i><b>8.5.4</b> AR1 with negative phi</a></li>
+<li class="chapter" data-level="8.5.5" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#nonstationary"><i class="fa fa-check"></i><b>8.5.5</b> Nonstationary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="characteristic-equations.html"><a href="characteristic-equations.html"><i class="fa fa-check"></i><b>9</b> Characteristic equations</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Time Series Midterm Review</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ar1-models-and-filtering" class="section level1">
+<h1><span class="header-section-number">Unit 8</span> AR(1) Models and Filtering</h1>
+<div id="algebra-review" class="section level2">
+<h2><span class="header-section-number">8.1</span> Algebra review</h2>
+<p>Be able to find the roots of a 2nd order polynomial</p>
+<p><span class="math display">\[ x = \frac{ - b \pm \sqrt {b^2 - 4ac} }{2a}   \]</span></p>
+<p><span class="math display">\[ z = a + bi\]</span>
+<span class="math display">\[ i = \sqrt{-1} \]</span>
+a is real b is imaginary
+<span class="math display">\[ z^{*} = a - bi \]</span>
+z* is complex conjugate</p>
+<p>It is basically a vector so absolute value is just the magnitude</p>
+<p>Unit circle is the values in the complex plane in which the magnitude of z is equal to one. If Z is a complex number with magnitude greater than one, it is outside the unit circle.</p>
+</div>
+<div id="linear-filters" class="section level2">
+<h2><span class="header-section-number">8.2</span> Linear filters</h2>
+<p>A filter will turn <span class="math inline">\(Z_t\)</span> into <span class="math inline">\(X_t\)</span></p>
+<p>for example:</p>
+<p><span class="math display">\[\mathrm{difference:} X_t =  Z_t - Z_{t-1}\]</span></p>
+<p>Moving average also a filter (smoother)</p>
+<div id="example" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Example</h3>
+<p>Consider $ Z_1 = 8 , Z_2 =14, Z_3 = 14, Z_4 = 7$</p>
+<p>If we apply the difference filter to this, we have that:
+<span class="math display">\[X_2 = 6, X_3 = 0, X_4 = 7\]</span></p>
+<p><strong>Note</strong>: the differenced data are a realization of length n-1</p>
+<p>We can use the difference filter to remove the wandering behjaviior</p>
+</div>
+<div id="point-moving-average" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> 5 point moving average</h3>
+<p>We can only get a realization of n-4. (n-nopoints-1). What does the 5 point moving average do (it averages a point and two points ahead and two behind). This filter can filter out some frequencies</p>
+</div>
+</div>
+<div id="types-of-filters" class="section level2">
+<h2><span class="header-section-number">8.3</span> Types of filters:</h2>
+<ul>
+<li>Low pass filter
+<ul>
+<li>Filters out high frequency</li>
+<li>Such as 5 point moving average, it smooths</li>
+</ul></li>
+<li>High pass filter
+<ul>
+<li>Leaves high freq but removes low freq</li>
+<li>Such as differencing</li>
+</ul></li>
+</ul>
+<div id="an-example-in-r" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> An example in R</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="ar1-models-and-filtering.html#cb38-1"></a>mafun &lt;-<span class="st"> </span><span class="cf">function</span>(xs, n) {</span>
+<span id="cb38-2"><a href="ar1-models-and-filtering.html#cb38-2"></a>    stats<span class="op">::</span><span class="kw">filter</span>(xs, <span class="kw">rep</span>(<span class="dv">1</span>, n))<span class="op">/</span>n</span>
+<span id="cb38-3"><a href="ar1-models-and-filtering.html#cb38-3"></a>}</span>
+<span id="cb38-4"><a href="ar1-models-and-filtering.html#cb38-4"></a>dfun &lt;-<span class="st"> </span><span class="cf">function</span>(xs, n) {</span>
+<span id="cb38-5"><a href="ar1-models-and-filtering.html#cb38-5"></a>    <span class="kw">diff</span>(xs, <span class="dt">lag =</span> n)</span>
+<span id="cb38-6"><a href="ar1-models-and-filtering.html#cb38-6"></a>}</span>
+<span id="cb38-7"><a href="ar1-models-and-filtering.html#cb38-7"></a>th &lt;-<span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span>
+<span id="cb38-8"><a href="ar1-models-and-filtering.html#cb38-8"></a><span class="kw">library</span>(tswge)</span>
+<span id="cb38-9"><a href="ar1-models-and-filtering.html#cb38-9"></a><span class="kw">data</span>(fig1<span class="fl">.21</span>a)</span>
+<span id="cb38-10"><a href="ar1-models-and-filtering.html#cb38-10"></a>ma &lt;-<span class="st"> </span><span class="kw">mafun</span>(fig1<span class="fl">.21</span>a, <span class="dv">5</span>)</span>
+<span id="cb38-11"><a href="ar1-models-and-filtering.html#cb38-11"></a>d &lt;-<span class="st"> </span><span class="kw">dfun</span>(fig1<span class="fl">.21</span>a, <span class="dv">1</span>)</span>
+<span id="cb38-12"><a href="ar1-models-and-filtering.html#cb38-12"></a>fp &lt;-<span class="st"> </span><span class="kw">tplot</span>(fig1<span class="fl">.21</span>a) <span class="op">+</span><span class="st"> </span>th</span>
+<span id="cb38-13"><a href="ar1-models-and-filtering.html#cb38-13"></a>mp &lt;-<span class="st"> </span><span class="kw">tplot</span>(ma) <span class="op">+</span><span class="st"> </span>th</span>
+<span id="cb38-14"><a href="ar1-models-and-filtering.html#cb38-14"></a>dp &lt;-<span class="st"> </span><span class="kw">tplot</span>(d) <span class="op">+</span><span class="st"> </span>th</span></code></pre></div>
+<p>And here lets view the 5 point moving average</p>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>And now a look at the difference filter</p>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="an-another-example" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> An another example</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="ar1-models-and-filtering.html#cb39-1"></a>rlz &lt;-<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">200</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.45</span>), <span class="dt">vara =</span> <span class="dv">10</span>, </span>
+<span id="cb39-2"><a href="ar1-models-and-filtering.html#cb39-2"></a>    <span class="dt">sn =</span> <span class="dv">1</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="ar1-models-and-filtering.html#cb40-1"></a>pfun &lt;-<span class="st"> </span><span class="cf">function</span>(x, n, l) {</span>
+<span id="cb40-2"><a href="ar1-models-and-filtering.html#cb40-2"></a>    fp &lt;-<span class="st"> </span><span class="kw">tplot</span>(x) <span class="op">+</span><span class="st"> </span>th</span>
+<span id="cb40-3"><a href="ar1-models-and-filtering.html#cb40-3"></a>    mp &lt;-<span class="st"> </span><span class="kw">tplot</span>(<span class="kw">mafun</span>(x, n)) <span class="op">+</span><span class="st"> </span>th</span>
+<span id="cb40-4"><a href="ar1-models-and-filtering.html#cb40-4"></a>    dp &lt;-<span class="st"> </span><span class="kw">tplot</span>(<span class="kw">dfun</span>(x, l)) <span class="op">+</span><span class="st"> </span>th</span>
+<span id="cb40-5"><a href="ar1-models-and-filtering.html#cb40-5"></a>    <span class="kw">list</span>(<span class="dt">original =</span> fp, <span class="dt">MA =</span> mp, <span class="dt">dif =</span> dp)</span>
+<span id="cb40-6"><a href="ar1-models-and-filtering.html#cb40-6"></a>}</span>
+<span id="cb40-7"><a href="ar1-models-and-filtering.html#cb40-7"></a>plts &lt;-<span class="st"> </span><span class="kw">pfun</span>(rlz, <span class="dv">5</span>, <span class="dv">1</span>)</span>
+<span id="cb40-8"><a href="ar1-models-and-filtering.html#cb40-8"></a>plts<span class="op">$</span>original</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="ar1-models-and-filtering.html#cb41-1"></a>plts<span class="op">$</span>MA</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-36-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="ar1-models-and-filtering.html#cb42-1"></a>plts<span class="op">$</span>dif</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-36-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="ar1-models-and-filtering.html#cb43-1"></a><span class="kw">parzen.wge</span>(rlz)</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="ar1-models-and-filtering.html#cb44-1"></a><span class="kw">parzen.wge</span>(<span class="kw">na.omit</span>(<span class="kw">mafun</span>(rlz, <span class="dv">5</span>)))</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-37-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="ar1-models-and-filtering.html#cb45-1"></a><span class="kw">parzen.wge</span>(<span class="kw">na.omit</span>(<span class="kw">dfun</span>(rlz, <span class="dv">1</span>)))</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-37-3.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="glps" class="section level2">
+<h2><span class="header-section-number">8.4</span> GLPs</h2>
+<p>a GLP is a linear filter with a <strong><em>white noise input</em></strong></p>
+<p>We take white nois input and put it through a filter and get something not noise</p>
+<p><span class="math display">\[\sum_{j=0}^\infty \psi_j a_{t-j} = X_t - \mu\]</span></p>
+<p>A GLP is this and is an inginite combination of white noise terms</p>
+<p>the <span class="math inline">\(\psi_j\)</span>’s are called psi weights. AR, MA, and ARMA are all special cases of GLP’s, and will be useful when we study confidence intervals</p>
+</div>
+<div id="ar1-intro" class="section level2">
+<h2><span class="header-section-number">8.5</span> AR(1) Intro</h2>
+<p>AR(p) in which p = 1</p>
+<p>We will go through well known</p>
+<p><span class="math display">\[X_t = \beta +  \phi_1 X_{t-1} + a_t\]</span></p>
+<p><span class="math display">\[\beta = (1-\phi_1)\mu\]</span></p>
+<p>Beta is moving average constant</p>
+<p>We are saying that the vluse of x depends on some constant, the previous value of x, and some random white noise. Looks a lot like regression except there is a wierd variable</p>
+<p>we can rewirte tis as</p>
+<p><span class="math display">\[ X_t = (1-\phi_1)\mu + \phi_1 X_{t-1} + a_t \]</span></p>
+<p>An are 1 process is stationary iff the magnitude of <span class="math inline">\(\phi_1\)</span> is less than 1</p>
+<p>We will deal with this a lot in the near future</p>
+<div id="ar1-math-zone" class="section level3">
+<h3><span class="header-section-number">8.5.1</span> AR(1) math zone</h3>
+<p><span class="math display">\[E\left[ X_t \right] = \mu ?\]</span>
+<span class="math display">\[E \left[ X_t \right] =E \left[ 1-\phi_1 \mu  \right] + E \left[ \phi_1 X_{t-1}  \right] + E[a_t]\]</span></p>
+<p>We can rewrite this as
+<span class="math display">\[E \left[ X_t \right] = 1-\phi_1 \mu   + \phi_1E \left[  X_{t}  \right] + 0\]</span></p>
+<p><span class="math display">\[E \left[ X_t \right] (  1-\phi_1) = 1-\phi_1 \mu  \]</span>
+<span class="math display">\[E\left[ X_t \right] = \mu \]</span></p>
+<p>Mean does not depend on T</p>
+<p>The variance also does not, and if phi1 is less than one variance is finite</p>
+<p>and rhok is phi1 to the k</p>
+</div>
+<div id="the-zero-mean-form-of-ar1" class="section level3">
+<h3><span class="header-section-number">8.5.2</span> the zero mean form of AR1</h3>
+<p>with zero mean,
+<span class="math display">\[X_t = \phi_1 X_{t-1} + a_t\]</span> OR <span class="math display">\[X_t- \phi_1 X_{t-1}\]</span>A</p>
+</div>
+<div id="ar1-with-positive-phi" class="section level3">
+<h3><span class="header-section-number">8.5.3</span> AR1 with positive phi</h3>
+<p>remember we have <span class="math display">\[\rho_k = \phi_1^k\]</span></p>
+<p>With positive <span class="math inline">\(\phi_1\)</span>, we have:</p>
+<p><strong><em>realizations</em></strong> are wandering and aperiodic</p>
+<p><strong><em>Autocorrelations</em></strong> are damped exponentials</p>
+<p><strong><em>Spectral density</em></strong> Peaks at zero.</p>
+<p>Higher values = stronger versions of these characterstics</p>
+</div>
+<div id="ar1-with-negative-phi" class="section level3">
+<h3><span class="header-section-number">8.5.4</span> AR1 with negative phi</h3>
+<p>We have:</p>
+<p><strong><em>realization</em></strong> are oscillating</p>
+<p><strong><em>Autocorrelations</em></strong> are damped and alternating(negative to a power you fool)</p>
+<p><strong>Spectral density</strong>* has a peak at f = 0.5 (cycle length of 2)</p>
+<p>Higher magnitude = stronger characteristics</p>
+</div>
+<div id="nonstationary" class="section level3">
+<h3><span class="header-section-number">8.5.5</span> Nonstationary</h3>
+<p>if phi = 1 or phi&gt; 1, we have that realizations are from a nonstationary process. with it eequal to one, it looks ok, and is actualy a special ARIMA model. WIth it &gt; 1, we have crazy explosive realizatoins</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="spectral-density.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="characteristic-equations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["tsReview.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

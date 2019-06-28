@@ -1,0 +1,8 @@
+# Characteristic equations
+
+$$X_t - \phi_1 X_{t-1} = a_t$$
+We can rewtite in operator form as
+
+$$(1-\phi_1 B)X_t = a_t$$
+
+where B is an operator that turns $X_t$ into $X_{t-1}$

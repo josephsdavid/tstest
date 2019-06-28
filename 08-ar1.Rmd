@@ -1,0 +1,201 @@
+# AR(1) Models and Filtering
+## Algebra review
+Be able to find the roots of a 2nd order polynomial
+
+$$ x = \frac{ - b \pm \sqrt {b^2 - 4ac} }{2a}   $$
+
+$$ z = a + bi$$
+$$ i = \sqrt{-1} $$
+a is real b is imaginary
+$$ z^{*} = a - bi $$
+z* is complex conjugate
+
+It is basically a vector so absolute value is just the magnitude
+
+Unit circle is the values in the complex plane in which the magnitude of z is equal to one. If Z is a complex number with magnitude greater than one, it is outside the unit circle.
+
+## Linear filters
+
+A filter will turn $Z_t$ into $X_t$
+
+for example:
+
+$$\mathrm{difference:} X_t =  Z_t - Z_{t-1}$$
+
+Moving average also a filter (smoother)
+
+### Example
+
+Consider $ Z_1 = 8 , Z_2 =14, Z_3 = 14, Z_4 = 7$
+
+If we apply the difference filter to this, we have that:
+ $$X_2 = 6, X_3 = 0, X_4 = 7$$
+
+**Note**: the differenced data are a realization of length n-1
+
+We can use the difference filter to remove the wandering behjaviior
+
+### 5 point moving average
+We can only get a realization of n-4. (n-nopoints-1). What does the 5 point moving average do (it averages a point and two points ahead and two behind). This filter can filter out some frequencies
+
+## Types of filters:
+* Low pass filter
+  * Filters out high frequency
+  * Such as 5 point moving average, it smooths
+* High pass filter
+  * Leaves high freq but removes low freq
+  * Such as differencing
+
+### An example in R
+
+```{r, fig.show = "hold", warning = F, message = F, fig.width = 5}
+mafun <- function(xs, n) {
+	stats::filter(xs,rep(1,n))/n
+} 
+dfun <- function(xs,n){
+	diff(xs, lag = n)
+}
+th <- ggthemes::theme_few()
+library(tswge)
+data(fig1.21a)
+ma <- mafun(fig1.21a,5)
+d <- dfun(fig1.21a,1)
+fp <- tplot(fig1.21a) + th
+mp <- tplot(ma)+th
+dp <- tplot(d)+th
+
+```
+
+And here lets view the 5 point moving average 
+
+```{r, echo = F, warning = F, message = F}
+cowplot::plot_grid(fp, mp, nrow = 2,labels = c("Original Data","5-point MA"))
+```
+
+And now a look at the difference filter
+
+
+```{r, echo = F, warning = F, message = F}
+cowplot::plot_grid(fp, dp, nrow = 2,labels = c("Original Data","1st order difference"))
+```
+
+### An another example
+
+```{r, results = 'hide', fig.show = "hide"}
+rlz <- gen.sigplusnoise.wge(200,coef = c(5,3),freq = c(.1,.45),vara = 10,sn = 1, plot=F)
+```
+
+```{r, results = 'hide',  warning = F, message = F}
+pfun <- function(x,n,l) {
+	fp <- tplot(x) + th
+	mp <- tplot(mafun(x,n)) + th
+	dp <- tplot(dfun(x,l)) + th
+	list("original" = fp,"MA" = mp,"dif" = dp)
+}
+plts <- pfun(rlz,5,1)
+plts$original
+plts$MA
+plts$dif
+```
+
+```{r, results = "hide"}
+parzen.wge(rlz)
+parzen.wge(na.omit(mafun(rlz,5)))
+parzen.wge(na.omit(dfun(rlz,1)))
+```
+
+## GLPs
+
+a GLP is a linear filter with a ***white noise input***
+
+We take white nois input and put it through a filter and get something not noise
+
+$$\sum_{j=0}^\infty \psi_j a_{t-j} = X_t - \mu$$
+
+A GLP is this and is an inginite combination of white noise terms
+
+the $\psi_j$'s are called psi weights. AR, MA, and ARMA are all special cases of GLP's, and will be useful when we study confidence intervals
+
+## AR(1) Intro
+
+AR(p) in which p = 1
+
+We will go through well known
+
+$$X_t = \beta +  \phi_1 X_{t-1} + a_t$$
+
+$$\beta = (1-\phi_1)\mu$$
+
+Beta is moving average constant
+
+We are saying that the vluse of x depends on some constant, the previous value of x, and some random white noise. Looks a lot like regression except there is a wierd variable
+
+we can rewirte tis as
+
+$$ X_t = (1-\phi_1)\mu + \phi_1 X_{t-1} + a_t $$
+
+An are 1 process is stationary iff the magnitude of $\phi_1$ is less than 1
+
+We will deal with this a lot in the near future
+
+### AR(1) math zone
+$$E\left[ X_t \right] = \mu ?$$
+$$E \left[ X_t \right] =E \left[ 1-\phi_1 \mu  \right] + E \left[ \phi_1 X_{t-1}  \right] + E[a_t]$$
+
+We can rewrite this as 
+$$E \left[ X_t \right] = 1-\phi_1 \mu   + \phi_1E \left[  X_{t}  \right] + 0$$
+
+$$E \left[ X_t \right] (  1-\phi_1) = 1-\phi_1 \mu  $$
+$$E\left[ X_t \right] = \mu $$
+
+Mean does not depend on T
+
+The variance also does not, and if phi1 is less than one variance is finite
+
+and rhok is phi1 to the k
+
+### the zero mean form of AR1
+
+with zero mean,
+$$X_t = \phi_1 X_{t-1} + a_t$$ OR $$X_t- \phi_1 X_{t-1}$$A
+
+### AR1 with positive phi
+
+remember we have $$\rho_k = \phi_1^k$$
+
+With positive $\phi_1$, we have:
+
+***realizations*** are wandering and aperiodic
+
+***Autocorrelations*** are damped exponentials
+
+***Spectral density*** Peaks at zero. 
+
+Higher values = stronger versions of these characterstics
+
+### AR1 with negative phi
+
+We have:
+
+***realization*** are oscillating
+
+***Autocorrelations*** are damped and alternating(negative to a power you fool)
+
+**Spectral density*** has a peak at f = 0.5 (cycle length of 2)
+
+Higher magnitude = stronger characteristics
+
+
+### Nonstationary
+
+if phi = 1 or phi> 1, we have that realizations are from a nonstationary process. with it eequal to one, it looks ok, and is actualy a special ARIMA model. WIth it > 1, we have crazy explosive realizatoins
+
+
+# Characteristic equations
+
+$$X_t - \phi_1 X_{t-1} = a_t$$
+We can rewtite in operator form as
+
+$$(1-\phi_1 B)X_t = a_t$$
+
+where B is an operator that turns $X_t$ into $X_{t-1}$

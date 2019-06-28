@@ -79,3 +79,16 @@ $$\nu = \frac{B} {2 \pi}$$
 ```
 
 this is a signal with three frequencies!
+
+## Fundamental idea
+
+A lot of realizations are made up of components of various frequencies, and some do not have frequency at all. Uncovering the frequency content of a dataset (or lack thereof) allows us to better understand the process generating the data.
+
+### A Brief Look at Fourier Series
+
+When we do spectral analysis, we are generally going to be decomposing functions into sine and cosine terms, in order to better analyze the frequency of the data.
+
+#### Fourier Series
+
+You should just know this by this point, if you dont, google it. Too lazy to tex up the equations. Basically, we can decompose any function into a bunch of sines and cosines. It is pretty rad. The important conclusion of the existence of fourier series is that we can represent non cyclic functions as a bunch of sines and cosines, which will allow us to do spectral analysis of them.
+
