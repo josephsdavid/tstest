@@ -14,6 +14,24 @@ It is basically a vector so absolute value is just the magnitude
 
 Unit circle is the values in the complex plane in which the magnitude of z is equal to one. If Z is a complex number with magnitude greater than one, it is outside the unit circle.
 
+```{r}
+quad_form <- function(a,b,c) {
+	rad <- b^2 - 4 * a * c
+	if(is.complex(rad) || all(rad >= 0)) {
+		rad <- sqrt(rad)
+	} else {
+		rad <- sqrt(as.complex(rad))
+	}
+	round(cbind(-b - rad, -b + rad) / (2*a),3)
+}
+
+quad_form(c(1,4), c(1,-5), c(6,2))
+#               [,1]          [,2]
+# [1,] -0.500-2.398i -0.500+2.398i
+# [2,]  0.625-0.331i  0.625+0.331i
+```
+
+
 ## Linear filters
 
 A filter will turn $Z_t$ into $X_t$
@@ -108,19 +126,19 @@ parzen.wge(na.omit(dfun(rlz,1)))
 
 a GLP is a linear filter with a ***white noise input***
 
-We take white nois input and put it through a filter and get something not noise
+We take white noise input and put it through a filter and get something that isnt white noise.
 
 $$\sum_{j=0}^\infty \psi_j a_{t-j} = X_t - \mu$$
 
-A GLP is this and is an inginite combination of white noise terms
+GLP's are an infinite sum of white noise terms. This might be weird now but later on this concept will return.
 
-the $\psi_j$'s are called psi weights. AR, MA, and ARMA are all special cases of GLP's, and will be useful when we study confidence intervals
+The $\psi_j$'s are called psi weights, these will be useful again later. AR, MA, and ARMA are all special cases of GLP's, and will be useful when we study confidence intervals.
 
 ## AR(1) Intro
 
 AR(p) in which p = 1
 
-We will go through well known
+We will go through well known forms of the AR(1) model.
 
 $$X_t = \beta +  \phi_1 X_{t-1} + a_t$$
 
@@ -152,7 +170,15 @@ Mean does not depend on T
 
 The variance also does not, and if phi1 is less than one variance is finite
 
+$$\sigma_X^2 = \frac{\sigma_a^2}{1-\phi_1^2}$$
+
 and rhok is phi1 to the k
+
+$$\rho_k = \phi_1^k, k \geq 0$$
+
+Spectral Density of AR(1) also does not depend on time, it just monotonically increases or decreases depending on phi1:
+
+$$S_X(f) = \frac{\sigma_a^2}{\sigma_X^2} \left( \frac{1}{\mid 1 - \phi_1 e^{-2\pi i f}\mid^2} \right)$$
 
 ### the zero mean form of AR1
 
@@ -188,14 +214,20 @@ Higher magnitude = stronger characteristics
 
 ### Nonstationary
 
-if phi = 1 or phi> 1, we have that realizations are from a nonstationary process. with it eequal to one, it looks ok, and is actualy a special ARIMA model. WIth it > 1, we have crazy explosive realizatoins
+if phi = 1 or phi> 1, we have that realizations are from a nonstationary process. with it equal to one, it looks ok, and is actualy a special ARIMA model. WIth it > 1, we have crazy explosive realizations. Check this out:
 
+```{r, warning = F, message  = F}
+nonstarma  <- function(n,phi){
+	x <- rep(0,n)
+	a <- rnorm(n)
+	x[1:n]  <- 0
+	for(k in 2:n){
+		x[k] = phi*x[k-1] +a[k]
+	}
+	tplot(x)
+}
 
-# Characteristic equations
+nonstarma(n = 50, phi = 1.5) + th
 
-$$X_t - \phi_1 X_{t-1} = a_t$$
-We can rewtite in operator form as
+```
 
-$$(1-\phi_1 B)X_t = a_t$$
-
-where B is an operator that turns $X_t$ into $X_{t-1}$

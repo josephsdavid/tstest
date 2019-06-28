@@ -1,8 +1,24 @@
-# Characteristic equations
-
+# Characteristic Equations for AR(1) Models
+Consider the zero-mean form of an AR(1) model
 $$X_t - \phi_1 X_{t-1} = a_t$$
 We can rewtite in operator form as
 
 $$(1-\phi_1 B)X_t = a_t$$
 
-where B is an operator that turns $X_t$ into $X_{t-1}$
+Where B is an operator that turns $X_t$ into $X_{t-1}$. We can then rewrite this akgebraically (for solving purposes) as a characteristic equation:
+$$1-\phi_1 Z = 0$$.
+
+Now recall that AR(1) is stationary $iff$ $\mid \phi_1 \mid$ is less than 1. Lets solve the characteristic equation for the root now:
+
+$$r = z = \frac{1}{\phi_1}$$
+
+If $X_t$ is stationary , $\mid r \mid$ is greater than one. This does not feel important now, but when we get to higher order time series this will save us a lot of thinking. Lets look at a numerical example just to make sure we got it:
+
+$$X_t = -1.2 X_{t-1} + a_t$$
+$$X_t + 1.2 X_{t-1} = a_t$$
+$$(1+1.2B)X_t = a_t$$
+$$1+1.2Z = 0$$
+$$r = z = -\frac{1}{1.2} = `r -1/1.2`$$
+Note that in this case, $\phi_1 = -1.2$$. This is a weird thing with this notation, get used to it.
+
+
