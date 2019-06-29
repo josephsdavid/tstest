@@ -8,6 +8,7 @@ in
        R
        rPackages.tidyverse
        rstudio
+       rPackages.devtools
        rPackages.rmarkdown
        rPackages.pander
        rPackages.ggplot2
