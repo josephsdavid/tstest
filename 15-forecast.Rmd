@@ -99,6 +99,10 @@ ex74(22.93,l=2)
 
 AR1 forcasts damp to the sample mean.
 
+# AR(p) forecast math
+
+$$\hat{X_{t_0}} (\ell) = \phi_1 \hat{X_{t_0}}(\ell -1) + ... + \phi_p \hat{X_{t_0}}(\ell - p) + \bar{X} (1 - \phi_1 - ... - \phi_p))$$
+
 ## AR(p) forecasts:
 
 ```{r, warning = F}
@@ -138,6 +142,12 @@ As $\ell$ gets large, it is most reasonable to simply forecast the sample mean, 
 
 # ARMA(p,q)
 
+## Some math
+
+$$\hat{X_{t_0}} (\ell) = \sum_{j = 1}^p \phi_j \hat{X_{t_0}}(\ell - j) - \sum_{j = \ell} ^ q \theta_j \hat{a_{t_0 + \ell - j}} + \bar{X} [\left 1- \sum_{i = 1}^p \phi_i \right]$$
+Where the a hat is incredibly hard to calculate (we have to do back casting, which we can worry about after the test).
+Challeng: Write this function recursively (is it possible?????) in R. We are just going to use `fore.arma.wge` for now
+
 ```{r, results = "hide"}
 ts7524 <- tswgen(75, sn = 24)
 p <- c(1.6, -.8)
@@ -164,6 +174,39 @@ psi.weights.wge(phi = c(0.4,-.6,.8), lag.max = 5)
 psiweights(phi = c(0.4,-.6,.8),  l = 6)
 ```
 
+# Probability limits
+
+First, go back and review the GLP, and understanf that ARMA processes can be expressed in GLP form as:
+
+$$X_t - \mu = \sum_{j = 0}^\infty \psi_j a_{t-j}$$, where at is normal white noise. some more math: the forecast error is defined as:
+
+$$e_{t_0} (\ell)  = X_{t_0 + \ell} - \hat{X_{t_0}} (ll)$$
+We can rewrite this in GLP form as
+$$ = \sum_{k = 0}^{\ell -1} \psi_k a_{t_0 + \ell - k}$$
+Since a is normal, e should also be normal, its expeced value should be zero, and its variance is just the variance of it in GLP form. We can rewrite this as:
+$$\mathrm{var}(e_{t_0} (\ell)) = \sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2$$
+This saves us a bunch of time and we just need to calculate the white noise variance. This is hard so we can just get it from one of the outputs of fore.arma.wge, and then do the math from there.
+
+## An alternatve way to calculate psi weights
+
+$$\phi(B)X_t = \theta(B)a_t \rightarrow X_t = \frac{\theta(B)}{\psi(B)}a_t = \sum_{j = 0}^\infty \psi_j B^j a_t$$
+Then you just do the long division and get your answers, by dividing off that tricky a_t component.
+
+## Calculating them
+
+Since we know all this, we have that $$\frac{e_{t_0}(\ell) - 0}{\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \approx N(0,1)$$
+$$=\frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} }$$
+
+Given the above, we have that the probability of the above lying in betwieen $\pm 1.96$ is about 0.95. Then we expand that out, rewriting it/
+
+$$\implies P\left(-1.96 \leq \frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \leq 1.96}\right)$$
+$$ \implies P\left(-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq	X_{t_0 + \ell} - \hat{X_{t_0}} (\ell) \leq 1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95$$
+
+We then have
+
+$$ \implies P\left(\hat{X_{t_0}} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq	X_{t_0 + \ell}  \leq \hat{X_{t_0}} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95$$
+
+This gives us our result!!! Note that this is a huge simplification of the actual method of doing this, it is actually much more complicated what our computer does.
 # ASE
 
 ```{r, results = "hold"}

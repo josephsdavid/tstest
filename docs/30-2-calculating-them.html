@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="30.2 Calculating them | Time Series Midterm Review" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="A hopefully helpful guide" />
+<meta name="github-repo" content="josephsdavid/tstest" />
+
+<meta name="author" content="David Josephs" />
+
+<meta name="date" content="2019-06-29" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="A hopefully helpful guide">
+
+<title>30.2 Calculating them | Time Series Midterm Review</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#preparing-for-the-test"><span class="toc-section-number">1</span> Preparing for the test</a></li>
+<li class="has-sub"><a href="2-expected-values-variance-etc-.html#expected-values-variance-etc."><span class="toc-section-number">2</span> Expected Values, Variance, etc.</a><ul>
+<li class="has-sub"><a href="2-1-notation-and-some-definitions.html#notation-and-some-definitions"><span class="toc-section-number">2.1</span> Notation and Some Definitions</a><ul>
+<li><a href="2-1-notation-and-some-definitions.html#realizations-and-ensembles"><span class="toc-section-number">2.1.1</span> Realizations and Ensembles</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-2-population-means-and-variances.html#population-means-and-variances"><span class="toc-section-number">2.2</span> Population Means and Variances</a><ul>
+<li><a href="2-2-population-means-and-variances.html#the-mean-of-x_t"><span class="toc-section-number">2.2.1</span> The Mean of <span class="math inline">\(X_t\)</span></a></li>
+<li><a href="2-2-population-means-and-variances.html#variance-of-x_t"><span class="toc-section-number">2.2.2</span> Variance of <span class="math inline">\(X_t\)</span></a></li>
+</ul></li>
+<li><a href="2-3-estimating-mean-and-variance-for-multiple-realizations.html#estimating-mean-and-variance-for-multiple-realizations"><span class="toc-section-number">2.3</span> Estimating Mean and Variance for Multiple Realizations</a></li>
+<li class="has-sub"><a href="2-4-expected-value.html#expected-value"><span class="toc-section-number">2.4</span> Expected Value</a><ul>
+<li><a href="2-4-expected-value.html#discrete-rvs"><span class="toc-section-number">2.4.1</span> Discrete RVs</a></li>
+<li><a href="2-4-expected-value.html#continuous-rvs"><span class="toc-section-number">2.4.2</span> Continuous RVs</a></li>
+<li><a href="2-4-expected-value.html#some-rules"><span class="toc-section-number">2.4.3</span> Some Rules</a></li>
+<li><a href="2-4-expected-value.html#a-challenge-in-expected-values"><span class="toc-section-number">2.4.4</span> A challenge in Expected Values</a></li>
+<li><a href="2-4-expected-value.html#a-solution"><span class="toc-section-number">2.4.5</span> A solution</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-5-variance-and-covariance.html#variance-and-covariance"><span class="toc-section-number">2.5</span> Variance and Covariance</a><ul>
+<li><a href="2-5-variance-and-covariance.html#variance"><span class="toc-section-number">2.5.1</span> Variance</a></li>
+<li><a href="2-5-variance-and-covariance.html#covariance"><span class="toc-section-number">2.5.2</span> Covariance</a></li>
+<li><a href="2-5-variance-and-covariance.html#some-generalizations-on-covariance"><span class="toc-section-number">2.5.3</span> Some generalizations on covariance:</a></li>
+<li><a href="2-5-variance-and-covariance.html#a-challenge"><span class="toc-section-number">2.5.4</span> A challenge</a></li>
+<li><a href="2-5-variance-and-covariance.html#a-solution-1"><span class="toc-section-number">2.5.5</span> A solution</a></li>
+<li><a href="2-5-variance-and-covariance.html#a-note-on-covariance-and-correlation"><span class="toc-section-number">2.5.6</span> A note on covariance and correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="3-a-brief-discussion-of-stationarity.html#a-brief-discussion-of-stationarity"><span class="toc-section-number">3</span> A Brief Discussion of Stationarity</a><ul>
+<li><a href="3-1-condition-one-constant-mean.html#condition-one-constant-mean"><span class="toc-section-number">3.1</span> Condition One: Constant Mean</a></li>
+<li><a href="3-2-condition-two-constant-variance.html#condition-two-constant-variance"><span class="toc-section-number">3.2</span> Condition Two: Constant Variance</a></li>
+<li><a href="3-3-condition-3-constant-autocorrelation.html#condition-3-constant-autocorrelation"><span class="toc-section-number">3.3</span> Condition 3: Constant autocorrelation</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-autocorrelation.html#autocorrelation"><span class="toc-section-number">4</span> Autocorrelation</a><ul>
+<li><a href="4-1-independence.html#independence"><span class="toc-section-number">4.1</span> Independence</a></li>
+<li class="has-sub"><a href="4-2-serial-dependence-autocorrelation.html#serial-dependence-autocorrelation"><span class="toc-section-number">4.2</span> Serial Dependence / Autocorrelation</a><ul>
+<li><a href="4-2-serial-dependence-autocorrelation.html#a-definition"><span class="toc-section-number">4.2.1</span> A definition</a></li>
+<li><a href="4-2-serial-dependence-autocorrelation.html#autocorrelation-plots"><span class="toc-section-number">4.2.2</span> Autocorrelation Plots</a></li>
+<li><a href="4-2-serial-dependence-autocorrelation.html#dependentish-data"><span class="toc-section-number">4.2.3</span> Dependent(ish) data</a></li>
+<li><a href="4-2-serial-dependence-autocorrelation.html#independentish-data"><span class="toc-section-number">4.2.4</span> Independent(ish) data!</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="5-autocorrelation-concepts-and-notation.html#autocorrelation-concepts-and-notation"><span class="toc-section-number">5</span> Autocorrelation Concepts and Notation</a><ul>
+<li><a href="5-1-theoretical-concept-of-rho.html#theoretical-concept-of-rho"><span class="toc-section-number">5.1</span> Theoretical concept of <span class="math inline">\(\rho\)</span></a></li>
+<li><a href="5-2-autocovariance.html#autocovariance"><span class="toc-section-number">5.2</span> autocovariance</a></li>
+<li><a href="5-3-autocorrelation-1.html#autocorrelation-1"><span class="toc-section-number">5.3</span> autocorrelation</a></li>
+<li><a href="5-4-stationary-covariance.html#stationary-covariance"><span class="toc-section-number">5.4</span> Stationary Covariance</a></li>
+</ul></li>
+<li class="has-sub"><a href="6-practical-autocorrelation.html#practical-autocorrelation"><span class="toc-section-number">6</span> Practical Autocorrelation</a><ul>
+<li class="has-sub"><a href="6-1-estimation.html#estimation"><span class="toc-section-number">6.1</span> Estimation!</a><ul>
+<li><a href="6-1-estimation.html#rho_k-rightarrow-0"><span class="toc-section-number">6.1.1</span> <span class="math inline">\(\rho_k \rightarrow 0\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="7-the-frequency-domain.html#the-frequency-domain"><span class="toc-section-number">7</span> The Frequency Domain</a><ul>
+<li class="has-sub"><a href="7-1-review-of-sine-and-cosine.html#review-of-sine-and-cosine"><span class="toc-section-number">7.1</span> Review of sine and cosine</a><ul>
+<li><a href="7-1-review-of-sine-and-cosine.html#phase-shifts"><span class="toc-section-number">7.1.1</span> Phase shifts</a></li>
+</ul></li>
+<li><a href="7-2-frequency-and-period.html#frequency-and-period"><span class="toc-section-number">7.2</span> Frequency and Period</a></li>
+<li><a href="7-3-psueudo-periodicity.html#psueudo-periodicity"><span class="toc-section-number">7.3</span> psueudo-periodicity</a></li>
+<li><a href="7-4-aperiodicity.html#aperiodicity"><span class="toc-section-number">7.4</span> Aperiodicity</a></li>
+<li><a href="7-5-frequency.html#frequency"><span class="toc-section-number">7.5</span> Frequency</a></li>
+<li><a href="7-6-frequency-terminology.html#frequency-terminology"><span class="toc-section-number">7.6</span> Frequency Terminology</a></li>
+<li><a href="7-7-composite-sine-function.html#composite-sine-function"><span class="toc-section-number">7.7</span> Composite sine function</a></li>
+<li class="has-sub"><a href="7-8-fundamental-idea.html#fundamental-idea"><span class="toc-section-number">7.8</span> Fundamental idea</a><ul>
+<li><a href="7-8-fundamental-idea.html#a-brief-look-at-fourier-series"><span class="toc-section-number">7.8.1</span> A Brief Look at Fourier Series</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="8-spectral-density.html#spectral-density"><span class="toc-section-number">8</span> Spectral Density</a><ul>
+<li><a href="8-1-derivation-of-spectral-density-of-white-noise.html#derivation-of-spectral-density-of-white-noise"><span class="toc-section-number">8.1</span> Derivation of spectral density of white noise</a></li>
+<li><a href="8-2-estimating-spectral-density-from-real-data.html#estimating-spectral-density-from-real-data"><span class="toc-section-number">8.2</span> Estimating Spectral Density from Real Data</a></li>
+<li><a href="8-3-spectral-density-in-the-wild.html#spectral-density-in-the-wild"><span class="toc-section-number">8.3</span> Spectral Density in the Wild</a></li>
+<li><a href="8-4-why-do-we-do-spectral-density-from-0-5-to-0-5.html#why-do-we-do-spectral-density-from--0.5-to-0.5"><span class="toc-section-number">8.4</span> Why do we do spectral density from -0.5 to 0.5?</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-ar1-models-and-filtering.html#ar1-models-and-filtering"><span class="toc-section-number">9</span> AR(1) Models and Filtering</a><ul>
+<li><a href="9-1-algebra-review.html#algebra-review"><span class="toc-section-number">9.1</span> Algebra review</a></li>
+<li class="has-sub"><a href="9-2-linear-filters.html#linear-filters"><span class="toc-section-number">9.2</span> Linear filters</a><ul>
+<li><a href="9-2-linear-filters.html#example"><span class="toc-section-number">9.2.1</span> Example</a></li>
+<li><a href="9-2-linear-filters.html#point-moving-average"><span class="toc-section-number">9.2.2</span> 5 point moving average</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-3-types-of-filters.html#types-of-filters"><span class="toc-section-number">9.3</span> Types of filters:</a><ul>
+<li><a href="9-3-types-of-filters.html#an-example-in-r"><span class="toc-section-number">9.3.1</span> An example in R</a></li>
+<li><a href="9-3-types-of-filters.html#an-another-example"><span class="toc-section-number">9.3.2</span> An another example</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="10-glps.html#glps"><span class="toc-section-number">10</span> GLPs</a><ul>
+<li class="has-sub"><a href="10-1-ar1-intro.html#ar1-intro"><span class="toc-section-number">10.1</span> AR(1) Intro</a><ul>
+<li><a href="10-1-ar1-intro.html#ar1-math-zone"><span class="toc-section-number">10.1.1</span> AR(1) math zone</a></li>
+<li><a href="10-1-ar1-intro.html#the-zero-mean-form-of-ar1"><span class="toc-section-number">10.1.2</span> the zero mean form of AR1</a></li>
+<li><a href="10-1-ar1-intro.html#ar1-with-positive-phi"><span class="toc-section-number">10.1.3</span> AR1 with positive phi</a></li>
+<li><a href="10-1-ar1-intro.html#ar1-with-negative-phi"><span class="toc-section-number">10.1.4</span> AR1 with negative phi</a></li>
+<li><a href="10-1-ar1-intro.html#nonstationary"><span class="toc-section-number">10.1.5</span> Nonstationary</a></li>
+</ul></li>
+</ul></li>
+<li><a href="11-characteristic-equations-for-ar1-models.html#characteristic-equations-for-ar1-models"><span class="toc-section-number">11</span> Characteristic Equations for AR(1) Models</a></li>
+<li class="has-sub"><a href="12-ar2-models.html#ar2-models"><span class="toc-section-number">12</span> AR(2) models</a><ul>
+<li><a href="12-1-notes.html#notes"><span class="toc-section-number">12.1</span> Notes</a></li>
+<li><a href="12-2-stationarity-in-ar2.html#stationarity-in-ar2"><span class="toc-section-number">12.2</span> Stationarity in AR(2)</a></li>
+<li><a href="12-3-ar2-zero-mean-form.html#ar2-zero-mean-form"><span class="toc-section-number">12.3</span> AR(2) zero mean form</a></li>
+<li><a href="12-4-more-on-backshift-operator-notation.html#more-on-backshift-operator-notation"><span class="toc-section-number">12.4</span> More on backshift operator notation</a></li>
+<li><a href="12-5-characteristic-equation.html#characteristic-equation"><span class="toc-section-number">12.5</span> Characteristic equation</a></li>
+<li class="has-sub"><a href="12-6-key-result.html#key-result"><span class="toc-section-number">12.6</span> Key result</a><ul>
+<li><a href="12-6-key-result.html#two-real-roots"><span class="toc-section-number">12.6.1</span> Two real roots</a></li>
+<li><a href="12-6-key-result.html#complex-conjugate-roots"><span class="toc-section-number">12.6.2</span> Complex conjugate roots</a></li>
+</ul></li>
+</ul></li>
+<li><a href="13-arp.html#arp"><span class="toc-section-number">13</span> AR(p)</a></li>
+<li class="has-sub"><a href="14-maq-models.html#maq-models"><span class="toc-section-number">14</span> MA(q) Models</a><ul>
+<li class="has-sub"><a href="14-1-properties-and-characteristics.html#properties-and-characteristics"><span class="toc-section-number">14.1</span> Properties and Characteristics</a><ul>
+<li><a href="14-1-properties-and-characteristics.html#a-quote-for-your-thoughts"><span class="toc-section-number">14.1.1</span> A quote for your thoughts:</a></li>
+</ul></li>
+<li><a href="14-2-maq.html#maq"><span class="toc-section-number">14.2</span> MA(q)</a></li>
+<li class="has-sub"><a href="14-3-operator-zero-mean-form.html#operator-zero-mean-form"><span class="toc-section-number">14.3</span> Operator Zero-Mean Form</a><ul>
+<li><a href="14-3-operator-zero-mean-form.html#characteristic-equation-1"><span class="toc-section-number">14.3.1</span> Characteristic Equation</a></li>
+<li><a href="14-3-operator-zero-mean-form.html#some-definitions"><span class="toc-section-number">14.3.2</span> Some definitions:</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="15-some-examples-of-ma1.html#some-examples-of-ma1"><span class="toc-section-number">15</span> Some examples of MA(1)</a><ul>
+<li><a href="15-some-examples-of-ma1.html#positive-theta1"><span class="toc-section-number">15.0.1</span> Positive theta1</a></li>
+<li><a href="15-some-examples-of-ma1.html#negative-theta"><span class="toc-section-number">15.0.2</span> Negative theta</a></li>
+</ul></li>
+<li class="has-sub"><a href="16-ma2.html#ma2"><span class="toc-section-number">16</span> MA(2)</a><ul>
+<li class="has-sub"><a href="16-1-invertibility.html#invertibility"><span class="toc-section-number">16.1</span> Invertibility</a><ul>
+<li><a href="16-1-invertibility.html#criteria-for-invertibility"><span class="toc-section-number">16.1.1</span> Criteria for invertibility</a></li>
+</ul></li>
+</ul></li>
+<li><a href="17-armapq.html#armapq"><span class="toc-section-number">17</span> ARMA(p,q)</a></li>
+<li><a href="18-blending-ar-and-ma-components.html#blending-ar-and-ma-components"><span class="toc-section-number">18</span> Blending AR and MA components</a></li>
+<li class="has-sub"><a href="19-psi-weights-with-ar-models.html#psi-weights-with-ar-models"><span class="toc-section-number">19</span> Psi weights with AR models:</a><ul>
+<li><a href="19-1-psi-weights-for-arma.html#psi-weights-for-arma"><span class="toc-section-number">19.1</span> Psi weights for ARMA</a></li>
+</ul></li>
+<li class="has-sub"><a href="20-arima-and-aruma.html#arima-and-aruma"><span class="toc-section-number">20</span> ARIMA and ARUMA</a><ul>
+<li><a href="20-1-arima.html#arima"><span class="toc-section-number">20.1</span> ARIMA</a></li>
+<li><a href="20-2-aruma.html#aruma"><span class="toc-section-number">20.2</span> ARUMA</a></li>
+<li class="has-sub"><a href="20-3-but-what-do-they-do.html#but-what-do-they-do"><span class="toc-section-number">20.3</span> But what do they do????</a><ul>
+<li><a href="20-3-but-what-do-they-do.html#arima-transform"><span class="toc-section-number">20.3.1</span> ARIMA Transform</a></li>
+<li><a href="20-3-but-what-do-they-do.html#aruma-transform"><span class="toc-section-number">20.3.2</span> ARUMA Transform</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="21-forecasting.html#forecasting"><span class="toc-section-number">21</span> Forecasting</a><ul>
+<li><a href="21-1-forecasts-from-signal-plus-noise.html#forecasts-from-signal-plus-noise"><span class="toc-section-number">21.1</span> Forecasts from Signal-Plus-Noise</a></li>
+</ul></li>
+<li class="has-sub"><a href="22-forecasting-setting.html#forecasting-setting"><span class="toc-section-number">22</span> Forecasting setting</a><ul>
+<li><a href="22-1-box-jenkins-approach.html#box-jenkins-approach"><span class="toc-section-number">22.1</span> Box-Jenkins approach</a></li>
+</ul></li>
+<li class="has-sub"><a href="23-strategy-notation.html#strategy-notation"><span class="toc-section-number">23</span> Strategy + Notation</a><ul>
+<li><a href="23-1-notation.html#notation"><span class="toc-section-number">23.1</span> Notation</a></li>
+<li><a href="23-2-some-math.html#some-math"><span class="toc-section-number">23.2</span> some math</a></li>
+</ul></li>
+<li><a href="24-discussion-of-ar1-forcasts.html#discussion-of-ar1-forcasts"><span class="toc-section-number">24</span> Discussion of Ar1 forcasts</a></li>
+<li class="has-sub"><a href="25-arp-forecast-math.html#arp-forecast-math"><span class="toc-section-number">25</span> AR(p) forecast math</a><ul>
+<li class="has-sub"><a href="25-1-arp-forecasts.html#arp-forecasts"><span class="toc-section-number">25.1</span> AR(p) forecasts:</a><ul>
+<li><a href="25-1-arp-forecasts.html#with-tswge"><span class="toc-section-number">25.1.1</span> With tswge</a></li>
+</ul></li>
+</ul></li>
+<li><a href="26-eventual-forecast-function.html#eventual-forecast-function"><span class="toc-section-number">26</span> Eventual Forecast Function:</a></li>
+<li class="has-sub"><a href="27-armapq-1.html#armapq-1"><span class="toc-section-number">27</span> ARMA(p,q)</a><ul>
+<li><a href="27-1-some-math-1.html#some-math-1"><span class="toc-section-number">27.1</span> Some math</a></li>
+</ul></li>
+<li><a href="28-example-1.html#example-1"><span class="toc-section-number">28</span> Example</a></li>
+<li><a href="29-psi-weights.html#psi-weights"><span class="toc-section-number">29</span> psi weights</a></li>
+<li class="has-sub"><a href="30-probability-limits.html#probability-limits"><span class="toc-section-number">30</span> Probability limits</a><ul>
+<li><a href="30-1-an-alternatve-way-to-calculate-psi-weights.html#an-alternatve-way-to-calculate-psi-weights"><span class="toc-section-number">30.1</span> An alternatve way to calculate psi weights</a></li>
+<li><a href="30-2-calculating-them.html#calculating-them"><span class="toc-section-number">30.2</span> Calculating them</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="calculating-them" class="section level2">
+<h2><span class="header-section-number">30.2</span> Calculating them</h2>
+<p>Since we know all this, we have that <span class="math display">\[\frac{e_{t_0}(\ell) - 0}{\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \approx N(0,1)\]</span>
+<span class="math display">\[=\frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} }\]</span></p>
+<p>Given the above, we have that the probability of the above lying in betwieen <span class="math inline">\(\pm 1.96\)</span> is about 0.95. Then we expand that out, rewriting it/</p>
+<p><span class="math display">\[\implies P\left(-1.96 \leq \frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \leq 1.96}\right)\]</span>
+<span class="math display">\[ \implies P\left(-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell} - \hat{X_{t_0}} (\ell) \leq 1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
+<p>We then have</p>
+<p><span class="math display">\[ \implies P\left(\hat{X_{t_0}} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell}  \leq \hat{X_{t_0}} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
+<p>This gives us our result!!! Note that this is a huge simplification of the actual method of doing this, it is actually much more complicated what our computer does.
+# ASE</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="30-2-calculating-them.html#cb82-1"></a>tswase &lt;-<span class="st"> </span><span class="cf">function</span>(vec, ..., ahead) {</span>
+<span id="cb82-2"><a href="30-2-calculating-them.html#cb82-2"></a>    f &lt;-<span class="st"> </span><span class="kw">fore.arma.wge</span>(vec, ..., <span class="dt">n.ahead =</span> ahead)</span>
+<span id="cb82-3"><a href="30-2-calculating-them.html#cb82-3"></a>    ASE &lt;-<span class="st"> </span><span class="kw">mean</span>((f<span class="op">$</span>f <span class="op">-</span><span class="st"> </span>vec[(<span class="kw">length</span>(vec) <span class="op">-</span><span class="st"> </span>(ahead <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))<span class="op">:</span>(<span class="kw">length</span>(vec))])<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb82-4"><a href="30-2-calculating-them.html#cb82-4"></a>    res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">fore =</span> f, <span class="dt">ASE =</span> ASE)</span>
+<span id="cb82-5"><a href="30-2-calculating-them.html#cb82-5"></a>    <span class="kw">return</span>(res)</span>
+<span id="cb82-6"><a href="30-2-calculating-them.html#cb82-6"></a>}</span>
+<span id="cb82-7"><a href="30-2-calculating-them.html#cb82-7"></a>res1 &lt;-<span class="st"> </span><span class="kw">tswase</span>(<span class="dt">vec =</span> llynx, <span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">1.3</span>, <span class="fl">-0.7</span>, <span class="fl">0.1</span>, <span class="fl">-0.2</span>), <span class="dt">ahead =</span> <span class="dv">12</span>, <span class="dt">lastn =</span> T, </span>
+<span id="cb82-8"><a href="30-2-calculating-them.html#cb82-8"></a>    <span class="dt">limits =</span> F)</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-63-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="30-2-calculating-them.html#cb83-1"></a><span class="kw">library</span>(pander)</span>
+<span id="cb83-2"><a href="30-2-calculating-them.html#cb83-2"></a>res2 &lt;-<span class="st"> </span><span class="kw">tswase</span>(<span class="dt">vec =</span> llynx, <span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.1</span>, <span class="fl">-0.2</span>, <span class="fl">-0.3</span>), <span class="dt">theta =</span> <span class="fl">-0.6</span>, <span class="dt">ahead =</span> <span class="dv">12</span>, </span>
+<span id="cb83-3"><a href="30-2-calculating-them.html#cb83-3"></a>    <span class="dt">lastn =</span> T, <span class="dt">limits =</span> F)</span></code></pre></div>
+<p><img src="tsReview_files/figure-html/unnamed-chunk-63-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="30-2-calculating-them.html#cb84-1"></a><span class="kw">pander</span>(res1)</span>
+<span id="cb84-2"><a href="30-2-calculating-them.html#cb84-2"></a><span class="kw">pander</span>(res2)</span></code></pre></div>
+<ul>
+<li><p><strong>fore</strong>:</p>
+<ul>
+<li><strong>f</strong>: <em>3.004</em>, <em>3.366</em>, <em>3.512</em>, <em>3.442</em>, <em>3.204</em>, <em>2.885</em>, <em>2.602</em>, <em>2.446</em>, <em>2.459</em>, <em>2.619</em>, <em>2.859</em> and <em>3.092</em></li>
+<li><strong>ll</strong>: <em>2.566</em>, <em>2.647</em>, <em>2.673</em>, <em>2.577</em>, <em>2.336</em>, <em>1.968</em>, <em>1.597</em>, <em>1.375</em>, <em>1.366</em>, <em>1.526</em>, <em>1.749</em> and <em>1.941</em></li>
+<li><strong>ul</strong>: <em>3.442</em>, <em>4.085</em>, <em>4.352</em>, <em>4.308</em>, <em>4.072</em>, <em>3.803</em>, <em>3.607</em>, <em>3.518</em>, <em>3.551</em>, <em>3.711</em>, <em>3.97</em> and <em>4.244</em></li>
+<li><strong>resid</strong>: <em>0</em>, <em>0</em>, <em>0</em>, <em>0</em>, <em>0.06725</em>, <em>0.1617</em>, <em>0.1344</em>, <em>0.3362</em>, <em>0.1412</em>, <em>0.1288</em>, <em>-0.2401</em>, <em>-0.2215</em>, <em>0.5252</em>, <em>-0.1463</em>, <em>-0.08944</em>, <em>0.3955</em>, <em>-0.3528</em>, <em>0.2023</em>, <em>-0.1965</em>, <em>-0.2777</em>, <em>-0.05285</em>, <em>-0.4227</em>, <em>0.1478</em>, <em>-0.04402</em>, <em>-0.1883</em>, <em>-0.2188</em>, <em>0.007712</em>, <em>-0.07248</em>, <em>-0.3206</em>, <em>-0.1166</em>, <em>0.2116</em>, <em>-0.2759</em>, <em>0.1905</em>, <em>-0.01071</em>, <em>0.1089</em>, <em>0.02447</em>, <em>0.01511</em>, <em>0.03496</em>, <em>-0.2208</em>, <em>0.007828</em>, <em>0.04624</em>, <em>-0.03276</em>, <em>0.1647</em>, <em>0.1242</em>, <em>0.04974</em>, <em>0.2505</em>, <em>-0.1074</em>, <em>-0.363</em>, <em>0.1281</em>, <em>0.483</em>, <em>-0.2486</em>, <em>0.3216</em>, <em>-0.01041</em>, <em>-0.08519</em>, <em>0.1721</em>, <em>-0.1402</em>, <em>-0.008932</em>, <em>-0.2007</em>, <em>0.00302</em>, <em>-0.01021</em>, <em>0.09193</em>, <em>-0.1408</em>, <em>0.2258</em>, <em>-0.09438</em>, <em>0.2757</em>, <em>-0.1359</em>, <em>-0.412</em>, <em>-0.2504</em>, <em>-0.08081</em>, <em>-0.1047</em>, <em>-0.4328</em>, <em>-0.08309</em>, <em>-0.4431</em>, <em>0.06305</em>, <em>0.03913</em>, <em>-0.2203</em>, <em>-0.5617</em>, <em>-0.2877</em>, <em>0.4101</em>, <em>0.1424</em>, <em>-0.05529</em>, <em>-0.08196</em>, <em>0.2306</em>, <em>0.2021</em>, <em>0.0926</em>, <em>0.1474</em>, <em>0.1429</em>, <em>-0.2628</em>, <em>0.5179</em>, <em>0.2648</em>, <em>0.1174</em>, <em>0.1811</em>, <em>0.08981</em>, <em>0.05521</em>, <em>0.277</em>, <em>0.3812</em>, <em>-0.476</em>, <em>-0.365</em>, <em>0.2874</em>, <em>-0.1236</em>, <em>-0.0284</em>, <em>-0.3039</em>, <em>0.04991</em>, <em>-0.04449</em>, <em>0.04913</em>, <em>-0.01834</em>, <em>-0.01367</em>, <em>-0.1218</em>, <em>0.288</em>, <em>0.1588</em>, <em>0.1261</em>, <em>0.1003</em>, <em>0.1658</em> and <em>0.1326</em></li>
+<li><strong>wnv</strong>: <em>0.05002</em></li>
+<li><strong>se</strong>: <em>0.2237</em>, <em>0.3668</em>, <em>0.4285</em>, <em>0.4415</em>, <em>0.4427</em>, <em>0.4681</em>, <em>0.5127</em>, <em>0.5468</em>, <em>0.5576</em>, <em>0.5576</em>, <em>0.5664</em> and <em>0.5877</em></li>
+<li><strong>psi</strong>: <em>1.3</em>, <em>0.99</em>, <em>0.477</em>, <em>-0.1429</em>, <em>-0.6807</em>, <em>-0.9351</em>, <em>-0.8489</em>, <em>-0.4885</em>, <em>0.00185</em>, <em>0.4465</em>, <em>0.7</em> and <em>0.6954</em></li>
+</ul></li>
+<li><p><strong>ASE</strong>: <em>0.1103</em></p></li>
+</ul>
+<!-- end of list -->
+<ul>
+<li><p><strong>fore</strong>:</p>
+<ul>
+<li><strong>f</strong>: <em>2.923</em>, <em>3.257</em>, <em>3.376</em>, <em>3.357</em>, <em>3.192</em>, <em>2.95</em>, <em>2.733</em>, <em>2.595</em>, <em>2.575</em>, <em>2.663</em>, <em>2.815</em> and <em>2.976</em></li>
+<li><strong>ll</strong>: <em>2.489</em>, <em>2.544</em>, <em>2.54</em>, <em>2.476</em>, <em>2.311</em>, <em>2.039</em>, <em>1.756</em>, <em>1.557</em>, <em>1.511</em>, <em>1.598</em>, <em>1.744</em> and <em>1.882</em></li>
+<li><strong>ul</strong>: <em>3.357</em>, <em>3.969</em>, <em>4.213</em>, <em>4.238</em>, <em>4.073</em>, <em>3.862</em>, <em>3.709</em>, <em>3.633</em>, <em>3.638</em>, <em>3.728</em>, <em>3.886</em> and <em>4.07</em></li>
+<li><strong>resid</strong>: <em>0</em>, <em>0</em>, <em>0</em>, <em>0</em>, <em>0.03173</em>, <em>0.192</em>, <em>0.1324</em>, <em>0.3168</em>, <em>0.1114</em>, <em>0.102</em>, <em>-0.2995</em>, <em>-0.2346</em>, <em>0.4979</em>, <em>-0.1032</em>, <em>-0.08355</em>, <em>0.354</em>, <em>-0.2599</em>, <em>0.1759</em>, <em>-0.2375</em>, <em>-0.2209</em>, <em>-0.1402</em>, <em>-0.3697</em>, <em>0.1473</em>, <em>-0.02132</em>, <em>-0.1114</em>, <em>-0.2381</em>, <em>0.07028</em>, <em>-0.05577</em>, <em>-0.3099</em>, <em>-0.1463</em>, <em>0.2225</em>, <em>-0.2556</em>, <em>0.1787</em>, <em>-0.018</em>, <em>0.1755</em>, <em>-0.022</em>, <em>0.05216</em>, <em>0.0001507</em>, <em>-0.2203</em>, <em>-0.01963</em>, <em>0.03829</em>, <em>-0.01013</em>, <em>0.1514</em>, <em>0.1459</em>, <em>0.06813</em>, <em>0.2341</em>, <em>-0.1108</em>, <em>-0.3849</em>, <em>0.07767</em>, <em>0.5014</em>, <em>-0.2366</em>, <em>0.2809</em>, <em>-0.02308</em>, <em>-0.01238</em>, <em>0.09503</em>, <em>-0.09576</em>, <em>-0.03411</em>, <em>-0.229</em>, <em>0.02378</em>, <em>-0.02486</em>, <em>0.13</em>, <em>-0.1462</em>, <em>0.2542</em>, <em>-0.09775</em>, <em>0.3021</em>, <em>-0.1893</em>, <em>-0.3908</em>, <em>-0.3238</em>, <em>-0.03664</em>, <em>-0.08252</em>, <em>-0.4048</em>, <em>-0.04694</em>, <em>-0.3817</em>, <em>0.1381</em>, <em>0.04056</em>, <em>-0.1509</em>, <em>-0.6192</em>, <em>-0.2778</em>, <em>0.4174</em>, <em>0.1901</em>, <em>-0.06197</em>, <em>-0.1104</em>, <em>0.2769</em>, <em>0.2086</em>, <em>0.0845</em>, <em>0.09404</em>, <em>0.1203</em>, <em>-0.2961</em>, <em>0.4802</em>, <em>0.252</em>, <em>0.152</em>, <em>0.09705</em>, <em>0.1274</em>, <em>0.03258</em>, <em>0.2512</em>, <em>0.3599</em>, <em>-0.5004</em>, <em>-0.4197</em>, <em>0.2618</em>, <em>-0.03989</em>, <em>-0.0322</em>, <em>-0.3143</em>, <em>0.1308</em>, <em>-0.04089</em>, <em>0.09771</em>, <em>-0.05833</em>, <em>-0.0001889</em>, <em>-0.16</em>, <em>0.2836</em>, <em>0.1434</em>, <em>0.1389</em>, <em>0.05759</em>, <em>0.1862</em> and <em>0.1157</em></li>
+<li><strong>wnv</strong>: <em>0.0491</em></li>
+<li><strong>se</strong>: <em>0.2216</em>, <em>0.3634</em>, <em>0.4268</em>, <em>0.4495</em>, <em>0.4495</em>, <em>0.465</em>, <em>0.4983</em>, <em>0.5295</em>, <em>0.5426</em>, <em>0.5434</em>, <em>0.5464</em> and <em>0.5582</em></li>
+<li><strong>psi</strong>: <em>1.3</em>, <em>1.01</em>, <em>0.637</em>, <em>-0.0131</em>, <em>-0.5375</em>, <em>-0.8079</em>, <em>-0.8078</em>, <em>-0.5348</em>, <em>-0.1323</em>, <em>0.2578</em>, <em>0.5165</em> and <em>0.5743</em></li>
+</ul></li>
+<li><p><strong>ASE</strong>: <em>0.111</em></p></li>
+</ul>
+<!-- end of list -->
+
+</div>
+<!-- </div> -->
+<p style="text-align: center;">
+<a href="30-1-an-alternatve-way-to-calculate-psi-weights.html"><button class="btn btn-default">Previous</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
