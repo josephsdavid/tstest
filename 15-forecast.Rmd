@@ -207,6 +207,7 @@ We then have
 $$ \implies P\left(\hat{X_{t_0}} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq	X_{t_0 + \ell}  \leq \hat{X_{t_0}} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95$$
 
 This gives us our result!!! Note that this is a huge simplification of the actual method of doing this, it is actually much more complicated what our computer does.
+
 # ASE
 
 ```{r, results = "hold"}
