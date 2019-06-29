@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Unit 19 Psi weights with AR models: | Time Series Midterm Review</title>
+  <meta name="description" content="A hopefully helpful guide">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Unit 19 Psi weights with AR models: | Time Series Midterm Review" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A hopefully helpful guide" />
+  <meta name="github-repo" content="josephsdavid/tstest" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unit 19 Psi weights with AR models: | Time Series Midterm Review" />
+  
+  <meta name="twitter:description" content="A hopefully helpful guide" />
+  
+
+<meta name="author" content="David Josephs">
+
+
+<meta name="date" content="2019-06-28">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="blending-ar-and-ma-components.html">
+<link rel="next" href="arima-and-aruma.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Time Series Midterm Review</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preparing for the test</a></li>
+<li class="chapter" data-level="2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html"><i class="fa fa-check"></i><b>2</b> Expected Values, Variance, etc.</a><ul>
+<li class="chapter" data-level="2.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#notation-and-some-definitions"><i class="fa fa-check"></i><b>2.1</b> Notation and Some Definitions</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#realizations-and-ensembles"><i class="fa fa-check"></i><b>2.1.1</b> Realizations and Ensembles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#population-means-and-variances"><i class="fa fa-check"></i><b>2.2</b> Population Means and Variances</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#the-mean-of-x_t"><i class="fa fa-check"></i><b>2.2.1</b> The Mean of <span class="math inline">\(X_t\)</span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance-of-x_t"><i class="fa fa-check"></i><b>2.2.2</b> Variance of <span class="math inline">\(X_t\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#estimating-mean-and-variance-for-multiple-realizations"><i class="fa fa-check"></i><b>2.3</b> Estimating Mean and Variance for Multiple Realizations</a></li>
+<li class="chapter" data-level="2.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#expected-value"><i class="fa fa-check"></i><b>2.4</b> Expected Value</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#discrete-rvs"><i class="fa fa-check"></i><b>2.4.1</b> Discrete RVs</a></li>
+<li class="chapter" data-level="2.4.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#continuous-rvs"><i class="fa fa-check"></i><b>2.4.2</b> Continuous RVs</a></li>
+<li class="chapter" data-level="2.4.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#some-rules"><i class="fa fa-check"></i><b>2.4.3</b> Some Rules</a></li>
+<li class="chapter" data-level="2.4.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-challenge-in-expected-values"><i class="fa fa-check"></i><b>2.4.4</b> A challenge in Expected Values</a></li>
+<li class="chapter" data-level="2.4.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-solution"><i class="fa fa-check"></i><b>2.4.5</b> A solution</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance-and-covariance"><i class="fa fa-check"></i><b>2.5</b> Variance and Covariance</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#variance"><i class="fa fa-check"></i><b>2.5.1</b> Variance</a></li>
+<li class="chapter" data-level="2.5.2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#covariance"><i class="fa fa-check"></i><b>2.5.2</b> Covariance</a></li>
+<li class="chapter" data-level="2.5.3" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#some-generalizations-on-covariance"><i class="fa fa-check"></i><b>2.5.3</b> Some generalizations on covariance:</a></li>
+<li class="chapter" data-level="2.5.4" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-challenge"><i class="fa fa-check"></i><b>2.5.4</b> A challenge</a></li>
+<li class="chapter" data-level="2.5.5" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-solution-1"><i class="fa fa-check"></i><b>2.5.5</b> A solution</a></li>
+<li class="chapter" data-level="2.5.6" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#a-note-on-covariance-and-correlation"><i class="fa fa-check"></i><b>2.5.6</b> A note on covariance and correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html"><i class="fa fa-check"></i><b>3</b> A Brief Discussion of Stationarity</a><ul>
+<li class="chapter" data-level="3.1" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-one-constant-mean"><i class="fa fa-check"></i><b>3.1</b> Condition One: Constant Mean</a></li>
+<li class="chapter" data-level="3.2" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-two-constant-variance"><i class="fa fa-check"></i><b>3.2</b> Condition Two: Constant Variance</a></li>
+<li class="chapter" data-level="3.3" data-path="a-brief-discussion-of-stationarity.html"><a href="a-brief-discussion-of-stationarity.html#condition-3-constant-autocorrelation"><i class="fa fa-check"></i><b>3.3</b> Condition 3: Constant autocorrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="autocorrelation.html"><a href="autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Autocorrelation</a><ul>
+<li class="chapter" data-level="4.1" data-path="autocorrelation.html"><a href="autocorrelation.html#independence"><i class="fa fa-check"></i><b>4.1</b> Independence</a></li>
+<li class="chapter" data-level="4.2" data-path="autocorrelation.html"><a href="autocorrelation.html#serial-dependence-autocorrelation"><i class="fa fa-check"></i><b>4.2</b> Serial Dependence / Autocorrelation</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="autocorrelation.html"><a href="autocorrelation.html#a-definition"><i class="fa fa-check"></i><b>4.2.1</b> A definition</a></li>
+<li class="chapter" data-level="4.2.2" data-path="autocorrelation.html"><a href="autocorrelation.html#autocorrelation-plots"><i class="fa fa-check"></i><b>4.2.2</b> Autocorrelation Plots</a></li>
+<li class="chapter" data-level="4.2.3" data-path="autocorrelation.html"><a href="autocorrelation.html#dependentish-data"><i class="fa fa-check"></i><b>4.2.3</b> Dependent(ish) data</a></li>
+<li class="chapter" data-level="4.2.4" data-path="autocorrelation.html"><a href="autocorrelation.html#independentish-data"><i class="fa fa-check"></i><b>4.2.4</b> Independent(ish) data!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html"><i class="fa fa-check"></i><b>5</b> Autocorrelation Concepts and Notation</a><ul>
+<li class="chapter" data-level="5.1" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#theoretical-concept-of-rho"><i class="fa fa-check"></i><b>5.1</b> Theoretical concept of <span class="math inline">\(\rho\)</span></a></li>
+<li class="chapter" data-level="5.2" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#autocovariance"><i class="fa fa-check"></i><b>5.2</b> autocovariance</a></li>
+<li class="chapter" data-level="5.3" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#autocorrelation-1"><i class="fa fa-check"></i><b>5.3</b> autocorrelation</a></li>
+<li class="chapter" data-level="5.4" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#stationary-covariance"><i class="fa fa-check"></i><b>5.4</b> Stationary Covariance</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html"><i class="fa fa-check"></i><b>6</b> Practical Autocorrelation</a><ul>
+<li class="chapter" data-level="6.1" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html#estimation"><i class="fa fa-check"></i><b>6.1</b> Estimation!</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html#rho_k-rightarrow-0"><i class="fa fa-check"></i><b>6.1.1</b> <span class="math inline">\(\rho_k \rightarrow 0\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html"><i class="fa fa-check"></i><b>7</b> The Frequency Domain</a><ul>
+<li class="chapter" data-level="7.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#review-of-sine-and-cosine"><i class="fa fa-check"></i><b>7.1</b> Review of sine and cosine</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#phase-shifts"><i class="fa fa-check"></i><b>7.1.1</b> Phase shifts</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency-and-period"><i class="fa fa-check"></i><b>7.2</b> Frequency and Period</a></li>
+<li class="chapter" data-level="7.3" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#psueudo-periodicity"><i class="fa fa-check"></i><b>7.3</b> psueudo-periodicity</a></li>
+<li class="chapter" data-level="7.4" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#aperiodicity"><i class="fa fa-check"></i><b>7.4</b> Aperiodicity</a></li>
+<li class="chapter" data-level="7.5" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency"><i class="fa fa-check"></i><b>7.5</b> Frequency</a></li>
+<li class="chapter" data-level="7.6" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#frequency-terminology"><i class="fa fa-check"></i><b>7.6</b> Frequency Terminology</a></li>
+<li class="chapter" data-level="7.7" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#composite-sine-function"><i class="fa fa-check"></i><b>7.7</b> Composite sine function</a></li>
+<li class="chapter" data-level="7.8" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#fundamental-idea"><i class="fa fa-check"></i><b>7.8</b> Fundamental idea</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="the-frequency-domain.html"><a href="the-frequency-domain.html#a-brief-look-at-fourier-series"><i class="fa fa-check"></i><b>7.8.1</b> A Brief Look at Fourier Series</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="spectral-density.html"><a href="spectral-density.html"><i class="fa fa-check"></i><b>8</b> Spectral Density</a><ul>
+<li class="chapter" data-level="8.1" data-path="spectral-density.html"><a href="spectral-density.html#derivation-of-spectral-density-of-white-noise"><i class="fa fa-check"></i><b>8.1</b> Derivation of spectral density of white noise</a></li>
+<li class="chapter" data-level="8.2" data-path="spectral-density.html"><a href="spectral-density.html#estimating-spectral-density-from-real-data"><i class="fa fa-check"></i><b>8.2</b> Estimating Spectral Density from Real Data</a></li>
+<li class="chapter" data-level="8.3" data-path="spectral-density.html"><a href="spectral-density.html#spectral-density-in-the-wild"><i class="fa fa-check"></i><b>8.3</b> Spectral Density in the Wild</a></li>
+<li class="chapter" data-level="8.4" data-path="spectral-density.html"><a href="spectral-density.html#why-do-we-do-spectral-density-from--0.5-to-0.5"><i class="fa fa-check"></i><b>8.4</b> Why do we do spectral density from -0.5 to 0.5?</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html"><i class="fa fa-check"></i><b>9</b> AR(1) Models and Filtering</a><ul>
+<li class="chapter" data-level="9.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#algebra-review"><i class="fa fa-check"></i><b>9.1</b> Algebra review</a></li>
+<li class="chapter" data-level="9.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#linear-filters"><i class="fa fa-check"></i><b>9.2</b> Linear filters</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#example"><i class="fa fa-check"></i><b>9.2.1</b> Example</a></li>
+<li class="chapter" data-level="9.2.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#point-moving-average"><i class="fa fa-check"></i><b>9.2.2</b> 5 point moving average</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#types-of-filters"><i class="fa fa-check"></i><b>9.3</b> Types of filters:</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#an-example-in-r"><i class="fa fa-check"></i><b>9.3.1</b> An example in R</a></li>
+<li class="chapter" data-level="9.3.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#an-another-example"><i class="fa fa-check"></i><b>9.3.2</b> An another example</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="glps.html"><a href="glps.html"><i class="fa fa-check"></i><b>10</b> GLPs</a><ul>
+<li class="chapter" data-level="10.1" data-path="glps.html"><a href="glps.html#ar1-intro"><i class="fa fa-check"></i><b>10.1</b> AR(1) Intro</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="glps.html"><a href="glps.html#ar1-math-zone"><i class="fa fa-check"></i><b>10.1.1</b> AR(1) math zone</a></li>
+<li class="chapter" data-level="10.1.2" data-path="glps.html"><a href="glps.html#the-zero-mean-form-of-ar1"><i class="fa fa-check"></i><b>10.1.2</b> the zero mean form of AR1</a></li>
+<li class="chapter" data-level="10.1.3" data-path="glps.html"><a href="glps.html#ar1-with-positive-phi"><i class="fa fa-check"></i><b>10.1.3</b> AR1 with positive phi</a></li>
+<li class="chapter" data-level="10.1.4" data-path="glps.html"><a href="glps.html#ar1-with-negative-phi"><i class="fa fa-check"></i><b>10.1.4</b> AR1 with negative phi</a></li>
+<li class="chapter" data-level="10.1.5" data-path="glps.html"><a href="glps.html#nonstationary"><i class="fa fa-check"></i><b>10.1.5</b> Nonstationary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="characteristic-equations-for-ar1-models.html"><a href="characteristic-equations-for-ar1-models.html"><i class="fa fa-check"></i><b>11</b> Characteristic Equations for AR(1) Models</a></li>
+<li class="chapter" data-level="12" data-path="ar2-models.html"><a href="ar2-models.html"><i class="fa fa-check"></i><b>12</b> AR(2) models</a><ul>
+<li class="chapter" data-level="12.1" data-path="ar2-models.html"><a href="ar2-models.html#notes"><i class="fa fa-check"></i><b>12.1</b> Notes</a></li>
+<li class="chapter" data-level="12.2" data-path="ar2-models.html"><a href="ar2-models.html#stationarity-in-ar2"><i class="fa fa-check"></i><b>12.2</b> Stationarity in AR(2)</a></li>
+<li class="chapter" data-level="12.3" data-path="ar2-models.html"><a href="ar2-models.html#ar2-zero-mean-form"><i class="fa fa-check"></i><b>12.3</b> AR(2) zero mean form</a></li>
+<li class="chapter" data-level="12.4" data-path="ar2-models.html"><a href="ar2-models.html#more-on-backshift-operator-notation"><i class="fa fa-check"></i><b>12.4</b> More on backshift operator notation</a></li>
+<li class="chapter" data-level="12.5" data-path="ar2-models.html"><a href="ar2-models.html#characteristic-equation"><i class="fa fa-check"></i><b>12.5</b> Characteristic equation</a></li>
+<li class="chapter" data-level="12.6" data-path="ar2-models.html"><a href="ar2-models.html#key-result"><i class="fa fa-check"></i><b>12.6</b> Key result</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="ar2-models.html"><a href="ar2-models.html#two-real-roots"><i class="fa fa-check"></i><b>12.6.1</b> Two real roots</a></li>
+<li class="chapter" data-level="12.6.2" data-path="ar2-models.html"><a href="ar2-models.html#complex-conjugate-roots"><i class="fa fa-check"></i><b>12.6.2</b> Complex conjugate roots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="arp.html"><a href="arp.html"><i class="fa fa-check"></i><b>13</b> AR(p)</a></li>
+<li class="chapter" data-level="14" data-path="maq-models.html"><a href="maq-models.html"><i class="fa fa-check"></i><b>14</b> MA(q) Models</a><ul>
+<li class="chapter" data-level="14.1" data-path="maq-models.html"><a href="maq-models.html#properties-and-characteristics"><i class="fa fa-check"></i><b>14.1</b> Properties and Characteristics</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="maq-models.html"><a href="maq-models.html#a-quote-for-your-thoughts"><i class="fa fa-check"></i><b>14.1.1</b> A quote for your thoughts:</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="maq-models.html"><a href="maq-models.html#maq"><i class="fa fa-check"></i><b>14.2</b> MA(q)</a></li>
+<li class="chapter" data-level="14.3" data-path="maq-models.html"><a href="maq-models.html#operator-zero-mean-form"><i class="fa fa-check"></i><b>14.3</b> Operator Zero-Mean Form</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="maq-models.html"><a href="maq-models.html#characteristic-equation-1"><i class="fa fa-check"></i><b>14.3.1</b> Characteristic Equation</a></li>
+<li class="chapter" data-level="14.3.2" data-path="maq-models.html"><a href="maq-models.html#some-definitions"><i class="fa fa-check"></i><b>14.3.2</b> Some definitions:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="some-examples-of-ma1.html"><a href="some-examples-of-ma1.html"><i class="fa fa-check"></i><b>15</b> Some examples of MA(1)</a><ul>
+<li class="chapter" data-level="15.0.1" data-path="some-examples-of-ma1.html"><a href="some-examples-of-ma1.html#positive-theta1"><i class="fa fa-check"></i><b>15.0.1</b> Positive theta1</a></li>
+<li class="chapter" data-level="15.0.2" data-path="some-examples-of-ma1.html"><a href="some-examples-of-ma1.html#negative-theta"><i class="fa fa-check"></i><b>15.0.2</b> Negative theta</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="ma2.html"><a href="ma2.html"><i class="fa fa-check"></i><b>16</b> MA(2)</a><ul>
+<li class="chapter" data-level="16.1" data-path="ma2.html"><a href="ma2.html#invertibility"><i class="fa fa-check"></i><b>16.1</b> Invertibility</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="ma2.html"><a href="ma2.html#criteria-for-invertibility"><i class="fa fa-check"></i><b>16.1.1</b> Criteria for invertibility</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="armapq.html"><a href="armapq.html"><i class="fa fa-check"></i><b>17</b> ARMA(p,q)</a></li>
+<li class="chapter" data-level="18" data-path="blending-ar-and-ma-components.html"><a href="blending-ar-and-ma-components.html"><i class="fa fa-check"></i><b>18</b> Blending AR and MA components</a></li>
+<li class="chapter" data-level="19" data-path="psi-weights-with-ar-models.html"><a href="psi-weights-with-ar-models.html"><i class="fa fa-check"></i><b>19</b> Psi weights with AR models:</a><ul>
+<li class="chapter" data-level="19.1" data-path="psi-weights-with-ar-models.html"><a href="psi-weights-with-ar-models.html#psi-weights-for-arma"><i class="fa fa-check"></i><b>19.1</b> Psi weights for ARMA</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="arima-and-aruma.html"><a href="arima-and-aruma.html"><i class="fa fa-check"></i><b>20</b> ARIMA and ARUMA</a><ul>
+<li class="chapter" data-level="20.1" data-path="arima-and-aruma.html"><a href="arima-and-aruma.html#arima"><i class="fa fa-check"></i><b>20.1</b> ARIMA</a></li>
+<li class="chapter" data-level="20.2" data-path="arima-and-aruma.html"><a href="arima-and-aruma.html#aruma"><i class="fa fa-check"></i><b>20.2</b> ARUMA</a></li>
+<li class="chapter" data-level="20.3" data-path="arima-and-aruma.html"><a href="arima-and-aruma.html#but-what-do-they-do"><i class="fa fa-check"></i><b>20.3</b> But what do they do????</a><ul>
+<li class="chapter" data-level="20.3.1" data-path="arima-and-aruma.html"><a href="arima-and-aruma.html#arima-transform"><i class="fa fa-check"></i><b>20.3.1</b> ARIMA Transform</a></li>
+<li class="chapter" data-level="20.3.2" data-path="arima-and-aruma.html"><a href="arima-and-aruma.html#aruma-transform"><i class="fa fa-check"></i><b>20.3.2</b> ARUMA Transform</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Time Series Midterm Review</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="psi-weights-with-ar-models" class="section level1">
+<h1><span class="header-section-number">Unit 19</span> Psi weights with AR models:</h1>
+<p><span class="math display">\[\psi_0 = 1\]</span>
+<span class="math display">\[\psi_1 = \phi_1\]</span>
+<span class="math display">\[\psi_2 = \phi_1 \psi_1 +\phi_2\]</span>
+<span class="math display">\[\psi_3 = \phi_1 \psi_2 + \phi_2 \psi_1 + \phi_3\]</span>
+<span class="math display">\[\psi_\ell = \sum_{i =1} ^p \phi_i \psi_{\ell - i}\]</span></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="psi-weights-with-ar-models.html#cb52-1"></a>multfun &lt;-<span class="st"> </span><span class="cf">function</span>(phi, l, psi) {</span>
+<span id="cb52-2"><a href="psi-weights-with-ar-models.html#cb52-2"></a>    <span class="kw">sum</span>(phi[<span class="dv">1</span><span class="op">:</span>l] <span class="op">*</span><span class="st"> </span>psi[<span class="dv">1</span><span class="op">:</span>l])</span>
+<span id="cb52-3"><a href="psi-weights-with-ar-models.html#cb52-3"></a>}</span>
+<span id="cb52-4"><a href="psi-weights-with-ar-models.html#cb52-4"></a>phitest &lt;-<span class="st"> </span><span class="cf">function</span>(phi, l) {</span>
+<span id="cb52-5"><a href="psi-weights-with-ar-models.html#cb52-5"></a>    <span class="cf">if</span> (l <span class="op">&gt;</span><span class="st"> </span><span class="kw">length</span>(phi)) {</span>
+<span id="cb52-6"><a href="psi-weights-with-ar-models.html#cb52-6"></a>        <span class="kw">return</span>(<span class="kw">append</span>(phi, <span class="kw">rep</span>(<span class="dv">0</span>, l <span class="op">-</span><span class="st"> </span><span class="kw">length</span>(phis))))</span>
+<span id="cb52-7"><a href="psi-weights-with-ar-models.html#cb52-7"></a>    } <span class="cf">else</span> {</span>
+<span id="cb52-8"><a href="psi-weights-with-ar-models.html#cb52-8"></a>        <span class="kw">return</span>(phi)</span>
+<span id="cb52-9"><a href="psi-weights-with-ar-models.html#cb52-9"></a>    }</span>
+<span id="cb52-10"><a href="psi-weights-with-ar-models.html#cb52-10"></a>}</span>
+<span id="cb52-11"><a href="psi-weights-with-ar-models.html#cb52-11"></a>arpsiweights &lt;-<span class="st"> </span><span class="cf">function</span>(phi, <span class="dt">theta =</span> <span class="kw">as.numeric</span>(<span class="dv">0</span>), l) {</span>
+<span id="cb52-12"><a href="psi-weights-with-ar-models.html#cb52-12"></a>    phi &lt;-<span class="st"> </span><span class="kw">phitest</span>(phi, l)</span>
+<span id="cb52-13"><a href="psi-weights-with-ar-models.html#cb52-13"></a>    psi &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="dv">1</span>)</span>
+<span id="cb52-14"><a href="psi-weights-with-ar-models.html#cb52-14"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>l) {</span>
+<span id="cb52-15"><a href="psi-weights-with-ar-models.html#cb52-15"></a>        psi[i] &lt;-<span class="st"> </span><span class="kw">multfun</span>(phi, i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="kw">rev</span>(psi))</span>
+<span id="cb52-16"><a href="psi-weights-with-ar-models.html#cb52-16"></a>    }</span>
+<span id="cb52-17"><a href="psi-weights-with-ar-models.html#cb52-17"></a>    psi</span>
+<span id="cb52-18"><a href="psi-weights-with-ar-models.html#cb52-18"></a>}</span></code></pre></div>
+<div id="psi-weights-for-arma" class="section level2">
+<h2><span class="header-section-number">19.1</span> Psi weights for ARMA</h2>
+<p><span class="math display">\[\psi_0 = 1\]</span>
+<span class="math display">\[\psi_1 = \phi_1 - \theta_1\]</span>
+<span class="math display">\[\psi_2 = \phi_1 \psi_1 +\phi_2 - \theta_2\]</span>
+<span class="math display">\[\psi_3 = \phi_1 \psi_2 + \phi_2 \psi_1 + \phi_3 -theta_3\]</span>
+<span class="math display">\[\psi_\ell = \sum_{i =1} ^p \phi_i \psi_{\ell - i} - \theta_i\]</span></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="psi-weights-with-ar-models.html#cb53-1"></a>psiweights &lt;-<span class="st"> </span><span class="cf">function</span>(phi, <span class="dt">theta =</span> <span class="kw">as.numeric</span>(<span class="dv">0</span>), l) {</span>
+<span id="cb53-2"><a href="psi-weights-with-ar-models.html#cb53-2"></a>    phi &lt;-<span class="st"> </span><span class="kw">phitest</span>(phi, l)</span>
+<span id="cb53-3"><a href="psi-weights-with-ar-models.html#cb53-3"></a>    psi &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="dv">1</span>)</span>
+<span id="cb53-4"><a href="psi-weights-with-ar-models.html#cb53-4"></a>    theta &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, theta)</span>
+<span id="cb53-5"><a href="psi-weights-with-ar-models.html#cb53-5"></a>    theta &lt;-<span class="st"> </span><span class="kw">phitest</span>(theta, l)</span>
+<span id="cb53-6"><a href="psi-weights-with-ar-models.html#cb53-6"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>l) {</span>
+<span id="cb53-7"><a href="psi-weights-with-ar-models.html#cb53-7"></a>        psi[i] &lt;-<span class="st"> </span><span class="kw">multfun</span>(phi, i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="kw">rev</span>(psi)) <span class="op">-</span><span class="st"> </span>theta[i]</span>
+<span id="cb53-8"><a href="psi-weights-with-ar-models.html#cb53-8"></a>    }</span>
+<span id="cb53-9"><a href="psi-weights-with-ar-models.html#cb53-9"></a>    psi</span>
+<span id="cb53-10"><a href="psi-weights-with-ar-models.html#cb53-10"></a>}</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="blending-ar-and-ma-components.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="arima-and-aruma.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["tsReview.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
