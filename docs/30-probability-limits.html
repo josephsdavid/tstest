@@ -302,6 +302,16 @@ img {
 <li><a href="30-2-calculating-them.html#calculating-them"><span class="toc-section-number">30.2</span> Calculating them</a></li>
 </ul></li>
 <li><a href="31-ase.html#ase"><span class="toc-section-number">31</span> ASE</a></li>
+<li class="has-sub"><a href="32-arima-forecasts.html#arima-forecasts"><span class="toc-section-number">32</span> ARIMA forecasts</a><ul>
+<li><a href="32-1-an-example.html#an-example"><span class="toc-section-number">32.1</span> An example:</a></li>
+</ul></li>
+<li class="has-sub"><a href="33-seasonal-forecasts.html#seasonal-forecasts"><span class="toc-section-number">33</span> Seasonal Forecasts</a><ul>
+<li><a href="33-1-airline-models.html#airline-models"><span class="toc-section-number">33.1</span> Airline models</a></li>
+</ul></li>
+<li class="has-sub"><a href="34-signal-plus-noise-forecasts.html#signal-plus-noise-forecasts"><span class="toc-section-number">34</span> signal plus noise forecasts</a><ul>
+<li><a href="34-1-linear-signal.html#linear-signal"><span class="toc-section-number">34.1</span> Linear Signal</a></li>
+<li><a href="34-2-cyclic-signal.html#cyclic-signal"><span class="toc-section-number">34.2</span> Cyclic signal</a></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -312,7 +322,7 @@ img {
 <h1><span class="header-section-number">Unit 30</span> Probability limits</h1>
 <p>First, go back and review the GLP, and understanf that ARMA processes can be expressed in GLP form as:</p>
 <p><span class="math display">\[X_t - \mu = \sum_{j = 0}^\infty \psi_j a_{t-j}\]</span>, where at is normal white noise. some more math: the forecast error is defined as:</p>
-<p><span class="math display">\[e_{t_0} (\ell)  = X_{t_0 + \ell} - \hat{X_{t_0}} (ll)\]</span>
+<p><span class="math display">\[e_{t_0} (\ell)  = X_{t_0 + \ell} - \hat{X}_{t_0} (ll)\]</span>
 We can rewrite this in GLP form as
 <span class="math display">\[ = \sum_{k = 0}^{\ell -1} \psi_k a_{t_0 + \ell - k}\]</span>
 Since a is normal, e should also be normal, its expeced value should be zero, and its variance is just the variance of it in GLP form. We can rewrite this as:

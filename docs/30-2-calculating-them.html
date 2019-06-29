@@ -302,6 +302,16 @@ img {
 <li><a href="30-2-calculating-them.html#calculating-them"><span class="toc-section-number">30.2</span> Calculating them</a></li>
 </ul></li>
 <li><a href="31-ase.html#ase"><span class="toc-section-number">31</span> ASE</a></li>
+<li class="has-sub"><a href="32-arima-forecasts.html#arima-forecasts"><span class="toc-section-number">32</span> ARIMA forecasts</a><ul>
+<li><a href="32-1-an-example.html#an-example"><span class="toc-section-number">32.1</span> An example:</a></li>
+</ul></li>
+<li class="has-sub"><a href="33-seasonal-forecasts.html#seasonal-forecasts"><span class="toc-section-number">33</span> Seasonal Forecasts</a><ul>
+<li><a href="33-1-airline-models.html#airline-models"><span class="toc-section-number">33.1</span> Airline models</a></li>
+</ul></li>
+<li class="has-sub"><a href="34-signal-plus-noise-forecasts.html#signal-plus-noise-forecasts"><span class="toc-section-number">34</span> signal plus noise forecasts</a><ul>
+<li><a href="34-1-linear-signal.html#linear-signal"><span class="toc-section-number">34.1</span> Linear Signal</a></li>
+<li><a href="34-2-cyclic-signal.html#cyclic-signal"><span class="toc-section-number">34.2</span> Cyclic signal</a></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -311,12 +321,12 @@ img {
 <div id="calculating-them" class="section level2">
 <h2><span class="header-section-number">30.2</span> Calculating them</h2>
 <p>Since we know all this, we have that <span class="math display">\[\frac{e_{t_0}(\ell) - 0}{\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \approx N(0,1)\]</span>
-<span class="math display">\[=\frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} }\]</span></p>
+<span class="math display">\[=\frac{X_{t_0 + \ell} - \hat{X}_{t_0} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} }\]</span></p>
 <p>Given the above, we have that the probability of the above lying in betwieen <span class="math inline">\(\pm 1.96\)</span> is about 0.95. Then we expand that out, rewriting it/</p>
-<p><span class="math display">\[\implies P\left(-1.96 \leq \frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \leq 1.96}\right)\]</span>
-<span class="math display">\[ \implies P\left(-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell} - \hat{X_{t_0}} (\ell) \leq 1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
+<p><span class="math display">\[\implies P\left(-1.96 \leq \frac{X_{t_0 + \ell} - \hat{X}_{t_0} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \leq 1.96}\right)\]</span>
+<span class="math display">\[ \implies P\left(-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell} - \hat{X}_{t_0} (\ell) \leq 1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
 <p>We then have</p>
-<p><span class="math display">\[ \implies P\left(\hat{X_{t_0}} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell}  \leq \hat{X_{t_0}} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
+<p><span class="math display">\[ \implies P\left(\hat{X}_{t_0} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell}  \leq \hat{X}_{t_0} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
 <p>This gives us our result!!! Note that this is a huge simplification of the actual method of doing this, it is actually much more complicated what our computer does.</p>
 </div>
 <!-- </div> -->

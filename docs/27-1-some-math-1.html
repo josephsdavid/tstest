@@ -302,6 +302,16 @@ img {
 <li><a href="30-2-calculating-them.html#calculating-them"><span class="toc-section-number">30.2</span> Calculating them</a></li>
 </ul></li>
 <li><a href="31-ase.html#ase"><span class="toc-section-number">31</span> ASE</a></li>
+<li class="has-sub"><a href="32-arima-forecasts.html#arima-forecasts"><span class="toc-section-number">32</span> ARIMA forecasts</a><ul>
+<li><a href="32-1-an-example.html#an-example"><span class="toc-section-number">32.1</span> An example:</a></li>
+</ul></li>
+<li class="has-sub"><a href="33-seasonal-forecasts.html#seasonal-forecasts"><span class="toc-section-number">33</span> Seasonal Forecasts</a><ul>
+<li><a href="33-1-airline-models.html#airline-models"><span class="toc-section-number">33.1</span> Airline models</a></li>
+</ul></li>
+<li class="has-sub"><a href="34-signal-plus-noise-forecasts.html#signal-plus-noise-forecasts"><span class="toc-section-number">34</span> signal plus noise forecasts</a><ul>
+<li><a href="34-1-linear-signal.html#linear-signal"><span class="toc-section-number">34.1</span> Linear Signal</a></li>
+<li><a href="34-2-cyclic-signal.html#cyclic-signal"><span class="toc-section-number">34.2</span> Cyclic signal</a></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -310,7 +320,7 @@ img {
 <div class="col-sm-12">
 <div id="some-math-1" class="section level2">
 <h2><span class="header-section-number">27.1</span> Some math</h2>
-<p><span class="math display">\[\hat{X_{t_0}} (\ell) = \sum_{j = 1}^p \phi_j \hat{X_{t_0}}(\ell - j) - \sum_{j = \ell} ^ q \theta_j \hat{a_{t_0 + \ell - j}} + \bar{X} [\left 1- \sum_{i = 1}^p \phi_i \right]\]</span>
+<p><span class="math display">\[\hat{X}_{t_0} (\ell) = \sum_{j = 1}^p \phi_j \hat{X}_{t_0}(\ell - j) - \sum_{j = \ell}^q \theta_j \hat{a_{t_0 + \ell - j}} + \bar{X} \left[ 1- \sum_{i = 1}^p \phi_i \right]\]</span>
 Where the a hat is incredibly hard to calculate (we have to do back casting, which we can worry about after the test).
 Challeng: Write this function recursively (is it possible?????) in R. We are just going to use <code>fore.arma.wge</code> for now</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="27-1-some-math-1.html#cb72-1"></a>ts7524 &lt;-<span class="st"> </span><span class="kw">tswgen</span>(<span class="dv">75</span>, <span class="dt">sn =</span> <span class="dv">24</span>)</span>

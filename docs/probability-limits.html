@@ -294,6 +294,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="30.2" data-path="probability-limits.html"><a href="probability-limits.html#calculating-them"><i class="fa fa-check"></i><b>30.2</b> Calculating them</a></li>
 </ul></li>
 <li class="chapter" data-level="31" data-path="ase.html"><a href="ase.html"><i class="fa fa-check"></i><b>31</b> ASE</a></li>
+<li class="chapter" data-level="32" data-path="arima-forecasts.html"><a href="arima-forecasts.html"><i class="fa fa-check"></i><b>32</b> ARIMA forecasts</a><ul>
+<li class="chapter" data-level="32.1" data-path="arima-forecasts.html"><a href="arima-forecasts.html#an-example"><i class="fa fa-check"></i><b>32.1</b> An example:</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="seasonal-forecasts.html"><a href="seasonal-forecasts.html"><i class="fa fa-check"></i><b>33</b> Seasonal Forecasts</a><ul>
+<li class="chapter" data-level="33.1" data-path="seasonal-forecasts.html"><a href="seasonal-forecasts.html#airline-models"><i class="fa fa-check"></i><b>33.1</b> Airline models</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="signal-plus-noise-forecasts.html"><a href="signal-plus-noise-forecasts.html"><i class="fa fa-check"></i><b>34</b> signal plus noise forecasts</a><ul>
+<li class="chapter" data-level="34.1" data-path="signal-plus-noise-forecasts.html"><a href="signal-plus-noise-forecasts.html#linear-signal"><i class="fa fa-check"></i><b>34.1</b> Linear Signal</a></li>
+<li class="chapter" data-level="34.2" data-path="signal-plus-noise-forecasts.html"><a href="signal-plus-noise-forecasts.html#cyclic-signal"><i class="fa fa-check"></i><b>34.2</b> Cyclic signal</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -318,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Unit 30</span> Probability limits</h1>
 <p>First, go back and review the GLP, and understanf that ARMA processes can be expressed in GLP form as:</p>
 <p><span class="math display">\[X_t - \mu = \sum_{j = 0}^\infty \psi_j a_{t-j}\]</span>, where at is normal white noise. some more math: the forecast error is defined as:</p>
-<p><span class="math display">\[e_{t_0} (\ell)  = X_{t_0 + \ell} - \hat{X_{t_0}} (ll)\]</span>
+<p><span class="math display">\[e_{t_0} (\ell)  = X_{t_0 + \ell} - \hat{X}_{t_0} (ll)\]</span>
 We can rewrite this in GLP form as
 <span class="math display">\[ = \sum_{k = 0}^{\ell -1} \psi_k a_{t_0 + \ell - k}\]</span>
 Since a is normal, e should also be normal, its expeced value should be zero, and its variance is just the variance of it in GLP form. We can rewrite this as:
@@ -332,12 +342,12 @@ Then you just do the long division and get your answers, by dividing off that tr
 <div id="calculating-them" class="section level2">
 <h2><span class="header-section-number">30.2</span> Calculating them</h2>
 <p>Since we know all this, we have that <span class="math display">\[\frac{e_{t_0}(\ell) - 0}{\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \approx N(0,1)\]</span>
-<span class="math display">\[=\frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} }\]</span></p>
+<span class="math display">\[=\frac{X_{t_0 + \ell} - \hat{X}_{t_0} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} }\]</span></p>
 <p>Given the above, we have that the probability of the above lying in betwieen <span class="math inline">\(\pm 1.96\)</span> is about 0.95. Then we expand that out, rewriting it/</p>
-<p><span class="math display">\[\implies P\left(-1.96 \leq \frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \leq 1.96}\right)\]</span>
-<span class="math display">\[ \implies P\left(-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell} - \hat{X_{t_0}} (\ell) \leq 1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
+<p><span class="math display">\[\implies P\left(-1.96 \leq \frac{X_{t_0 + \ell} - \hat{X}_{t_0} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \leq 1.96}\right)\]</span>
+<span class="math display">\[ \implies P\left(-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell} - \hat{X}_{t_0} (\ell) \leq 1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
 <p>We then have</p>
-<p><span class="math display">\[ \implies P\left(\hat{X_{t_0}} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell}  \leq \hat{X_{t_0}} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
+<p><span class="math display">\[ \implies P\left(\hat{X}_{t_0} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq X_{t_0 + \ell}  \leq \hat{X}_{t_0} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95\]</span></p>
 <p>This gives us our result!!! Note that this is a huge simplification of the actual method of doing this, it is actually much more complicated what our computer does.</p>
 </div>
 </div>

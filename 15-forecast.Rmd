@@ -101,7 +101,7 @@ AR1 forcasts damp to the sample mean.
 
 # AR(p) forecast math
 
-$$\hat{X_{t_0}} (\ell) = \phi_1 \hat{X_{t_0}}(\ell -1) + ... + \phi_p \hat{X_{t_0}}(\ell - p) + \bar{X} (1 - \phi_1 - ... - \phi_p))$$
+$$\hat{X}_{t_0} (\ell) = \phi_1 \hat{X}_{t_0}(\ell -1) + ... + \phi_p \hat{X}_{t_0}(\ell - p) + \bar{X} (1 - \phi_1 - ... - \phi_p))$$
 
 ## AR(p) forecasts:
 
@@ -143,8 +143,7 @@ As $\ell$ gets large, it is most reasonable to simply forecast the sample mean, 
 # ARMA(p,q)
 
 ## Some math
-
-$$\hat{X_{t_0}} (\ell) = \sum_{j = 1}^p \phi_j \hat{X_{t_0}}(\ell - j) - \sum_{j = \ell} ^ q \theta_j \hat{a_{t_0 + \ell - j}} + \bar{X} [\left 1- \sum_{i = 1}^p \phi_i \right]$$
+$$\hat{X}_{t_0} (\ell) = \sum_{j = 1}^p \phi_j \hat{X}_{t_0}(\ell - j) - \sum_{j = \ell}^q \theta_j \hat{a_{t_0 + \ell - j}} + \bar{X} \left[ 1- \sum_{i = 1}^p \phi_i \right]$$
 Where the a hat is incredibly hard to calculate (we have to do back casting, which we can worry about after the test).
 Challeng: Write this function recursively (is it possible?????) in R. We are just going to use `fore.arma.wge` for now
 
@@ -169,6 +168,8 @@ fore.arma.wge(llynx, phi = c(0.7,0.1,-0.2,-0.3),theta = -.6, n.ahead = 20, limit
 
 # psi weights
 
+Here is basically a useless page because i am terrible at bookdown
+
 ```{r}
 psi.weights.wge(phi = c(0.4,-.6,.8), lag.max = 5)
 psiweights(phi = c(0.4,-.6,.8),  l = 6)
@@ -180,7 +181,7 @@ First, go back and review the GLP, and understanf that ARMA processes can be exp
 
 $$X_t - \mu = \sum_{j = 0}^\infty \psi_j a_{t-j}$$, where at is normal white noise. some more math: the forecast error is defined as:
 
-$$e_{t_0} (\ell)  = X_{t_0 + \ell} - \hat{X_{t_0}} (ll)$$
+$$e_{t_0} (\ell)  = X_{t_0 + \ell} - \hat{X}_{t_0} (ll)$$
 We can rewrite this in GLP form as
 $$ = \sum_{k = 0}^{\ell -1} \psi_k a_{t_0 + \ell - k}$$
 Since a is normal, e should also be normal, its expeced value should be zero, and its variance is just the variance of it in GLP form. We can rewrite this as:
@@ -195,16 +196,16 @@ Then you just do the long division and get your answers, by dividing off that tr
 ## Calculating them
 
 Since we know all this, we have that $$\frac{e_{t_0}(\ell) - 0}{\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \approx N(0,1)$$
-$$=\frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} }$$
+$$=\frac{X_{t_0 + \ell} - \hat{X}_{t_0} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} }$$
 
 Given the above, we have that the probability of the above lying in betwieen $\pm 1.96$ is about 0.95. Then we expand that out, rewriting it/
 
-$$\implies P\left(-1.96 \leq \frac{X_{t_0 + \ell} - \hat{X_{t_0}} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \leq 1.96}\right)$$
-$$ \implies P\left(-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq	X_{t_0 + \ell} - \hat{X_{t_0}} (\ell) \leq 1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95$$
+$$\implies P\left(-1.96 \leq \frac{X_{t_0 + \ell} - \hat{X}_{t_0} (ll)}{ {\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2}} \leq 1.96}\right)$$
+$$ \implies P\left(-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq	X_{t_0 + \ell} - \hat{X}_{t_0} (\ell) \leq 1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95$$
 
 We then have
 
-$$ \implies P\left(\hat{X_{t_0}} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq	X_{t_0 + \ell}  \leq \hat{X_{t_0}} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95$$
+$$ \implies P\left(\hat{X}_{t_0} (\ell)-1.96 \left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \leq	X_{t_0 + \ell}  \leq \hat{X}_{t_0} (\ell) +1.96\left[\sigma_a^2 \sum_{j = 0}^{\ell -1} \psi_j^2\right]^{1/2} \right) = 0.95$$
 
 This gives us our result!!! Note that this is a huge simplification of the actual method of doing this, it is actually much more complicated what our computer does.
 
@@ -222,4 +223,66 @@ pander(res2)
 
 
 ```
+
+# ARIMA forecasts
+
+These are too hard to do by hand, we do not need to worry about it. We will use fore.aruma/fore.arima instead. However, it is interesting as an excercise to do an ARIMA(0,1,0) forecast
+
+## An example:
+
+Consider
+$$(1-0.9B)C_t = a_t$$
+We have that $\phi_1$ = 1, as is the case with these models. If we recall the general AR(p) forecast equation:
+
+$$\hat{X}_{t_0} (\ell) = \phi_1 \hat{X}_{t_0}(\ell -1) + ... + \phi_p \hat{X}_{t_0}(\ell - p) + \bar{X} (1 - \phi_1 - ... - \phi_p))$$
+We see that the right hand term with Xbar goes to zero, and the phi value is one. This gives us
+$$\hat{X}_{t_0} (\ell) = \hat{X}_{t_0} (\ell - 1)$$
+
+Which says that we are just going to forecast the last value we obseved over and over and over. Pretty boring, but that is fine with me. Note that the probability limits of these forecasts increase in width with no bound. Pretty crap forecast huh.
+
+# Seasonal Forecasts
+
+Consider a quarterly model:
+
+$$(1 - B^4) (X_t - \mu) = a_t$$
+
+If we rewrite the general AR forecast, since we still have a root at 1 (a fourth root), the xbar component still goes away.Then, we are left with
+
+
+$$\hat{X}_{t_0} (\ell) = \hat{X}_{t_0} (\ell - 4)$$
+
+This again makes a lot of sense. Each forecast is exactly the same as it was 4 times ago. A pretty simple and straightforward deal. We will after the test combine these models.
+
+## Airline models
+
+In order to forecast into the future with a seasonal model, we want to not only include the existing seasonal trend, but also a 1-B wandering trend. Seasonal and ARIMA components. This way we get forecasts going off of themselves. This works because of
+
+```{r, collapse = T}
+factor.wge(phi = c(rep(0,11),1))
+```
+
+We see that we have a 1-B component in there already, which means we can put it in there and it will get cancelled out without messing up out model!!!
+
+The most general seasonal model we can have is:
+
+$$\phi(B)(1-B)(1-B^s)(X_t - \mu) = \theta(B)a_t$$
+
+The forecasts follow the example of the last s points, but it is not a replication. Models like this are known as airline models, specifically with s = 12. This is how you forecast the trend and forecast the seasonality.
+
+# signal plus noise forecasts
+
+## Linear Signal
+
+* Fit $b_0$ and $b_1$ using least squares (or true values)
+
+* Find residuals
+
+* Fit an AR(p) to the residuals
+
+Then find forecasts on the next noise value, generating an estimate of the signal (with the regression) and the noise (with the residuals). We will get more into this later and use some psis to find the limits.
+
+## Cyclic signal
+
+Will do later, for now for both we can just do `fore.sigplusnoise.wge`
+For early lags, the noise behavior is dominant, and as we get further out, the signal dominates
 
