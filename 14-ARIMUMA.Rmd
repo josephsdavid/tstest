@@ -3,7 +3,8 @@ Ok this is gonna be a light week, basically, in our notation, we have that ARIMA
 
 ## ARIMA
 $$(1 - B)^n X_t = a_t$$
-is an ARIMA (0,n,0) model.
+is an ARIMA (0,n,0) model. Note that because this is not stationary, we cannot view the plotts.true.wge :(
+
 
 ## ARUMA
 $$(1 - B^n) X_t = a_t $$ 

@@ -1,0 +1,181 @@
+# Forecasting
+
+Some helpers:
+
+```{r}
+tswgen <- function(n,sn=0){
+	sig <- function(...){
+		gen.sigplusnoise.wge(n=n,...,sn=sn)
+	}
+	ari <- function(...,dif){
+		gen.arima.wge(n=n,...,sn=sn)
+	}
+	aru <- function(...){
+		gen.aruma.wge(n=n,..., sn=sn)
+	}
+
+	arma <- function(...){
+		gen.arma.wge(n=n,..., sn=sn)
+	}
+	list("sig"=sig,"ari"=ari,"aru"=aru, "arma" = arma)
+}
+```
+
+## Forecasts from Signal-Plus-Noise
+
+$$X_t = s_t + Z_t$$
+Where:
+
+* $s_t$ is a deterministic signal
+* $Z_t$ is a zero-mean, stationary process
+
+Examples:
+
+* $s_t = a + b t$ is a linear signal
+
+* $s_t = a + b t + c t^2$ is a quadratic signal
+
+* $s_t =  \cos \left(2 \pi f t + C \right)$
+
+# Forecasting setting
+
+Forecast predicts future behavior given finite reaizations. ARMA forecasting has gotten really populat lately.
+
+* Curve fitting
+ 
+	* Has the underlying assumption that future behavior follows a deterministic path
+
+* Time series based forecasting (ARMA et al)
+ 
+	* Underlying assumption that the future is only guided by its correlation to the past. 
+
+## Box-Jenkins approach
+
+We use this
+
+# Strategy + Notation
+
+We normally have:
+$$X_1, X_2, ..., X_{t_0}$$
+Our goal is to forecast a future value, say $X_{t_{0+4}}$
+
+Typicall $t_0 = n$ ie it is the last value of the realization.
+However, sometimes to evaluate our forecast, we compare it to the last few values of the realization.
+
+## Notation
+$\widehat{X_{t_0}}(\ell)$ is the forecast of $X_{t_{0+\ell}}$ given data up to time $t_0$
+
+* $t_0$ is called the **forecast origin**
+
+* $\ell$ is called the lead time, the number of steps ahead which we want to forecast
+
+## some math
+$$X_t - \phi_1 X_{t-1} = (1-\phi_1) \mu + a_t$$
+
+- assume we know $\phi_1$
+
+- we don-t know X11, we dont know mu, and we dont know a12
+
+**Iterative forecasting**
+
+We assume a in the future is 0, then we have
+
+```{r, echo = FALSE}
+knitr::read_chunk('R/forecastit.R')
+```
+
+```{r}
+<<forecastfun>>
+```
+
+```{r ex74}
+ex74 <- ar1forcastgen(phi=.8, mu = 24.17)
+times <- c(1,2,3,4,5)
+lapply(times, ex74, xprev = 22.93) %>% as.data.frame
+ex74(22.93,l=2)
+```
+
+# Discussion of Ar1 forcasts
+
+AR1 forcasts damp to the sample mean.
+
+## AR(p) forecasts:
+
+```{r, warning = F}
+<<arpfun>>
+x <- c(27.7,23.4,21.2,21.1,22.7)
+p <- c(1.6,-.8)
+avg <- 29.4
+arp(phi = p,vec = x,l = 5,mu = avg)
+```
+
+### With tswge
+
+#### positive phi, AR(1)
+
+```{r, fig.show = "hold", results = "hide"}
+<<tswarplus>>
+```
+
+#### Negative phi, AR(1)
+
+```{r, results = "hide"}
+<<tswarmin>>
+```
+
+It has the same behavior as the AR(functions). Sweet.
+
+#### AR(2)
+
+```{r, results = "hide"}
+<<tswar2>>
+```
+
+
+# Eventual Forecast Function:
+
+As $\ell$ gets large, it is most reasonable to simply forecast the sample mean, because of how they converge
+
+# ARMA(p,q)
+
+```{r, results = "hide"}
+ts7524 <- tswgen(75, sn = 24)
+p <- c(1.6, -.8)
+thet <- (-.9)
+x1 <- ts7524$arma(phi = p)
+fore.arma.wge(x1, phi = p, n.ahead = 20, limits =F)
+x2 <- ts7524$arma(phi = p, theta = thet)
+fore.arma.wge(x2, phi = p, theta = thet, n.ahead = 20, limits =F)
+```
+
+# Example
+
+```{r,results = "hide"}
+data(llynx)
+plotts.wge(llynx)
+
+fore.arma.wge(llynx, phi = c(0.7,0.1,-0.2,-0.3),theta = -.6, n.ahead = 20, limits = F)
+```
+
+# psi weights
+
+```{r}
+psi.weights.wge(phi = c(0.4,-.6,.8), lag.max = 5)
+psiweights(phi = c(0.4,-.6,.8),  l = 6)
+```
+
+# ASE
+
+```{r, results = "hold"}
+<<tswase>>
+res1 <- tswase(vec = llynx, phi = c(1.3,-0.7,0.1,-0.2), ahead = 12, lastn =T, limits = F)
+library(pander)
+res2 <- tswase(vec = llynx, phi = c(0.7,0.1,-0.2,-0.3),theta = -.6, ahead = 12, lastn =T, limits = F)
+
+
+pander(res1)
+pander(res2)
+
+
+```
+

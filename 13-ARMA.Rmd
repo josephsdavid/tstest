@@ -46,7 +46,7 @@ multfun <- function(phi,l,psi){
 }
 phitest <- function(phi,l){
 	if (l>length(phi)){
-		 return( append(phi,rep(0,l-length(phis))))
+		 return( append(phi,rep(0,l-length(phi))))
 	}
 	else{
 		return(phi)
