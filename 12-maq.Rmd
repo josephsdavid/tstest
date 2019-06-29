@@ -12,3 +12,97 @@ We use MA models to model stationary data. They are not quite as useful as AR mo
 
 First of all, we need to define the equation for a Moving Average Model of order q:
 $$X_t = \mu + a_t - \theta_1 a_{t-1} - ... - \theta_q a_{t-q}$$
+
+Inspecting this equation, we see that a MA(q) model is a finite GLP, and therefore ***Always stationary***. 
+**reminder**: a GLP is defined as : 
+$$X_t = \mu + \sum_{j = 0}^\infty \psi_j a_{t-j}$$
+
+We can now define a MA(q) model as a GLP in which: $$\psi_0 = 1, \psi_1 = -\theta_1, ... , \psi_q = -\theta_q, \psi_k = 0, k>q$$
+
+## Operator Zero-Mean Form
+
+$$X_t = (1 - \theta_1 B- ... - \theta_q B^q)a_t$$
+
+### Characteristic Equation
+
+$$1-\theta_1 z - ... - \theta_q z^q = 0$$
+
+We can solve this just like the AR side, except this is with white noise terms.
+
+### Some definitions:
+
+$$E(X_t) = \mu$$
+
+#### For MA(1)
+$$\sigma_X^2 = \sigma_a^2(1 + \theta_1^2)$$
+$$\rho_0 = 1, \rho_1 = \frac{-\theta_1}{1+\theta_1^2}, \rho_k = 0, k>1$$
+For pure MA they do not damp exponentially! (theoretically) This is a defining piece of info.
+
+$$S_X(f) = \frac{\sigma_a^2}{\sigma_X^2} \mid 1 - \theta_1e^{-2 \pi i f} \mid ^2 $$
+
+From this we will see that MA spectral densities will have dips rather than peaks (again a function of white noise).
+
+# Some examples of MA(1) 
+
+### Positive theta1
+
+```{r, results = "hide",  warning = F, message = F}
+xs  <- gen.arma.wge(n = 200, theta = 0.99)
+```
+
+Lets check this out now
+
+```{r, fig.show = "hold", results = "hide"}
+ggacf(xs) +th
+parzen.wge(xs)
+```
+
+Lets get some math done too and check out the ACF at lag 1
+
+```{r, results = "hide"}
+macf1 <- function(theta) {
+	num <- -theta
+	denom <- 1 + theta ^ 2
+	num/denom
+}
+macf1(.99)
+# [1] -0.4999747
+```
+
+From this we can also see that the maximum possiblevalue of autocorrelation at lag 1 is 0.5.
+
+### Negative theta
+Now lets try it out with a negative theta:
+
+```{r, results = "hide", warning = F, message = F, fig.show = "hold"}
+xs  <- gen.arma.wge(n = 200, theta = -0.99)
+ggacf(xs) +th
+parzen.wge(xs)
+macf1(-.99)
+# [1] 0.4999747
+```
+
+
+***Note***: the negative autocorrelation of a positive theta, as well as the dip at 0 in the spectral density tell us it is going to oscillate a bit more than the negative theta. Lets check out the true autocorrelations and spectral densities of these models:
+
+```{r, results = "hide", fig.show = "hold"}
+plotts.true.wge(theta = 0.99)
+plotts.true.wge(theta = -.99)
+```
+
+
+# MA(2)
+A MA(2) model behaves pretty similarly, however for our autocorrelations we have:
+$$\rho_0 = 1$$
+$$\rho_1 = \frac{-\theta_1 + \theta_1 \theta_2}{1 + \theta_1^2 + theta_2^2}$$
+$$\rho_2 = \frac{-\theta_2}{1 + \theta_1^2 + theta_2^2}$$
+$$\rho_k = 0; k>2$$
+
+This weird behavior for rho_k is why we dont really use this on real data.
+
+
+## Invertibility
+Consider two MA(1) models, with theta equal to 0.8 and 1.25. Then, let us consider their autocorrelations: for theta = 0.8, $rho_1 = `r macf1(0.8)`$, and for theta = 1.25, it is `r macf1(1.25)` (use the `macf1` function). These two models can have the same ACF, which is not good. Model multiplicity is undesirable. This happens I believe due to some magic, similar to aliasing. How do we tell them apart?
+
+### Criteria for invertibility
+***A MA model is invertible iff all roots of the model are outside of the unit circle***. We can just solve the MA equations as we do with the AR equations, to check for invertibility, we use the characteristic equation trick. We can also use factor.wge

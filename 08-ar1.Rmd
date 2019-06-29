@@ -1,4 +1,5 @@
 # AR(1) Models and Filtering
+
 ## Algebra review
 Be able to find the roots of a 2nd order polynomial
 
@@ -26,9 +27,6 @@ quad_form <- function(a,b,c) {
 }
 
 quad_form(c(1,4), c(1,-5), c(6,2))
-#               [,1]          [,2]
-# [1,] -0.500-2.398i -0.500+2.398i
-# [2,]  0.625-0.331i  0.625+0.331i
 ```
 
 
@@ -57,6 +55,7 @@ We can use the difference filter to remove the wandering behjaviior
 We can only get a realization of n-4. (n-nopoints-1). What does the 5 point moving average do (it averages a point and two points ahead and two behind). This filter can filter out some frequencies
 
 ## Types of filters:
+
 * Low pass filter
   * Filters out high frequency
   * Such as 5 point moving average, it smooths
@@ -74,7 +73,6 @@ dfun <- function(xs,n){
 	diff(xs, lag = n)
 }
 th <- ggthemes::theme_few()
-library(tswge)
 data(fig1.21a)
 ma <- mafun(fig1.21a,5)
 d <- dfun(fig1.21a,1)
@@ -103,7 +101,9 @@ cowplot::plot_grid(fp, dp, nrow = 2,labels = c("Original Data","1st order differ
 rlz <- gen.sigplusnoise.wge(200,coef = c(5,3),freq = c(.1,.45),vara = 10,sn = 1, plot=F)
 ```
 
-```{r, results = 'hide',  warning = F, message = F}
+#### Some plots
+
+```{r, results = 'hide',  warning = F, message = F, fig.show = "hold"}
 pfun <- function(x,n,l) {
 	fp <- tplot(x) + th
 	mp <- tplot(mafun(x,n)) + th
@@ -116,13 +116,15 @@ plts$MA
 plts$dif
 ```
 
-```{r, results = "hide"}
+#### Some Parzen Windows
+
+```{r, results = "hide", warning = F, message = F, fig.show = "hold"}
 parzen.wge(rlz)
 parzen.wge(na.omit(mafun(rlz,5)))
 parzen.wge(na.omit(dfun(rlz,1)))
 ```
 
-## GLPs
+# GLPs
 
 a GLP is a linear filter with a ***white noise input***
 

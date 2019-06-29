@@ -18,7 +18,6 @@ ggacf <- function(vec){
 tplot <- function(vec){
 	df <- data.frame("X" = vec, "t" = seq_along(vec))
 	ggplot(data = df, aes(x = t, y = X)) +
-		geom_point() +
 		geom_line()
 }
 ```
@@ -47,9 +46,8 @@ In time series we look at the **autocorrelation** between $X_t$ and $X_{t+1}$ et
 
 For example, visually, let us define a vector, $Y5$ and take its autocorrelation:
 
-```{r, fig.margin = T}
+```{r, fig.show = "hold"}
 Y5 <- c(5.1,5.2,5.5,5.3,5.1,4.8,4.5,4.4,4.6,4.6,4.8,5.2,5.4,5.6,5.4,5.3,5.1,5.1,4.8,4.7,4.5,4.3,4.6,4.8,4.9,5.2,5.4,5.6,5.5,5.5)
-knitr::kable(acfdf(Y5))
 tplot(Y5) + ggthemes::theme_few()
 ggacf(Y5) + ggthemes::theme_few()
 ```
@@ -70,7 +68,7 @@ xs = gen.arma.wge(n = 250)
 
 Let's check it out
 
-```{r}
+```{r, fig.show = "hold"}
 tplot(xs) + ggthemes::theme_few()
 ggacf(xs) + ggthemes::theme_few()
 ```

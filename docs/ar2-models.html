@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Unit 11 AR(2) models | Time Series Midterm Review</title>
+  <title>Unit 12 AR(2) models | Time Series Midterm Review</title>
   <meta name="description" content="A hopefully helpful guide">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Unit 11 AR(2) models | Time Series Midterm Review" />
+  <meta property="og:title" content="Unit 12 AR(2) models | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="josephsdavid/tstest" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Unit 11 AR(2) models | Time Series Midterm Review" />
+  <meta name="twitter:title" content="Unit 12 AR(2) models | Time Series Midterm Review" />
   
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Time Series Midterm Review</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Time series o clock</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preparing for the test</a></li>
 <li class="chapter" data-level="2" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html"><i class="fa fa-check"></i><b>2</b> Expected Values, Variance, etc.</a><ul>
 <li class="chapter" data-level="2.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#notation-and-some-definitions"><i class="fa fa-check"></i><b>2.1</b> Notation and Some Definitions</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="expected-values-variance-etc-.html"><a href="expected-values-variance-etc-.html#realizations-and-ensembles"><i class="fa fa-check"></i><b>2.1.1</b> Realizations and Ensembles</a></li>
@@ -176,9 +176,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#autocovariance"><i class="fa fa-check"></i><b>5.2</b> autocovariance</a></li>
 <li class="chapter" data-level="5.3" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#autocorrelation-1"><i class="fa fa-check"></i><b>5.3</b> autocorrelation</a></li>
 <li class="chapter" data-level="5.4" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#stationary-covariance"><i class="fa fa-check"></i><b>5.4</b> Stationary Covariance</a></li>
-<li class="chapter" data-level="5.5" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#stationary-time-series-putting-it-together"><i class="fa fa-check"></i><b>5.5</b> Stationary Time Series: Putting it Together</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="autocorrelation-concepts-and-notation.html"><a href="autocorrelation-concepts-and-notation.html#workflow"><i class="fa fa-check"></i><b>5.5.1</b> Workflow:</a></li>
-</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html"><i class="fa fa-check"></i><b>6</b> Practical Autocorrelation</a><ul>
 <li class="chapter" data-level="6.1" data-path="practical-autocorrelation.html"><a href="practical-autocorrelation.html#estimation"><i class="fa fa-check"></i><b>6.1</b> Estimation!</a><ul>
@@ -215,33 +212,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#an-example-in-r"><i class="fa fa-check"></i><b>9.3.1</b> An example in R</a></li>
 <li class="chapter" data-level="9.3.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#an-another-example"><i class="fa fa-check"></i><b>9.3.2</b> An another example</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#glps"><i class="fa fa-check"></i><b>9.4</b> GLPs</a></li>
-<li class="chapter" data-level="9.5" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-intro"><i class="fa fa-check"></i><b>9.5</b> AR(1) Intro</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-math-zone"><i class="fa fa-check"></i><b>9.5.1</b> AR(1) math zone</a></li>
-<li class="chapter" data-level="9.5.2" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#the-zero-mean-form-of-ar1"><i class="fa fa-check"></i><b>9.5.2</b> the zero mean form of AR1</a></li>
-<li class="chapter" data-level="9.5.3" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-with-positive-phi"><i class="fa fa-check"></i><b>9.5.3</b> AR1 with positive phi</a></li>
-<li class="chapter" data-level="9.5.4" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#ar1-with-negative-phi"><i class="fa fa-check"></i><b>9.5.4</b> AR1 with negative phi</a></li>
-<li class="chapter" data-level="9.5.5" data-path="ar1-models-and-filtering.html"><a href="ar1-models-and-filtering.html#nonstationary"><i class="fa fa-check"></i><b>9.5.5</b> Nonstationary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="glps.html"><a href="glps.html"><i class="fa fa-check"></i><b>10</b> GLPs</a><ul>
+<li class="chapter" data-level="10.1" data-path="glps.html"><a href="glps.html#ar1-intro"><i class="fa fa-check"></i><b>10.1</b> AR(1) Intro</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="glps.html"><a href="glps.html#ar1-math-zone"><i class="fa fa-check"></i><b>10.1.1</b> AR(1) math zone</a></li>
+<li class="chapter" data-level="10.1.2" data-path="glps.html"><a href="glps.html#the-zero-mean-form-of-ar1"><i class="fa fa-check"></i><b>10.1.2</b> the zero mean form of AR1</a></li>
+<li class="chapter" data-level="10.1.3" data-path="glps.html"><a href="glps.html#ar1-with-positive-phi"><i class="fa fa-check"></i><b>10.1.3</b> AR1 with positive phi</a></li>
+<li class="chapter" data-level="10.1.4" data-path="glps.html"><a href="glps.html#ar1-with-negative-phi"><i class="fa fa-check"></i><b>10.1.4</b> AR1 with negative phi</a></li>
+<li class="chapter" data-level="10.1.5" data-path="glps.html"><a href="glps.html#nonstationary"><i class="fa fa-check"></i><b>10.1.5</b> Nonstationary</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="characteristic-equations-for-ar1-models.html"><a href="characteristic-equations-for-ar1-models.html"><i class="fa fa-check"></i><b>10</b> Characteristic Equations for AR(1) Models</a></li>
-<li class="chapter" data-level="11" data-path="ar2-models.html"><a href="ar2-models.html"><i class="fa fa-check"></i><b>11</b> AR(2) models</a><ul>
-<li class="chapter" data-level="11.1" data-path="ar2-models.html"><a href="ar2-models.html#notes"><i class="fa fa-check"></i><b>11.1</b> Notes</a></li>
-<li class="chapter" data-level="11.2" data-path="ar2-models.html"><a href="ar2-models.html#stationarity-in-ar2"><i class="fa fa-check"></i><b>11.2</b> Stationarity in AR(2)</a></li>
-<li class="chapter" data-level="11.3" data-path="ar2-models.html"><a href="ar2-models.html#ar2-zero-mean-form"><i class="fa fa-check"></i><b>11.3</b> AR(2) zero mean form</a></li>
-<li class="chapter" data-level="11.4" data-path="ar2-models.html"><a href="ar2-models.html#more-on-backshift-operator-notation"><i class="fa fa-check"></i><b>11.4</b> More on backshift operator notation</a></li>
-<li class="chapter" data-level="11.5" data-path="ar2-models.html"><a href="ar2-models.html#characteristic-equation"><i class="fa fa-check"></i><b>11.5</b> Characteristic equation</a></li>
-<li class="chapter" data-level="11.6" data-path="ar2-models.html"><a href="ar2-models.html#key-result"><i class="fa fa-check"></i><b>11.6</b> Key result</a><ul>
-<li class="chapter" data-level="11.6.1" data-path="ar2-models.html"><a href="ar2-models.html#two-real-roots"><i class="fa fa-check"></i><b>11.6.1</b> Two real roots</a></li>
-<li class="chapter" data-level="11.6.2" data-path="ar2-models.html"><a href="ar2-models.html#complex-conjugate-roots"><i class="fa fa-check"></i><b>11.6.2</b> Complex conjugate roots</a></li>
+<li class="chapter" data-level="11" data-path="characteristic-equations-for-ar1-models.html"><a href="characteristic-equations-for-ar1-models.html"><i class="fa fa-check"></i><b>11</b> Characteristic Equations for AR(1) Models</a></li>
+<li class="chapter" data-level="12" data-path="ar2-models.html"><a href="ar2-models.html"><i class="fa fa-check"></i><b>12</b> AR(2) models</a><ul>
+<li class="chapter" data-level="12.1" data-path="ar2-models.html"><a href="ar2-models.html#notes"><i class="fa fa-check"></i><b>12.1</b> Notes</a></li>
+<li class="chapter" data-level="12.2" data-path="ar2-models.html"><a href="ar2-models.html#stationarity-in-ar2"><i class="fa fa-check"></i><b>12.2</b> Stationarity in AR(2)</a></li>
+<li class="chapter" data-level="12.3" data-path="ar2-models.html"><a href="ar2-models.html#ar2-zero-mean-form"><i class="fa fa-check"></i><b>12.3</b> AR(2) zero mean form</a></li>
+<li class="chapter" data-level="12.4" data-path="ar2-models.html"><a href="ar2-models.html#more-on-backshift-operator-notation"><i class="fa fa-check"></i><b>12.4</b> More on backshift operator notation</a></li>
+<li class="chapter" data-level="12.5" data-path="ar2-models.html"><a href="ar2-models.html#characteristic-equation"><i class="fa fa-check"></i><b>12.5</b> Characteristic equation</a></li>
+<li class="chapter" data-level="12.6" data-path="ar2-models.html"><a href="ar2-models.html#key-result"><i class="fa fa-check"></i><b>12.6</b> Key result</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="ar2-models.html"><a href="ar2-models.html#two-real-roots"><i class="fa fa-check"></i><b>12.6.1</b> Two real roots</a></li>
+<li class="chapter" data-level="12.6.2" data-path="ar2-models.html"><a href="ar2-models.html#complex-conjugate-roots"><i class="fa fa-check"></i><b>12.6.2</b> Complex conjugate roots</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="arp.html"><a href="arp.html"><i class="fa fa-check"></i><b>12</b> AR(p)</a></li>
-<li class="chapter" data-level="13" data-path="maq-models.html"><a href="maq-models.html"><i class="fa fa-check"></i><b>13</b> MA(q) Models</a><ul>
-<li class="chapter" data-level="13.1" data-path="maq-models.html"><a href="maq-models.html#properties-and-characteristics"><i class="fa fa-check"></i><b>13.1</b> Properties and Characteristics</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="maq-models.html"><a href="maq-models.html#a-quote-for-your-thoughts"><i class="fa fa-check"></i><b>13.1.1</b> A quote for your thoughts:</a></li>
+<li class="chapter" data-level="13" data-path="arp.html"><a href="arp.html"><i class="fa fa-check"></i><b>13</b> AR(p)</a></li>
+<li class="chapter" data-level="14" data-path="maq-models.html"><a href="maq-models.html"><i class="fa fa-check"></i><b>14</b> MA(q) Models</a><ul>
+<li class="chapter" data-level="14.1" data-path="maq-models.html"><a href="maq-models.html#properties-and-characteristics"><i class="fa fa-check"></i><b>14.1</b> Properties and Characteristics</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="maq-models.html"><a href="maq-models.html#a-quote-for-your-thoughts"><i class="fa fa-check"></i><b>14.1.1</b> A quote for your thoughts:</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="maq-models.html"><a href="maq-models.html#maq"><i class="fa fa-check"></i><b>13.2</b> MA(q)</a></li>
+<li class="chapter" data-level="14.2" data-path="maq-models.html"><a href="maq-models.html#maq"><i class="fa fa-check"></i><b>14.2</b> MA(q)</a></li>
+<li class="chapter" data-level="14.3" data-path="maq-models.html"><a href="maq-models.html#operator-zero-mean-form"><i class="fa fa-check"></i><b>14.3</b> Operator Zero-Mean Form</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="maq-models.html"><a href="maq-models.html#characteristic-equation-1"><i class="fa fa-check"></i><b>14.3.1</b> Characteristic Equation</a></li>
+<li class="chapter" data-level="14.3.2" data-path="maq-models.html"><a href="maq-models.html#some-definitions"><i class="fa fa-check"></i><b>14.3.2</b> Some definitions:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="some-examples-of-ma1.html"><a href="some-examples-of-ma1.html"><i class="fa fa-check"></i><b>15</b> Some examples of MA(1)</a><ul>
+<li class="chapter" data-level="15.0.1" data-path="some-examples-of-ma1.html"><a href="some-examples-of-ma1.html#positive-theta1"><i class="fa fa-check"></i><b>15.0.1</b> Positive theta1</a></li>
+<li class="chapter" data-level="15.0.2" data-path="some-examples-of-ma1.html"><a href="some-examples-of-ma1.html#negative-theta"><i class="fa fa-check"></i><b>15.0.2</b> Negative theta</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="ma2.html"><a href="ma2.html"><i class="fa fa-check"></i><b>16</b> MA(2)</a><ul>
+<li class="chapter" data-level="16.1" data-path="ma2.html"><a href="ma2.html#invertibility"><i class="fa fa-check"></i><b>16.1</b> Invertibility</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="ma2.html"><a href="ma2.html#criteria-for-invertibility"><i class="fa fa-check"></i><b>16.1.1</b> Criteria for invertibility</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -264,28 +275,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="ar2-models" class="section level1">
-<h1><span class="header-section-number">Unit 11</span> AR(2) models</h1>
+<h1><span class="header-section-number">Unit 12</span> AR(2) models</h1>
 <p><span class="math display">\[X_t = \beta + \phi_1 X_{t-1} +\phi_2 X_{t-2} +a_t\]</span>
 where <span class="math inline">\(\beta = \left( 1 - \phi_1 - \phi_2 \right) \mu\)</span> is the moving average constant.</p>
 <div id="notes" class="section level2">
-<h2><span class="header-section-number">11.1</span> Notes</h2>
+<h2><span class="header-section-number">12.1</span> Notes</h2>
 <p>It looks like MLR, however the independetn variables are values of the dependent variable at two previous time periods</p>
 </div>
 <div id="stationarity-in-ar2" class="section level2">
-<h2><span class="header-section-number">11.2</span> Stationarity in AR(2)</h2>
+<h2><span class="header-section-number">12.2</span> Stationarity in AR(2)</h2>
 <p><span class="math display">\[E[X_t] = \mu \]</span></p>
 <p><span class="math display">\[\sigma_X^2 = \frac {\sigma^2_a}{1-\phi_1 \rho_1 - \phi_2 \rho_2 } \]</span></p>
 <p>Instead of depending on positive or negative roots, like AR(1), the behavior of the autocorrelations and spectral density depends on whether or not the roots of the characteristic equation are complex. This means it is already hard to tell from the equation whether or not it is stationary just by looking at the equation.</p>
 </div>
 <div id="ar2-zero-mean-form" class="section level2">
-<h2><span class="header-section-number">11.3</span> AR(2) zero mean form</h2>
+<h2><span class="header-section-number">12.3</span> AR(2) zero mean form</h2>
 <p>If <span class="math inline">\(\mu = 0\)</span>, then the AR(2) model takes the form :</p>
 <p><span class="math display">\[X_t =  \phi_1 X_{t-1} +\phi_2 X_{t-2} +a_t\]</span></p>
 <p>We can study this much easier and then add the mean back later. A more common way of writing this, and more useful to us is the form:
 <span class="math display">\[X_t- \phi_1 X_{t-1} -\phi_2 X_{t-2}=   a_t\]</span></p>
 </div>
 <div id="more-on-backshift-operator-notation" class="section level2">
-<h2><span class="header-section-number">11.4</span> More on backshift operator notation</h2>
+<h2><span class="header-section-number">12.4</span> More on backshift operator notation</h2>
 <p>Remember, we defined the backshift operator as <span class="math inline">\(B\)</span> such that <span class="math inline">\(BX_t = X_{t-1}\)</span></p>
 <p>We can extend this and say:
 <span class="math display">\[B^k X_t = X_{t-k}\]</span></p>
@@ -298,19 +309,19 @@ where <span class="math inline">\(\beta = \left( 1 - \phi_1 - \phi_2 \right) \mu
 <p>We can rewrite this <span class="math inline">\(\phi(B)\)</span> as a characteristic equation now:
 <span class="math display">\[1 - \phi_1 Z - \phi_2 Z^2 = 0\]</span></p>
 <p>Lets quickly expand on our quadratic solver to get the roots of an AR(2) model:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="ar2-models.html#cb50-1"></a>ar2solver &lt;-<span class="st"> </span><span class="cf">function</span>(p1, p2) {</span>
-<span id="cb50-2"><a href="ar2-models.html#cb50-2"></a>    res &lt;-<span class="st"> </span><span class="kw">as.complex</span>(<span class="kw">quad_form</span>(p2, p1, <span class="dv">1</span>))</span>
-<span id="cb50-3"><a href="ar2-models.html#cb50-3"></a>    mag &lt;-<span class="st"> </span><span class="kw">Mod</span>(res)</span>
-<span id="cb50-4"><a href="ar2-models.html#cb50-4"></a>    absrecip &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>mag</span>
-<span id="cb50-5"><a href="ar2-models.html#cb50-5"></a>    <span class="kw">data.frame</span>(<span class="dt">roots =</span> res, <span class="dt">magnitude =</span> mag, <span class="dt">abs.recip =</span> absrecip)</span>
-<span id="cb50-6"><a href="ar2-models.html#cb50-6"></a>}</span>
-<span id="cb50-7"><a href="ar2-models.html#cb50-7"></a><span class="kw">ar2solver</span>(<span class="fl">0.4</span>, <span class="fl">0.8</span>)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="ar2-models.html#cb40-1"></a>ar2solver &lt;-<span class="st"> </span><span class="cf">function</span>(p1, p2) {</span>
+<span id="cb40-2"><a href="ar2-models.html#cb40-2"></a>    res &lt;-<span class="st"> </span><span class="kw">as.complex</span>(<span class="kw">quad_form</span>(p2, p1, <span class="dv">1</span>))</span>
+<span id="cb40-3"><a href="ar2-models.html#cb40-3"></a>    mag &lt;-<span class="st"> </span><span class="kw">Mod</span>(res)</span>
+<span id="cb40-4"><a href="ar2-models.html#cb40-4"></a>    absrecip &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>mag</span>
+<span id="cb40-5"><a href="ar2-models.html#cb40-5"></a>    <span class="kw">data.frame</span>(<span class="dt">roots =</span> res, <span class="dt">magnitude =</span> mag, <span class="dt">abs.recip =</span> absrecip)</span>
+<span id="cb40-6"><a href="ar2-models.html#cb40-6"></a>}</span>
+<span id="cb40-7"><a href="ar2-models.html#cb40-7"></a><span class="kw">ar2solver</span>(<span class="fl">0.4</span>, <span class="fl">0.8</span>)</span></code></pre></div>
 <pre><code>##         roots magnitude abs.recip
 ## 1 -0.25-1.09i  1.118302 0.8942126
 ## 2 -0.25+1.09i  1.118302 0.8942126</code></pre>
 </div>
 <div id="characteristic-equation" class="section level2">
-<h2><span class="header-section-number">11.5</span> Characteristic equation</h2>
+<h2><span class="header-section-number">12.5</span> Characteristic equation</h2>
 <p><span class="math display">\[ x = \frac{ - b \pm \sqrt {b^2 - 4ac} }{2a}   \]</span>
 <span class="math display">\[1- \phi_1 Z - \phi_2 Z^2 = 0\]</span></p>
 <p>Just solve the quadratic equation using the quadratic formula:</p>
@@ -320,10 +331,10 @@ where <span class="math inline">\(\beta = \left( 1 - \phi_1 - \phi_2 \right) \mu
 * Two complex roots</p>
 </div>
 <div id="key-result" class="section level2">
-<h2><span class="header-section-number">11.6</span> Key result</h2>
+<h2><span class="header-section-number">12.6</span> Key result</h2>
 <p>An AR(2) is stationary <strong><em>iff</em></strong> all roots are outside the unit circle</p>
 <div id="two-real-roots" class="section level3">
-<h3><span class="header-section-number">11.6.1</span> Two real roots</h3>
+<h3><span class="header-section-number">12.6.1</span> Two real roots</h3>
 <p>We can factor the AR(2) into two AR(1)s</p>
 <ul>
 <li>one part positive one part negative
@@ -345,7 +356,7 @@ where <span class="math inline">\(\beta = \left( 1 - \phi_1 - \phi_2 \right) \mu
 </ul>
 </div>
 <div id="complex-conjugate-roots" class="section level3">
-<h3><span class="header-section-number">11.6.2</span> Complex conjugate roots</h3>
+<h3><span class="header-section-number">12.6.2</span> Complex conjugate roots</h3>
 <p>Stationary AR(2)’s with complex conjugate roots have an autocorrelation function which looks more like a damped sinusoid instead of a damped exponential, and a system frequency, <span class="math inline">\(f_0\)</span> defined as+
 <span class="math display">\[f_0 = \frac{1}{2\pi}\mathrm{cos}^{-1} \left( \frac{\phi_1}{2 \sqrt{-\phi_2}} \right )\]</span>. Pretty easy stuff.</p>
 

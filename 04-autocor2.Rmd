@@ -52,16 +52,11 @@ ggsplitacf <-function(vec) {
 
 ```
 
-```{r, include=F, fig.show = "hide", results='hide', echo =F}
-Realize = gen.arma.wge(500,0.95,0,plot = T, sn = 784)
+```{r, results='hide' }
+Realize = gen.arma.wge(500,0.95,0, sn = 784)
 ```
 
-
-
-```{r, eval =F}
-Realize = gen.arma.wge(500,0.95,0,plot = T, sn = 784)
-```
-
+Lets check out the ACF
 
 ```{r}
 ggsplitacf(Realize)
@@ -70,7 +65,7 @@ ggsplitacf(Realize)
 This looks pretty stationary to me!
 Let's try with some sample data:
 
-```{r}
+```{r, fig.show = "hold"}
 data("noctula")
 tplot(noctula)+ggthemes::theme_few()
 ggsplitacf(noctula)
@@ -78,7 +73,7 @@ ggsplitacf(noctula)
 
 So in this case our mean probably looks constant, our variance could be constant as well, however the ACFs are clearly different. Let's look at a different dataset:
 
-```{r}
+```{r, fig.show = "hold"}
 data(lavon)
 tplot(lavon)+ggthemes::theme_few()
 ggsplitacf(lavon)
@@ -86,14 +81,3 @@ ggsplitacf(lavon)
 
 In this case, our mean looks maybe to be constant around 495, our variance does not appear to be constant, and our ACF looks pretty good, however I would say overall this probably is not stationary, due to the variance and slightly off ACF.
 
-## Stationary Time Series: Putting it Together
-
-### Workflow:
-
-* Step 1: Check condition 1
-	* see if the assumption is more or less met
-* Step 2: Check condition two
-	* same thing
-* Step 3: Check for condition three
- 
-If one of the things is iffy, and the other two arent, we are going to be just fine.
