@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="8.3 Spectral Density in the Wild | Time Series Midterm Review" />
 <meta property="og:type" content="book" />
 
@@ -17,7 +15,7 @@
 
 <meta name="author" content="David Josephs" />
 
-<meta name="date" content="2019-06-29" />
+<meta name="date" content="2019-07-02" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -325,18 +323,18 @@ img {
 <span id="cb27-2"><a href="8-3-spectral-density-in-the-wild.html#cb27-2"></a>y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)</span>
 <span id="cb27-3"><a href="8-3-spectral-density-in-the-wild.html#cb27-3"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</span>
 <span id="cb27-4"><a href="8-3-spectral-density-in-the-wild.html#cb27-4"></a><span class="kw">curve</span>(<span class="kw">sin</span>(x), <span class="dv">1</span>, <span class="dv">1000</span>)</span>
-<span id="cb27-5"><a href="8-3-spectral-density-in-the-wild.html#cb27-5"></a><span class="kw">parzen.wge</span>(y)</span></code></pre></div>
+<span id="cb27-5"><a href="8-3-spectral-density-in-the-wild.html#cb27-5"></a><span class="kw">parzen.wge</span>(y)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Shockingly, we have a frequency peak at roughly <span class="math inline">\(\frac{1}{2 \pi} = 0.1591549\)</span>. If I did a better job of generating the data, it would be a super shark peak and nothing else, however I did not. Lets look at sunspot data now:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="8-3-spectral-density-in-the-wild.html#cb28-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb28-2"><a href="8-3-spectral-density-in-the-wild.html#cb28-2"></a><span class="kw">data</span>(sunspot.classic)</span>
 <span id="cb28-3"><a href="8-3-spectral-density-in-the-wild.html#cb28-3"></a><span class="kw">tplot</span>(sunspot.classic) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span>
-<span id="cb28-4"><a href="8-3-spectral-density-in-the-wild.html#cb28-4"></a><span class="kw">parzen.wge</span>(sunspot.classic)</span></code></pre></div>
+<span id="cb28-4"><a href="8-3-spectral-density-in-the-wild.html#cb28-4"></a><span class="kw">parzen.wge</span>(sunspot.classic)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-27-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>It looks like we have a frequency peak at about 0.1, which makes sense because the classic sunspot psuedoperiod is about 11 years. Lets look at some aperiodic stock data now:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="8-3-spectral-density-in-the-wild.html#cb29-1"></a><span class="kw">getSymbols</span>(<span class="st">&quot;GOOG&quot;</span>, <span class="dt">src =</span> <span class="st">&quot;yahoo&quot;</span>)</span>
 <span id="cb29-2"><a href="8-3-spectral-density-in-the-wild.html#cb29-2"></a><span class="kw">plot</span>(GOOG[, <span class="st">&quot;GOOG.Close&quot;</span>])</span>
-<span id="cb29-3"><a href="8-3-spectral-density-in-the-wild.html#cb29-3"></a><span class="kw">parzen.wge</span>(GOOG<span class="op">$</span>GOOG.Close)</span></code></pre></div>
+<span id="cb29-3"><a href="8-3-spectral-density-in-the-wild.html#cb29-3"></a><span class="kw">parzen.wge</span>(GOOG<span class="op">$</span>GOOG.Close)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-28-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Sadly, there appears to be no real periodicity in google’s stock price, no free money for us :(. The peak at 0 means that the data is either aperiodic or it has not been long enough to show a period.</p>
 </div>

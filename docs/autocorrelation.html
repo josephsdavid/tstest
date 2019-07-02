@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unit 4 Autocorrelation | Time Series Midterm Review</title>
-  <meta name="description" content="A hopefully helpful guide">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A hopefully helpful guide" />
+  <meta name="generator" content="bookdown 0.11.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unit 4 Autocorrelation | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
 
-<meta name="author" content="David Josephs">
+<meta name="author" content="David Josephs" />
 
 
-<meta name="date" content="2019-06-29">
+<meta name="date" content="2019-07-02" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="a-brief-discussion-of-stationarity.html">
@@ -341,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-13"><a href="autocorrelation.html#cb3-13"></a>tplot &lt;-<span class="st"> </span><span class="cf">function</span>(vec) {</span>
 <span id="cb3-14"><a href="autocorrelation.html#cb3-14"></a>    df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">X =</span> vec, <span class="dt">t =</span> <span class="kw">seq_along</span>(vec))</span>
 <span id="cb3-15"><a href="autocorrelation.html#cb3-15"></a>    <span class="kw">ggplot</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> t, <span class="dt">y =</span> X)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</span>
-<span id="cb3-16"><a href="autocorrelation.html#cb3-16"></a>}</span></code></pre></div>
+<span id="cb3-16"><a href="autocorrelation.html#cb3-16"></a>}</span></code></pre>
 <div id="independence" class="section level2">
 <h2><span class="header-section-number">4.1</span> Independence</h2>
 <p>Two events are independent in a time series if the probability that an event at time t occurs in no way depends on the ocurrence of any event in the past or affects any event in the future. Mathematically, this is written as:</p>
@@ -367,16 +366,16 @@ That is <strong>if <span class="math inline">\(X_t\)</span> and <span class="mat
 <span id="cb4-2"><a href="autocorrelation.html#cb4-2"></a>    <span class="fl">5.4</span>, <span class="fl">5.3</span>, <span class="fl">5.1</span>, <span class="fl">5.1</span>, <span class="fl">4.8</span>, <span class="fl">4.7</span>, <span class="fl">4.5</span>, <span class="fl">4.3</span>, <span class="fl">4.6</span>, <span class="fl">4.8</span>, <span class="fl">4.9</span>, <span class="fl">5.2</span>, <span class="fl">5.4</span>, <span class="fl">5.6</span>, <span class="fl">5.5</span>, </span>
 <span id="cb4-3"><a href="autocorrelation.html#cb4-3"></a>    <span class="fl">5.5</span>)</span>
 <span id="cb4-4"><a href="autocorrelation.html#cb4-4"></a><span class="kw">tplot</span>(Y5) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span>
-<span id="cb4-5"><a href="autocorrelation.html#cb4-5"></a><span class="kw">ggacf</span>(Y5) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span></code></pre></div>
+<span id="cb4-5"><a href="autocorrelation.html#cb4-5"></a><span class="kw">ggacf</span>(Y5) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-9-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="independentish-data" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Independent(ish) data!</h3>
 <p>Now let us look at autocorrelation of <strong><em>independent</em></strong> data</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="autocorrelation.html#cb5-1"></a>xs =<span class="st"> </span><span class="kw">gen.arma.wge</span>(<span class="dt">n =</span> <span class="dv">250</span>)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="autocorrelation.html#cb5-1"></a>xs =<span class="st"> </span><span class="kw">gen.arma.wge</span>(<span class="dt">n =</span> <span class="dv">250</span>)</span></code></pre>
 <p>Let’s check it out</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="autocorrelation.html#cb6-1"></a><span class="kw">tplot</span>(xs) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span>
-<span id="cb6-2"><a href="autocorrelation.html#cb6-2"></a><span class="kw">ggacf</span>(xs) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span></code></pre></div>
+<span id="cb6-2"><a href="autocorrelation.html#cb6-2"></a><span class="kw">ggacf</span>(xs) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-12-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We see that the autocorrelation is more or less zero</p>
 

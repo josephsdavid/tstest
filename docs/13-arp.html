@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Unit 13 AR(p) | Time Series Midterm Review" />
 <meta property="og:type" content="book" />
 
@@ -17,7 +15,7 @@
 
 <meta name="author" content="David Josephs" />
 
-<meta name="date" content="2019-06-29" />
+<meta name="date" content="2019-07-02" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -322,7 +320,7 @@ img {
 <h1><span class="header-section-number">Unit 13</span> AR(p)</h1>
 <p>This is basically the same thing, with the same conclusion, except instead of having clearly defined behavior based on the sine of the roots, the closer the absolute value of the roots is to one the more dominant that behavior is in the realization. To solve these, we will use this brilliant <code>factor.wge</code> function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="13-arp.html#cb42-1"></a><span class="kw">library</span>(tswge)</span>
-<span id="cb42-2"><a href="13-arp.html#cb42-2"></a><span class="kw">factor.wge</span>(<span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">-0.4</span>, <span class="fl">-0.7</span>, <span class="fl">0.1</span>, <span class="fl">-0.1</span>))</span></code></pre></div>
+<span id="cb42-2"><a href="13-arp.html#cb42-2"></a><span class="kw">factor.wge</span>(<span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">-0.4</span>, <span class="fl">-0.7</span>, <span class="fl">0.1</span>, <span class="fl">-0.1</span>))</span></code></pre>
 <pre><code>## 
 ## Coefficients of Original polynomial:  
 ## 0.7000 0.4000 0.3000 -0.4000 -0.7000 0.1000 -0.1000 

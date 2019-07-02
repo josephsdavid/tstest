@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unit 23 Strategy + Notation | Time Series Midterm Review</title>
-  <meta name="description" content="A hopefully helpful guide">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A hopefully helpful guide" />
+  <meta name="generator" content="bookdown 0.11.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unit 23 Strategy + Notation | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
 
-<meta name="author" content="David Josephs">
+<meta name="author" content="David Josephs" />
 
 
-<meta name="date" content="2019-06-29">
+<meta name="date" content="2019-07-02" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="forecasting-setting.html">
@@ -354,13 +353,13 @@ However, sometimes to evaluate our forecast, we compare it to the last few value
 <span id="cb59-4"><a href="strategy-notation.html#cb59-4"></a>            <span class="kw">return</span>(phi <span class="op">*</span><span class="st"> </span>xprev <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>phi)) <span class="cf">else</span> <span class="kw">return</span>(phi <span class="op">*</span><span class="st"> </span><span class="kw">fun</span>(xprev, l <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>phi))</span>
 <span id="cb59-5"><a href="strategy-notation.html#cb59-5"></a>    }</span>
 <span id="cb59-6"><a href="strategy-notation.html#cb59-6"></a>    fun</span>
-<span id="cb59-7"><a href="strategy-notation.html#cb59-7"></a>}</span></code></pre></div>
+<span id="cb59-7"><a href="strategy-notation.html#cb59-7"></a>}</span></code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="strategy-notation.html#cb60-1"></a>ex74 &lt;-<span class="st"> </span><span class="kw">ar1forcastgen</span>(<span class="dt">phi =</span> <span class="fl">0.8</span>, <span class="dt">mu =</span> <span class="fl">24.17</span>)</span>
 <span id="cb60-2"><a href="strategy-notation.html#cb60-2"></a>times &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb60-3"><a href="strategy-notation.html#cb60-3"></a><span class="kw">lapply</span>(times, ex74, <span class="dt">xprev =</span> <span class="fl">22.93</span>) <span class="op">%&gt;%</span><span class="st"> </span>as.data.frame</span></code></pre></div>
+<span id="cb60-3"><a href="strategy-notation.html#cb60-3"></a><span class="kw">lapply</span>(times, ex74, <span class="dt">xprev =</span> <span class="fl">22.93</span>) <span class="op">%&gt;%</span><span class="st"> </span>as.data.frame</span></code></pre>
 <pre><code>##   X23.178 X23.3764 X23.53512 X23.662096 X23.7636768
 ## 1  23.178  23.3764  23.53512    23.6621    23.76368</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="strategy-notation.html#cb62-1"></a><span class="kw">ex74</span>(<span class="fl">22.93</span>, <span class="dt">l =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="strategy-notation.html#cb62-1"></a><span class="kw">ex74</span>(<span class="fl">22.93</span>, <span class="dt">l =</span> <span class="dv">2</span>)</span></code></pre>
 <pre><code>## [1] 23.3764</code></pre>
 </div>
 </div>

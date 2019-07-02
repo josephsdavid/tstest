@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unit 3 A Brief Discussion of Stationarity | Time Series Midterm Review</title>
-  <meta name="description" content="A hopefully helpful guide">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A hopefully helpful guide" />
+  <meta name="generator" content="bookdown 0.11.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unit 3 A Brief Discussion of Stationarity | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
 
-<meta name="author" content="David Josephs">
+<meta name="author" content="David Josephs" />
 
 
-<meta name="date" content="2019-06-29">
+<meta name="date" content="2019-07-02" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="expected-values-variance-etc-.html">
@@ -348,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-8"><a href="a-brief-discussion-of-stationarity.html#cb1-8"></a>d1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
 <span id="cb1-9"><a href="a-brief-discussion-of-stationarity.html#cb1-9"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
 <span id="cb1-10"><a href="a-brief-discussion-of-stationarity.html#cb1-10"></a>e1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
-<span id="cb1-11"><a href="a-brief-discussion-of-stationarity.html#cb1-11"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<span id="cb1-11"><a href="a-brief-discussion-of-stationarity.html#cb1-11"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Now lets look at 5 realizations which come from the same realization, which might not have a constant mean:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="a-brief-discussion-of-stationarity.html#cb2-1"></a>a2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
@@ -360,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-7"><a href="a-brief-discussion-of-stationarity.html#cb2-7"></a>d2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
 <span id="cb2-8"><a href="a-brief-discussion-of-stationarity.html#cb2-8"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
 <span id="cb2-9"><a href="a-brief-discussion-of-stationarity.html#cb2-9"></a>e2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
-<span id="cb2-10"><a href="a-brief-discussion-of-stationarity.html#cb2-10"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<span id="cb2-10"><a href="a-brief-discussion-of-stationarity.html#cb2-10"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We cannot say for sure whether the mean is constant or not in this case!</p>
 </div>

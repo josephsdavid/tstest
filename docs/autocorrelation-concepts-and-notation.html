@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unit 5 Autocorrelation Concepts and Notation | Time Series Midterm Review</title>
-  <meta name="description" content="A hopefully helpful guide">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A hopefully helpful guide" />
+  <meta name="generator" content="bookdown 0.11.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unit 5 Autocorrelation Concepts and Notation | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
 
-<meta name="author" content="David Josephs">
+<meta name="author" content="David Josephs" />
 
 
-<meta name="date" content="2019-06-29">
+<meta name="date" content="2019-07-02" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="autocorrelation.html">
@@ -357,22 +356,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-6"><a href="autocorrelation-concepts-and-notation.html#cb7-6"></a>    third &lt;-<span class="st"> </span><span class="kw">ggacf</span>(h2) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span>
 <span id="cb7-7"><a href="autocorrelation-concepts-and-notation.html#cb7-7"></a>    cowplot<span class="op">::</span><span class="kw">plot_grid</span>(first, second, third, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;original&quot;</span>, <span class="st">&quot;first half&quot;</span>, </span>
 <span id="cb7-8"><a href="autocorrelation-concepts-and-notation.html#cb7-8"></a>        <span class="st">&quot;second half&quot;</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">align =</span> <span class="st">&quot;v&quot;</span>)</span>
-<span id="cb7-9"><a href="autocorrelation-concepts-and-notation.html#cb7-9"></a>}</span></code></pre></div>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="autocorrelation-concepts-and-notation.html#cb8-1"></a>Realize =<span class="st"> </span><span class="kw">gen.arma.wge</span>(<span class="dv">500</span>, <span class="fl">0.95</span>, <span class="dv">0</span>, <span class="dt">sn =</span> <span class="dv">784</span>)</span></code></pre></div>
+<span id="cb7-9"><a href="autocorrelation-concepts-and-notation.html#cb7-9"></a>}</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="autocorrelation-concepts-and-notation.html#cb8-1"></a>Realize =<span class="st"> </span><span class="kw">gen.arma.wge</span>(<span class="dv">500</span>, <span class="fl">0.95</span>, <span class="dv">0</span>, <span class="dt">sn =</span> <span class="dv">784</span>)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Lets check out the ACF</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="autocorrelation-concepts-and-notation.html#cb9-1"></a><span class="kw">ggsplitacf</span>(Realize)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="autocorrelation-concepts-and-notation.html#cb9-1"></a><span class="kw">ggsplitacf</span>(Realize)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>This looks pretty stationary to me!
 Let’s try with some sample data:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="autocorrelation-concepts-and-notation.html#cb10-1"></a><span class="kw">data</span>(<span class="st">&quot;noctula&quot;</span>)</span>
 <span id="cb10-2"><a href="autocorrelation-concepts-and-notation.html#cb10-2"></a><span class="kw">tplot</span>(noctula) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span>
-<span id="cb10-3"><a href="autocorrelation-concepts-and-notation.html#cb10-3"></a><span class="kw">ggsplitacf</span>(noctula)</span></code></pre></div>
+<span id="cb10-3"><a href="autocorrelation-concepts-and-notation.html#cb10-3"></a><span class="kw">ggsplitacf</span>(noctula)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-17-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>So in this case our mean probably looks constant, our variance could be constant as well, however the ACFs are clearly different. Let’s look at a different dataset:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="autocorrelation-concepts-and-notation.html#cb11-1"></a><span class="kw">data</span>(lavon)</span>
 <span id="cb11-2"><a href="autocorrelation-concepts-and-notation.html#cb11-2"></a><span class="kw">tplot</span>(lavon) <span class="op">+</span><span class="st"> </span>ggthemes<span class="op">::</span><span class="kw">theme_few</span>()</span>
-<span id="cb11-3"><a href="autocorrelation-concepts-and-notation.html#cb11-3"></a><span class="kw">ggsplitacf</span>(lavon)</span></code></pre></div>
+<span id="cb11-3"><a href="autocorrelation-concepts-and-notation.html#cb11-3"></a><span class="kw">ggsplitacf</span>(lavon)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-18-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>In this case, our mean looks maybe to be constant around 495, our variance does not appear to be constant, and our ACF looks pretty good, however I would say overall this probably is not stationary, due to the variance and slightly off ACF.</p>
 

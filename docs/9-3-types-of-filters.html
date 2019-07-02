@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="9.3 Types of filters: | Time Series Midterm Review" />
 <meta property="og:type" content="book" />
 
@@ -17,7 +15,7 @@
 
 <meta name="author" content="David Josephs" />
 
-<meta name="date" content="2019-06-29" />
+<meta name="date" content="2019-07-02" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -346,7 +344,7 @@ img {
 <span id="cb35-10"><a href="9-3-types-of-filters.html#cb35-10"></a>d &lt;-<span class="st"> </span><span class="kw">dfun</span>(fig1<span class="fl">.21</span>a, <span class="dv">1</span>)</span>
 <span id="cb35-11"><a href="9-3-types-of-filters.html#cb35-11"></a>fp &lt;-<span class="st"> </span><span class="kw">tplot</span>(fig1<span class="fl">.21</span>a) <span class="op">+</span><span class="st"> </span>th</span>
 <span id="cb35-12"><a href="9-3-types-of-filters.html#cb35-12"></a>mp &lt;-<span class="st"> </span><span class="kw">tplot</span>(ma) <span class="op">+</span><span class="st"> </span>th</span>
-<span id="cb35-13"><a href="9-3-types-of-filters.html#cb35-13"></a>dp &lt;-<span class="st"> </span><span class="kw">tplot</span>(d) <span class="op">+</span><span class="st"> </span>th</span></code></pre></div>
+<span id="cb35-13"><a href="9-3-types-of-filters.html#cb35-13"></a>dp &lt;-<span class="st"> </span><span class="kw">tplot</span>(d) <span class="op">+</span><span class="st"> </span>th</span></code></pre>
 <p>And here lets view the 5 point moving average</p>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>And now a look at the difference filter</p>
@@ -355,7 +353,7 @@ img {
 <div id="an-another-example" class="section level3">
 <h3><span class="header-section-number">9.3.2</span> An another example</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="9-3-types-of-filters.html#cb36-1"></a>rlz &lt;-<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">200</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.45</span>), <span class="dt">vara =</span> <span class="dv">10</span>, </span>
-<span id="cb36-2"><a href="9-3-types-of-filters.html#cb36-2"></a>    <span class="dt">sn =</span> <span class="dv">1</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<span id="cb36-2"><a href="9-3-types-of-filters.html#cb36-2"></a>    <span class="dt">sn =</span> <span class="dv">1</span>, <span class="dt">plot =</span> F)</span></code></pre>
 <div id="some-plots" class="section level4">
 <h4><span class="header-section-number">9.3.2.1</span> Some plots</h4>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="9-3-types-of-filters.html#cb37-1"></a>pfun &lt;-<span class="st"> </span><span class="cf">function</span>(x, n, l) {</span>
@@ -367,14 +365,14 @@ img {
 <span id="cb37-7"><a href="9-3-types-of-filters.html#cb37-7"></a>plts &lt;-<span class="st"> </span><span class="kw">pfun</span>(rlz, <span class="dv">5</span>, <span class="dv">1</span>)</span>
 <span id="cb37-8"><a href="9-3-types-of-filters.html#cb37-8"></a>plts<span class="op">$</span>original</span>
 <span id="cb37-9"><a href="9-3-types-of-filters.html#cb37-9"></a>plts<span class="op">$</span>MA</span>
-<span id="cb37-10"><a href="9-3-types-of-filters.html#cb37-10"></a>plts<span class="op">$</span>dif</span></code></pre></div>
+<span id="cb37-10"><a href="9-3-types-of-filters.html#cb37-10"></a>plts<span class="op">$</span>dif</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-36-2.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-36-3.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="some-parzen-windows" class="section level4">
 <h4><span class="header-section-number">9.3.2.2</span> Some Parzen Windows</h4>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="9-3-types-of-filters.html#cb38-1"></a><span class="kw">parzen.wge</span>(rlz)</span>
 <span id="cb38-2"><a href="9-3-types-of-filters.html#cb38-2"></a><span class="kw">parzen.wge</span>(<span class="kw">na.omit</span>(<span class="kw">mafun</span>(rlz, <span class="dv">5</span>)))</span>
-<span id="cb38-3"><a href="9-3-types-of-filters.html#cb38-3"></a><span class="kw">parzen.wge</span>(<span class="kw">na.omit</span>(<span class="kw">dfun</span>(rlz, <span class="dv">1</span>)))</span></code></pre></div>
+<span id="cb38-3"><a href="9-3-types-of-filters.html#cb38-3"></a><span class="kw">parzen.wge</span>(<span class="kw">na.omit</span>(<span class="kw">dfun</span>(rlz, <span class="dv">1</span>)))</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-37-2.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-37-3.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="27.1 Some math | Time Series Midterm Review" />
 <meta property="og:type" content="book" />
 
@@ -17,7 +15,7 @@
 
 <meta name="author" content="David Josephs" />
 
-<meta name="date" content="2019-06-29" />
+<meta name="date" content="2019-07-02" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -326,13 +324,13 @@ Challeng: Write this function recursively (is it possible?????) in R. We are jus
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="27-1-some-math-1.html#cb72-1"></a>ts7524 &lt;-<span class="st"> </span><span class="kw">tswgen</span>(<span class="dv">75</span>, <span class="dt">sn =</span> <span class="dv">24</span>)</span>
 <span id="cb72-2"><a href="27-1-some-math-1.html#cb72-2"></a>p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.6</span>, <span class="fl">-0.8</span>)</span>
 <span id="cb72-3"><a href="27-1-some-math-1.html#cb72-3"></a>thet &lt;-<span class="st"> </span>(<span class="op">-</span><span class="fl">0.9</span>)</span>
-<span id="cb72-4"><a href="27-1-some-math-1.html#cb72-4"></a>x1 &lt;-<span class="st"> </span>ts7524<span class="op">$</span><span class="kw">arma</span>(<span class="dt">phi =</span> p)</span></code></pre></div>
+<span id="cb72-4"><a href="27-1-some-math-1.html#cb72-4"></a>x1 &lt;-<span class="st"> </span>ts7524<span class="op">$</span><span class="kw">arma</span>(<span class="dt">phi =</span> p)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="27-1-some-math-1.html#cb73-1"></a><span class="kw">fore.arma.wge</span>(x1, <span class="dt">phi =</span> p, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="27-1-some-math-1.html#cb73-1"></a><span class="kw">fore.arma.wge</span>(x1, <span class="dt">phi =</span> p, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-60-2.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="27-1-some-math-1.html#cb74-1"></a>x2 &lt;-<span class="st"> </span>ts7524<span class="op">$</span><span class="kw">arma</span>(<span class="dt">phi =</span> p, <span class="dt">theta =</span> thet)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="27-1-some-math-1.html#cb74-1"></a>x2 &lt;-<span class="st"> </span>ts7524<span class="op">$</span><span class="kw">arma</span>(<span class="dt">phi =</span> p, <span class="dt">theta =</span> thet)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-60-3.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="27-1-some-math-1.html#cb75-1"></a><span class="kw">fore.arma.wge</span>(x2, <span class="dt">phi =</span> p, <span class="dt">theta =</span> thet, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="27-1-some-math-1.html#cb75-1"></a><span class="kw">fore.arma.wge</span>(x2, <span class="dt">phi =</span> p, <span class="dt">theta =</span> thet, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-60-4.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <!-- </div> -->

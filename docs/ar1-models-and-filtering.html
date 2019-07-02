@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unit 9 AR(1) Models and Filtering | Time Series Midterm Review</title>
-  <meta name="description" content="A hopefully helpful guide">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A hopefully helpful guide" />
+  <meta name="generator" content="bookdown 0.11.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unit 9 AR(1) Models and Filtering | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
 
-<meta name="author" content="David Josephs">
+<meta name="author" content="David Josephs" />
 
 
-<meta name="date" content="2019-06-29">
+<meta name="date" content="2019-07-02" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="spectral-density.html">
@@ -347,7 +346,7 @@ z* is complex conjugate</p>
 <span id="cb33-8"><a href="ar1-models-and-filtering.html#cb33-8"></a>    <span class="kw">round</span>(<span class="kw">cbind</span>(<span class="op">-</span>b <span class="op">-</span><span class="st"> </span>rad, <span class="op">-</span>b <span class="op">+</span><span class="st"> </span>rad)<span class="op">/</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a), <span class="dv">3</span>)</span>
 <span id="cb33-9"><a href="ar1-models-and-filtering.html#cb33-9"></a>}</span>
 <span id="cb33-10"><a href="ar1-models-and-filtering.html#cb33-10"></a></span>
-<span id="cb33-11"><a href="ar1-models-and-filtering.html#cb33-11"></a><span class="kw">quad_form</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">-5</span>), <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">2</span>))</span></code></pre></div>
+<span id="cb33-11"><a href="ar1-models-and-filtering.html#cb33-11"></a><span class="kw">quad_form</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">-5</span>), <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">2</span>))</span></code></pre>
 <pre><code>##               [,1]          [,2]
 ## [1,] -0.500-2.398i -0.500+2.398i
 ## [2,]  0.625-0.331i  0.625+0.331i</code></pre>
@@ -399,7 +398,7 @@ z* is complex conjugate</p>
 <span id="cb35-10"><a href="ar1-models-and-filtering.html#cb35-10"></a>d &lt;-<span class="st"> </span><span class="kw">dfun</span>(fig1<span class="fl">.21</span>a, <span class="dv">1</span>)</span>
 <span id="cb35-11"><a href="ar1-models-and-filtering.html#cb35-11"></a>fp &lt;-<span class="st"> </span><span class="kw">tplot</span>(fig1<span class="fl">.21</span>a) <span class="op">+</span><span class="st"> </span>th</span>
 <span id="cb35-12"><a href="ar1-models-and-filtering.html#cb35-12"></a>mp &lt;-<span class="st"> </span><span class="kw">tplot</span>(ma) <span class="op">+</span><span class="st"> </span>th</span>
-<span id="cb35-13"><a href="ar1-models-and-filtering.html#cb35-13"></a>dp &lt;-<span class="st"> </span><span class="kw">tplot</span>(d) <span class="op">+</span><span class="st"> </span>th</span></code></pre></div>
+<span id="cb35-13"><a href="ar1-models-and-filtering.html#cb35-13"></a>dp &lt;-<span class="st"> </span><span class="kw">tplot</span>(d) <span class="op">+</span><span class="st"> </span>th</span></code></pre>
 <p>And here lets view the 5 point moving average</p>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>And now a look at the difference filter</p>
@@ -408,7 +407,7 @@ z* is complex conjugate</p>
 <div id="an-another-example" class="section level3">
 <h3><span class="header-section-number">9.3.2</span> An another example</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="ar1-models-and-filtering.html#cb36-1"></a>rlz &lt;-<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">200</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.45</span>), <span class="dt">vara =</span> <span class="dv">10</span>, </span>
-<span id="cb36-2"><a href="ar1-models-and-filtering.html#cb36-2"></a>    <span class="dt">sn =</span> <span class="dv">1</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<span id="cb36-2"><a href="ar1-models-and-filtering.html#cb36-2"></a>    <span class="dt">sn =</span> <span class="dv">1</span>, <span class="dt">plot =</span> F)</span></code></pre>
 <div id="some-plots" class="section level4">
 <h4><span class="header-section-number">9.3.2.1</span> Some plots</h4>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="ar1-models-and-filtering.html#cb37-1"></a>pfun &lt;-<span class="st"> </span><span class="cf">function</span>(x, n, l) {</span>
@@ -420,14 +419,14 @@ z* is complex conjugate</p>
 <span id="cb37-7"><a href="ar1-models-and-filtering.html#cb37-7"></a>plts &lt;-<span class="st"> </span><span class="kw">pfun</span>(rlz, <span class="dv">5</span>, <span class="dv">1</span>)</span>
 <span id="cb37-8"><a href="ar1-models-and-filtering.html#cb37-8"></a>plts<span class="op">$</span>original</span>
 <span id="cb37-9"><a href="ar1-models-and-filtering.html#cb37-9"></a>plts<span class="op">$</span>MA</span>
-<span id="cb37-10"><a href="ar1-models-and-filtering.html#cb37-10"></a>plts<span class="op">$</span>dif</span></code></pre></div>
+<span id="cb37-10"><a href="ar1-models-and-filtering.html#cb37-10"></a>plts<span class="op">$</span>dif</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-36-2.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-36-3.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="some-parzen-windows" class="section level4">
 <h4><span class="header-section-number">9.3.2.2</span> Some Parzen Windows</h4>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="ar1-models-and-filtering.html#cb38-1"></a><span class="kw">parzen.wge</span>(rlz)</span>
 <span id="cb38-2"><a href="ar1-models-and-filtering.html#cb38-2"></a><span class="kw">parzen.wge</span>(<span class="kw">na.omit</span>(<span class="kw">mafun</span>(rlz, <span class="dv">5</span>)))</span>
-<span id="cb38-3"><a href="ar1-models-and-filtering.html#cb38-3"></a><span class="kw">parzen.wge</span>(<span class="kw">na.omit</span>(<span class="kw">dfun</span>(rlz, <span class="dv">1</span>)))</span></code></pre></div>
+<span id="cb38-3"><a href="ar1-models-and-filtering.html#cb38-3"></a><span class="kw">parzen.wge</span>(<span class="kw">na.omit</span>(<span class="kw">dfun</span>(rlz, <span class="dv">1</span>)))</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-37-2.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-37-3.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unit 20 ARIMA and ARUMA | Time Series Midterm Review</title>
-  <meta name="description" content="A hopefully helpful guide">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A hopefully helpful guide" />
+  <meta name="generator" content="bookdown 0.11.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unit 20 ARIMA and ARUMA | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
 
-<meta name="author" content="David Josephs">
+<meta name="author" content="David Josephs" />
 
 
-<meta name="date" content="2019-06-29">
+<meta name="date" content="2019-07-02" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="psi-weights-with-ar-models.html">
@@ -353,11 +352,11 @@ is an ARUMA(0,n,0) model, or an ARIMA(0,0,0) model with a seasonal component of 
 <span id="cb54-9"><a href="arima-and-aruma.html#cb54-9"></a>}</span>
 <span id="cb54-10"><a href="arima-and-aruma.html#cb54-10"></a></span>
 <span id="cb54-11"><a href="arima-and-aruma.html#cb54-11"></a>x =<span class="st"> </span><span class="kw">gen.arima.wge</span>(<span class="dv">500</span>, <span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">0.6</span>, <span class="fl">-0.8</span>), <span class="dt">d =</span> <span class="dv">2</span>, <span class="dt">theta =</span> <span class="fl">0.3</span>, <span class="dt">sn =</span> <span class="dv">35</span>, <span class="dt">plot =</span> F)</span>
-<span id="cb54-12"><a href="arima-and-aruma.html#cb54-12"></a>d &lt;-<span class="st"> </span><span class="kw">artrans.wge</span>(x, <span class="dt">phi.tr =</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb54-12"><a href="arima-and-aruma.html#cb54-12"></a>d &lt;-<span class="st"> </span><span class="kw">artrans.wge</span>(x, <span class="dt">phi.tr =</span> <span class="dv">1</span>)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="arima-and-aruma.html#cb55-1"></a>d2 &lt;-<span class="st"> </span><span class="kw">artrans.wge</span>(d, <span class="dt">phi.tr =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="arima-and-aruma.html#cb55-1"></a>d2 &lt;-<span class="st"> </span><span class="kw">artrans.wge</span>(d, <span class="dt">phi.tr =</span> <span class="dv">1</span>)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-51-2.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="arima-and-aruma.html#cb56-1"></a>d3 &lt;-<span class="st"> </span><span class="kw">arimatr</span>(x, <span class="dv">2</span>)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="arima-and-aruma.html#cb56-1"></a>d3 &lt;-<span class="st"> </span><span class="kw">arimatr</span>(x, <span class="dv">2</span>)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-51-3.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-51-4.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="aruma-transform" class="section level3">
@@ -367,7 +366,7 @@ is an ARUMA(0,n,0) model, or an ARIMA(0,0,0) model with a seasonal component of 
 <span id="cb57-3"><a href="arima-and-aruma.html#cb57-3"></a>}</span>
 <span id="cb57-4"><a href="arima-and-aruma.html#cb57-4"></a></span>
 <span id="cb57-5"><a href="arima-and-aruma.html#cb57-5"></a>x2 &lt;-<span class="st"> </span><span class="kw">gen.aruma.wge</span>(<span class="dt">n =</span> <span class="dv">200</span>, <span class="dt">s =</span> <span class="dv">7</span>, <span class="dt">plot =</span> F)</span>
-<span id="cb57-6"><a href="arima-and-aruma.html#cb57-6"></a><span class="kw">arumatr</span>(x2, <span class="dv">7</span>)</span></code></pre></div>
+<span id="cb57-6"><a href="arima-and-aruma.html#cb57-6"></a><span class="kw">arumatr</span>(x2, <span class="dv">7</span>)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Again by transforming away the non stationary nonsense we end up with pure white noise in this case. We can check that with aic5.wge, it should be very confused</p>
 

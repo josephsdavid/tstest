@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="25.1 AR(p) forecasts: | Time Series Midterm Review" />
 <meta property="og:type" content="book" />
 
@@ -17,7 +15,7 @@
 
 <meta name="author" content="David Josephs" />
 
-<meta name="date" content="2019-06-29" />
+<meta name="date" content="2019-07-02" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -335,7 +333,7 @@ img {
 <span id="cb64-13"><a href="25-1-arp-forecasts.html#cb64-13"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">27.7</span>, <span class="fl">23.4</span>, <span class="fl">21.2</span>, <span class="fl">21.1</span>, <span class="fl">22.7</span>)</span>
 <span id="cb64-14"><a href="25-1-arp-forecasts.html#cb64-14"></a>p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.6</span>, <span class="fl">-0.8</span>)</span>
 <span id="cb64-15"><a href="25-1-arp-forecasts.html#cb64-15"></a>avg &lt;-<span class="st"> </span><span class="fl">29.4</span></span>
-<span id="cb64-16"><a href="25-1-arp-forecasts.html#cb64-16"></a><span class="kw">arp</span>(<span class="dt">phi =</span> p, <span class="dt">vec =</span> x, <span class="dt">l =</span> <span class="dv">5</span>, <span class="dt">mu =</span> avg)</span></code></pre></div>
+<span id="cb64-16"><a href="25-1-arp-forecasts.html#cb64-16"></a><span class="kw">arp</span>(<span class="dt">phi =</span> p, <span class="dt">vec =</span> x, <span class="dt">l =</span> <span class="dv">5</span>, <span class="dt">mu =</span> avg)</span></code></pre>
 <pre><code>## [1] 25.32000 28.23200 30.79520 32.56672 33.35059</code></pre>
 <div id="with-tswge" class="section level3">
 <h3><span class="header-section-number">25.1.1</span> With tswge</h3>
@@ -343,26 +341,26 @@ img {
 <h4><span class="header-section-number">25.1.1.1</span> positive phi, AR(1)</h4>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="25-1-arp-forecasts.html#cb66-1"></a><span class="kw">data</span>(fig6<span class="fl">.1</span>nf)</span>
 <span id="cb66-2"><a href="25-1-arp-forecasts.html#cb66-2"></a><span class="kw">plotts.wge</span>(fig6<span class="fl">.1</span>nf)</span>
-<span id="cb66-3"><a href="25-1-arp-forecasts.html#cb66-3"></a><span class="kw">fore.arma.wge</span>(fig6<span class="fl">.1</span>nf, <span class="dt">phi =</span> <span class="fl">0.8</span>, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre></div>
+<span id="cb66-3"><a href="25-1-arp-forecasts.html#cb66-3"></a><span class="kw">fore.arma.wge</span>(fig6<span class="fl">.1</span>nf, <span class="dt">phi =</span> <span class="fl">0.8</span>, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-57-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-57-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="negative-phi-ar1" class="section level4">
 <h4><span class="header-section-number">25.1.1.2</span> Negative phi, AR(1)</h4>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="25-1-arp-forecasts.html#cb67-1"></a>ts100 &lt;-<span class="st"> </span><span class="kw">tswgen</span>(<span class="dv">100</span>, <span class="dt">sn =</span> <span class="dv">24</span>)</span>
-<span id="cb67-2"><a href="25-1-arp-forecasts.html#cb67-2"></a>X1 &lt;-<span class="st"> </span>ts100<span class="op">$</span><span class="kw">sig</span>(<span class="dt">phi =</span> <span class="fl">-0.8</span>)</span></code></pre></div>
+<span id="cb67-2"><a href="25-1-arp-forecasts.html#cb67-2"></a>X1 &lt;-<span class="st"> </span>ts100<span class="op">$</span><span class="kw">sig</span>(<span class="dt">phi =</span> <span class="fl">-0.8</span>)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-58-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-58-2.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="25-1-arp-forecasts.html#cb68-1"></a><span class="kw">fore.arma.wge</span>(fig6<span class="fl">.1</span>nf, <span class="dt">phi =</span> <span class="fl">-0.8</span>, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="25-1-arp-forecasts.html#cb68-1"></a><span class="kw">fore.arma.wge</span>(fig6<span class="fl">.1</span>nf, <span class="dt">phi =</span> <span class="fl">-0.8</span>, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-58-3.png" width="672" style="display: block; margin: auto;" /></p>
 <p>It has the same behavior as the AR(functions). Sweet.</p>
 </div>
 <div id="ar2" class="section level4">
 <h4><span class="header-section-number">25.1.1.3</span> AR(2)</h4>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="25-1-arp-forecasts.html#cb69-1"></a>X2 &lt;-<span class="st"> </span>ts100<span class="op">$</span><span class="kw">sig</span>(<span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">1.6</span>, <span class="fl">-0.8</span>))</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="25-1-arp-forecasts.html#cb69-1"></a>X2 &lt;-<span class="st"> </span>ts100<span class="op">$</span><span class="kw">sig</span>(<span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">1.6</span>, <span class="fl">-0.8</span>))</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-59-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-59-2.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="25-1-arp-forecasts.html#cb70-1"></a>X2 &lt;-<span class="st"> </span>X2 <span class="op">+</span><span class="st"> </span><span class="dv">25</span></span>
-<span id="cb70-2"><a href="25-1-arp-forecasts.html#cb70-2"></a><span class="kw">plotts.wge</span>(X2)</span></code></pre></div>
+<span id="cb70-2"><a href="25-1-arp-forecasts.html#cb70-2"></a><span class="kw">plotts.wge</span>(X2)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-59-3.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="25-1-arp-forecasts.html#cb71-1"></a><span class="kw">fore.arma.wge</span>(X2, <span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">1.6</span>, <span class="fl">-0.8</span>), <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="25-1-arp-forecasts.html#cb71-1"></a><span class="kw">fore.arma.wge</span>(X2, <span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">1.6</span>, <span class="fl">-0.8</span>), <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">limits =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-59-4.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>

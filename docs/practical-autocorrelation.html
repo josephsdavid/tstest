@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unit 6 Practical Autocorrelation | Time Series Midterm Review</title>
-  <meta name="description" content="A hopefully helpful guide">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A hopefully helpful guide" />
+  <meta name="generator" content="bookdown 0.11.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unit 6 Practical Autocorrelation | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
 
-<meta name="author" content="David Josephs">
+<meta name="author" content="David Josephs" />
 
 
-<meta name="date" content="2019-06-29">
+<meta name="date" content="2019-07-02" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="autocorrelation-concepts-and-notation.html">
@@ -343,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\sigma^2\)</span> is calculated as normal, we will see rhok next!</p>
 <p>remember !</p>
 <p>Now it is time for some code!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="practical-autocorrelation.html#cb12-1"></a><span class="kw">library</span>(glue)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="practical-autocorrelation.html#cb12-1"></a><span class="kw">library</span>(glue)</span></code></pre>
 <pre><code>## 
 ## Attaching package: &#39;glue&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
@@ -371,13 +370,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-20"><a href="practical-autocorrelation.html#cb15-20"></a>    <span class="kw">ghat_one</span>(xs)<span class="op">/</span><span class="kw">ghat_zero</span>(xs)</span>
 <span id="cb15-21"><a href="practical-autocorrelation.html#cb15-21"></a>}</span>
 <span id="cb15-22"><a href="practical-autocorrelation.html#cb15-22"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">76</span>, <span class="dv">70</span>, <span class="dv">66</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">72</span>, <span class="dv">76</span>, <span class="dv">80</span>)</span>
-<span id="cb15-23"><a href="practical-autocorrelation.html#cb15-23"></a><span class="kw">xbar</span>(v)</span></code></pre></div>
+<span id="cb15-23"><a href="practical-autocorrelation.html#cb15-23"></a><span class="kw">xbar</span>(v)</span></code></pre>
 <pre><code>## [1] 71.25</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="practical-autocorrelation.html#cb17-1"></a><span class="kw">ghat_zero</span>(v)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="practical-autocorrelation.html#cb17-1"></a><span class="kw">ghat_zero</span>(v)</span></code></pre>
 <pre><code>## [1] 34.9375</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="practical-autocorrelation.html#cb19-1"></a><span class="kw">ghat_one</span>(v)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="practical-autocorrelation.html#cb19-1"></a><span class="kw">ghat_one</span>(v)</span></code></pre>
 <pre><code>## [1] 14.74219</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="practical-autocorrelation.html#cb21-1"></a><span class="kw">rhohat_one</span>(v)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="practical-autocorrelation.html#cb21-1"></a><span class="kw">rhohat_one</span>(v)</span></code></pre>
 <pre><code>## [1] 0.4219589</code></pre>
 
 </div>

@@ -1,4 +1,5 @@
 rsconnect/
+test/
 .Rdata
 .Rhistory
 *.log

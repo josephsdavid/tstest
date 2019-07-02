@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unit 18 Blending AR and MA components | Time Series Midterm Review</title>
-  <meta name="description" content="A hopefully helpful guide">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A hopefully helpful guide" />
+  <meta name="generator" content="bookdown 0.11.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unit 18 Blending AR and MA components | Time Series Midterm Review" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="A hopefully helpful guide" />
   
 
-<meta name="author" content="David Josephs">
+<meta name="author" content="David Josephs" />
 
 
-<meta name="date" content="2019-06-29">
+<meta name="date" content="2019-07-02" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="armapq.html">
@@ -329,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>An ARMA(p,q) model is invertible iff the roots of the AR side <strong><em>and</em></strong> the MA side are invertible. For a process to be considered arma it is stationary and invertible. Lets check it out with plotts.true again:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="blending-ar-and-ma-components.html#cb51-1"></a><span class="kw">plotts.true.wge</span>(<span class="dv">250</span>, <span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">1.95</span>, <span class="fl">-1.9</span>, <span class="fl">0.9025</span>))</span>
 <span id="cb51-2"><a href="blending-ar-and-ma-components.html#cb51-2"></a><span class="kw">plotts.true.wge</span>(<span class="dv">250</span>, <span class="dt">theta =</span> <span class="fl">0.95</span>)</span>
-<span id="cb51-3"><a href="blending-ar-and-ma-components.html#cb51-3"></a><span class="kw">plotts.true.wge</span>(<span class="dv">250</span>, <span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">1.95</span>, <span class="fl">-1.9</span>, <span class="fl">0.9025</span>), <span class="dt">theta =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<span id="cb51-3"><a href="blending-ar-and-ma-components.html#cb51-3"></a><span class="kw">plotts.true.wge</span>(<span class="dv">250</span>, <span class="dt">phi =</span> <span class="kw">c</span>(<span class="fl">1.95</span>, <span class="fl">-1.9</span>, <span class="fl">0.9025</span>), <span class="dt">theta =</span> <span class="fl">0.95</span>)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-48-2.png" width="672" style="display: block; margin: auto;" /><img src="tsReview_files/figure-html/unnamed-chunk-48-3.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Lets also just take a moment that aic and aic5.wge exist and tell us things. There is no need to write them here because thats a lot of work</p>
 </div>

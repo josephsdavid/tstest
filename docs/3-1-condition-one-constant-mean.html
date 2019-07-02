@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="3.1 Condition One: Constant Mean | Time Series Midterm Review" />
 <meta property="og:type" content="book" />
 
@@ -17,7 +15,7 @@
 
 <meta name="author" content="David Josephs" />
 
-<meta name="date" content="2019-06-29" />
+<meta name="date" content="2019-07-02" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -334,7 +332,7 @@ img {
 <span id="cb1-8"><a href="3-1-condition-one-constant-mean.html#cb1-8"></a>d1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
 <span id="cb1-9"><a href="3-1-condition-one-constant-mean.html#cb1-9"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
 <span id="cb1-10"><a href="3-1-condition-one-constant-mean.html#cb1-10"></a>e1 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="dv">3</span>, </span>
-<span id="cb1-11"><a href="3-1-condition-one-constant-mean.html#cb1-11"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<span id="cb1-11"><a href="3-1-condition-one-constant-mean.html#cb1-11"></a>    <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Now lets look at 5 realizations which come from the same realization, which might not have a constant mean:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="3-1-condition-one-constant-mean.html#cb2-1"></a>a2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
@@ -346,7 +344,7 @@ img {
 <span id="cb2-7"><a href="3-1-condition-one-constant-mean.html#cb2-7"></a>d2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
 <span id="cb2-8"><a href="3-1-condition-one-constant-mean.html#cb2-8"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span>
 <span id="cb2-9"><a href="3-1-condition-one-constant-mean.html#cb2-9"></a>e2 =<span class="st"> </span><span class="kw">gen.sigplusnoise.wge</span>(<span class="dv">100</span>, <span class="dt">coef =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">0</span>), <span class="dt">freq =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">0</span>), <span class="dt">psi =</span> <span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">1</span>, </span>
-<span id="cb2-10"><a href="3-1-condition-one-constant-mean.html#cb2-10"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre></div>
+<span id="cb2-10"><a href="3-1-condition-one-constant-mean.html#cb2-10"></a>    <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi), <span class="dv">0</span>), <span class="dt">vara =</span> <span class="dv">3</span>, <span class="dt">plot =</span> F)</span></code></pre>
 <p><img src="tsReview_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We cannot say for sure whether the mean is constant or not in this case!</p>
 </div>
